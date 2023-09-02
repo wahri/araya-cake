@@ -259,109 +259,40 @@
                     <div class="flexslider">
                         <ul class="slides text-center">
 
+@foreach ($reviews as $review)
+<li class="review-1">
+    <div class="review-1-txt">
 
-                            <!-- TESTIMONIAL-1 -->
-                            <li class="review-1">
-                                <div class="review-1-txt">
+        <!-- Testimonial Author Avatar -->
+        <img src="{{ asset('images/'.$review->image->name) }}"
+            alt="testimonial-avatar">
 
-                                    <!-- Testimonial Author Avatar -->
-                                    <img src="{{ asset('images/mutia.png') }}"
-                                        alt="testimonial-avatar">
+        <!-- Text -->
+        <p>
+            {{ $review->reviews }}
+        </p>
 
-                                    <!-- Text -->
-                                    <p>
-                                        "Tempatnya bagus, interior unik, harga kue cukup terjangkau, banyak varian dan pilihan serta tersedia kafe di teras dg banyak pilihan menu makanan dan minuman."
-                                    </p>
+        <!-- Rating -->
+        <div class="review-rating">
+            <div class="stars-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
 
-                                    <!-- Rating -->
-                                    <div class="review-rating">
-                                        <div class="stars-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
+        <!-- Testimonial Author -->
+        <p class="testimonial-autor">by {{ $review->name }}</p>
+        <a href="{{ $review->link_to_review }}" target="_blank" class="testimonial-autor">
+            <i class="fab fa-google"></i> Lihat ulasan
+        </a>
 
-                                    <!-- Testimonial Author -->
-                                    <p class="testimonial-autor">by Mutia Dwi Alicia</p>
-                                    <a href="https://goo.gl/maps/QGo5G58DkabRynRZ7" target="_blank" class="testimonial-autor">
-                                        <i class="fab fa-google"></i> Lihat ulasan
-                                    </a>
-
-                                </div>
-                            </li>
-
-
-                            <!-- TESTIMONIAL-2 -->
-                            <li class="review-1">
-                                <div class="review-1-txt">
-
-                                    <!-- Testimonial Author Avatar -->
-                                    <img src="{{ asset('images/halim.png') }}"
-                                        alt="testimonial-avatar">
-
-                                    <!-- Text -->
-                                    <p>
-                                        "Tempatnya nyaman, pegawainya sangat ramah, kue dan roti yang dihasilkan pun enak. Ada mini cafe juga di bagian depan toko."
-                                    </p>
-
-                                    <!-- Rating -->
-                                    <div class="review-rating">
-                                        <div class="stars-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-
-                                    <!-- Testimonial Author -->
-                                    <p class="testimonial-autor">by Nur Halimah Zainal</p>
-                                    <a href="https://goo.gl/maps/eaRjocTVTPwv9GNg7" target="_blank" class="testimonial-autor">
-                                        <i class="fab fa-google"></i> Lihat ulasan
-                                    </a>
-
-                                </div>
-
-                            </li>
-
-
-                            <!-- TESTIMONIAL-3 -->
-                            <li class="review-1">
-                                <div class="review-1-txt">
-
-                                    <!-- Testimonial Author Avatar -->
-                                    <img src="{{ asset('images/azizah.png') }}"
-                                        alt="testimonial-avatar">
-
-                                    <!-- Text -->
-                                    <p>
-                                        "Kuenya enak. Lembut, dan lumer di mulut. Pilihan kuenya banyak banget, ada juga oleh-oleh Pekanbaru."
-                                    </p>
-
-                                    <!-- Rating -->
-                                    <div class="review-rating">
-                                        <div class="stars-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-
-                                    <!-- Testimonial Author -->
-                                    <p class="testimonial-autor">by Azizah Sipayung</p>
-                                    <a href="https://goo.gl/maps/Zpz2rL8D7vuKxeWf8" target="_blank" class="testimonial-autor">
-                                        <i class="fab fa-google"></i> Lihat ulasan
-                                    </a>
-
-                                </div>
-
-                            </li>
+    </div>
+</li>
+    
+@endforeach
 
                         </ul>
                     </div>

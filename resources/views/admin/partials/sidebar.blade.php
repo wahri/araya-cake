@@ -41,6 +41,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.slider.index') }}">Slider Management</a></li>
                         <li><a href="#">Contact Information</a></li>
+                        <li><a href="{{ route('admin.review.index') }}">Review Management</a></li>
                     </ul>
                 </li>
 

@@ -7,7 +7,9 @@ use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\ImageManagementController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TestimoniController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +44,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     Route::delete('/delete-images/{id}', [ImageManagementController::class, 'deleteImages'])->name('deleteImages');
 
     Route::resource('slider', SliderController::class);
+    
+    Route::resource('review', ReviewController::class);
 
     Route::resource('product', ProductController::class);
     Route::post('uploadProductImage', [ProductController::class, 'uploadProductImage'])->name('uploadProductImage');

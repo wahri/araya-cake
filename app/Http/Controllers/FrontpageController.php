@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryProduct;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class FrontpageController extends Controller
     {
         $categoryWithProduct = CategoryProduct::with(['products', 'products.images'])->get();
         $sliders = Slider::all();
-        return view('homepage', compact(['categoryWithProduct', 'sliders']));
+        $reviews = Review::all();
+        return view('homepage', compact(['categoryWithProduct', 'sliders', 'reviews']));
     }
     function about()
     {
