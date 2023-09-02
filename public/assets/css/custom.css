@@ -1,0 +1,126 @@
+.user-sidebar {
+    background-color: #ff4f3f;
+}
+
+.page-title-box {
+    background-color: #ff4f3f;
+}
+
+.authentication-bg {
+    background-color: #ff4f3f;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ff4f3f;
+    border-color: #ff4f3f;
+}
+
+.btn-check:active+.btn-primary,
+.btn-check:checked+.btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #dd3829;
+    border-color: #e4584b;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #dd3829;
+    border-color: #e4584b;
+}
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #dd3829;
+    border-color: #e4584b;
+    -webkit-box-shadow: 0 0 0 0.15rem rgba(108, 116, 233, .5);
+    box-shadow: 0 0 0 0.15rem rgba(108, 116, 233, .5);
+}
+
+.product-img {
+    min-height: 200px;
+    object-fit: contain;
+}
+
+.bg-araya {
+    background-color: #ff4f3f;
+}
+
+.text-araya {
+    color: #ff4f3f;
+}
+
+/* Check image */
+
+ul#check_image {
+    list-style-type: none;
+}
+
+ul#check_image li {
+    display: inline-block;
+}
+
+ul#check_image input[type="checkbox"][id^="myCheckbox"] {
+    display: none;
+}
+ul#check_image input[type="radio"][id^="myCheckbox"] {
+    display: none;
+}
+
+ul#check_image label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+}
+
+ul#check_image label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+ul#check_image label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+ul#check_image :checked+label {
+    border-color: #ddd;
+}
+
+ul#check_image :checked+label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+}
+
+ul#check_image :checked+label img {
+    transform: scale(0.9);
+    /* box-shadow: 0 0 5px #333; */
+    z-index: -1;
+}
+
+#sidebar-menu ul li ul.sub-menu li a {
+    padding: .4rem 0rem .4rem 1rem;
+}

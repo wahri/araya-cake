@@ -1,0 +1,42 @@
+.custom-icon{
+    height: 70px;
+}
+
+.btn-login{
+    border: 2px solid rgb(233, 233, 233);
+    border-radius: 15px;
+}
+
+.bg-cream{
+background-color: #F3EAD7;
+}
+
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    position: absolute;
+}
+
+body::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
+    background-color: #ff4f3f;
+    border-radius: 2px;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.btn-araya, .scroll .btn-araya, .white-color .btn-araya, .araya-hover:hover, .scroll .araya-hover:hover, .white-color .araya-hover:hover {
+    color: #fff!important;
+    background-color: #ff4f3f;
+    border-color: #ff4f3f!important;
+}
+
+.btn-tra-araya, 
+.scroll .btn-tra-araya, 
+.white-color .btn-tra-araya,
+.tra-araya-hover:hover, 
+.scroll .tra-araya-hover:hover, 
+.white-color .tra-arayahover:hover {
+  color: #ff4f3f!important;
+  background-color: transparent;
+  border-color: #ff4f3f!important;
+}
