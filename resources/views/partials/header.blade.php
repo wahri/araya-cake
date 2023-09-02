@@ -7,7 +7,20 @@
 
 
             <!-- CALL BUTTON -->
-            <div class="callusbtn"><a href="tel:123456789"><i class="fas fa-phone"></i></a></div>
+            <div class="basket-ico ico-30 callusbtn">
+                {{-- <a href="tel:123456789">
+                    <i class="fas fa-phone"></i>
+                </a> --}}
+                <a href="{{ route('cart') }}">
+                    <span class="ico-holder">
+                        <span class="flaticon-shopping-bag"></span>
+                        <em class="roundpoint" id="cart-count-mobile"
+                            @if ($cartCount == 0) style="display: none" @endif>
+                            {{ $cartCount }}
+                        </em>
+                    </span>
+                </a>
+            </div>
 
 
             <!-- LOGO IMAGE -->

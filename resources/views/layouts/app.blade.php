@@ -149,6 +149,11 @@
                             $('#cart-count').css('display', 'block');
                         }
                         $('#cart-count').text(response.cart_count);
+
+                        if ($('#cart-count-mobile').is(':hidden')) {
+                            $('#cart-count-mobile').css('display', 'block');
+                        }
+                        $('#cart-count-mobile').text(response.cart_count);
                         toast.show()
                     },
                     error: function(xhr, status, error) {
