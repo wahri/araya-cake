@@ -50,8 +50,8 @@
                     <!-- DROPDOWN MENU -->
                     <li><a href="#">Profil</a>
                         <ul>
-                            <li><a href="#">Tentang Kami</a></li>
-                            <li><a href="#">Lokasi</a></li>
+                            <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                            <li><a href="{{ route('about') }}#lokasi">Lokasi</a></li>
                             <li><a href="#">Kontak</a></li>
                         </ul>
                     </li>

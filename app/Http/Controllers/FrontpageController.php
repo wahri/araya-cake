@@ -19,7 +19,7 @@ class FrontpageController extends Controller
     }
     function about()
     {
-        return view('homepage');
+        return view('about');
     }
     function detailCake(string $slug)
     {

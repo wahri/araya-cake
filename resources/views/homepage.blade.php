@@ -595,7 +595,7 @@
                                 Jl. Soekarno - Hatta No.77, Sidomulyo Barat, Kota Pekanbaru, Riau
                             </p>
 
-                            <a href="#gmap" class="btn btn-lg btn-red tra-white-hover">Lihat Map</a>
+                            <a href="#lokasi" class="btn btn-lg btn-red tra-white-hover">Lihat Map</a>
 
 
                         </div>
@@ -614,7 +614,7 @@
 
     <!-- GOOGLE MAP
                                                                            ============================================= -->
-    <div id="gmap">
+    <div id="lokasi">
         <div class="google-map">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.696207234422!2d101.41555227412404!3d0.4482737638120649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a9a4a95e8c8b%3A0xdd3455db93f2afe1!2sAraya%20Cake!5e0!3m2!1sid!2sid!4v1692882306246!5m2!1sid!2sid"
