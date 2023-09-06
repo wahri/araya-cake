@@ -1,63 +1,147 @@
-        <!-- FOOTER-3
+<!-- FOOTER-4
    ============================================= -->
-        <footer id="footer-3" class="footer division">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
+<footer id="footer-4" class="footer division">
+    <div class="container grey-color">
 
 
-                        <!-- FOOTER LOGO -->
-                        <div class="footer-logo"><img src="{{ asset('home-assets/images/logo-araya-vertical.png') }}"
-                                alt="footer-logo" /></div>
-
-                        <!-- FOOTER SOCIAL LINKS -->
-                        <div class="footer-socials-links">
-
-                            <!-- List -->
-                            <ul class="foo-socials text-center clearfix">
-                                <li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a>
-                                </li>
-                                <li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a>
-                                </li>
-                                <li><a href="#" class="ico-instagram"><i class="fab fa-tiktok"></i></a></li>
-
-                            </ul>
-
-                        </div>
+        <!-- FOOTER CONTENT -->
+        <div class="row">
 
 
-                        <!-- FOOTER LINKS -->
-                        <div class="footer-links">
-                            <ul class="bottom-footer-list clearfix">
-                                <li>
-                                    <p><a href="#">About</a></p>
-                                </li>
-                                <li>
-                                    <p><a href="#">Menu</a></p>
-                                </li>
-                                <li>
-                                    <p><a href="#">Order Now</a></p>
-                                </li>
-                                <li>
-                                    <p><a href="#">Gallery</a></p>
-                                </li>
-                                <li>
-                                    <p><a href="#">Gift Cards</a></p>
-                                </li>
-                                <li>
-                                    <p class="last-li"><a href="#">Contacts</a></p>
-                                </li>
-                            </ul>
-                        </div>
+            <!-- FOOTER INFO -->
+            <div class="col-xl-3">
+                <div class="footer-info">
 
-
-                        <!-- FOOTER COPYRIGHT -->
-                        <div class="footer-copyright">
-                            <p>&copy; {{ date('Y') }} Araya Cake Pekanbaru | Concept by Ubay Studio</p>
-                        </div>
-
-
+                    <!-- Footer Logo -->
+                    <div class="footer-logo text-center">
+                        <img src="{{ asset('home-assets/images/logo-araya-vertical.png') }}" alt="footer-logo" />
                     </div>
-                </div> <!-- End row -->
-            </div> <!-- End container -->
-        </footer> <!-- END FOOTER-3 -->
+
+                </div>
+            </div>
+
+
+            <!-- FOOTER CONTACTS -->
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="footer-contacts mb-40">
+
+                    <!-- Title -->
+                    <h5 class="h5-sm">Pesan Sekarang</h5>
+
+                    <!-- Address -->
+                    <p>Jl. Soekarno - Hatta No.77, Sidomulyo Barat,</p>
+                    <p>Kota Pekanbaru, Riau</p>
+
+                    <!-- Contacts -->
+                    <p class="foo-email txt-500 mt-15"><a href="mailto:admin@gmail.com">admin@arayacake.com</a></p>
+                    <p>
+                        <span class="red-color">
+                            <a href="tel:123456789">
+                                <i class="fab -fa-whatsapp"></i>
+                            </a>
+                        </span>
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- FOOTER INFO -->
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="footer-info mb-30">
+
+                    <!-- Title -->
+                    <h5 class="h5-sm">Informasi Toko</h5>
+
+                    <!-- Text -->
+                    <p>Buka setiap hari:</p>
+
+                    <!-- Text -->
+                    <p class="mt-15">Senin - Minggu:<br><span>8:00AM - 10:00PM</span></p>
+
+                </div>
+            </div>
+
+
+            <!-- FOOTER IMAGES -->
+            <div class="col-md-12 col-lg-4 col-xl-3">
+                <div class="footer-img mb-40">
+
+                    <!-- Title -->
+                    <h5 class="h5-sm">Galeri cake</h5>
+
+                    <!-- Instagram Images -->
+                    <ul class="text-center clearfix">
+                        <li>
+                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-01.jpg') }}"
+                                    alt="insta-img"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-02.jpg') }}"
+                                    alt="insta-img"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-03.jpg') }}"
+                                    alt="insta-img"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-04.jpg') }}"
+                                    alt="insta-img"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-05.jpg') }}"
+                                    alt="insta-img"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-06.jpg') }}"
+                                    alt="insta-img"></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div> <!-- END FOOTER IMAGES -->
+
+
+        </div> <!-- END FOOTER CONTENT -->
+
+
+        <!-- BOTTOM FOOTER -->
+        <div class="bottom-footer">
+            <div class="row d-flex align-items-center">
+
+
+                <!-- FOOTER COPYRIGHT -->
+                <div class="col-md-5 col-lg-6">
+                    <div class="footer-copyright">
+                        <p>&copy; 2020 Testo. All Rights Reserved</p>
+                    </div>
+                </div>
+
+
+                <!-- BOTTOM FOOTER LINKS -->
+                <div class="col-md-7 col-lg-6">
+                    <ul class="bottom-footer-list text-right clearfix">
+                        <li>
+                            <p class="first-list-link"><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p><a href="#"><i class="fab fa-twitter"></i> Twitter</a></p>
+                        </li>
+                        <li>
+                            <p><a href="#"><i class="fab fa-youtube"></i> YouTube</a></p>
+                        </li>
+                        <li>
+                            <p class="last-li"><a href="#"><i class="fab fa-yelp"></i> Yelp</a></p>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div> <!-- End row -->
+        </div> <!-- END BOTTOM FOOTER -->
+
+
+    </div> <!-- End container -->
+</footer>
+<!-- END FOOTER-4 -->

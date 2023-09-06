@@ -166,3 +166,7 @@ html::-webkit-scrollbar-thumb {
         color: #fff;
     } 
 }
+
+.footer-logo img {
+    max-height: 150px;
+}

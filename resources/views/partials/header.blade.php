@@ -1,5 +1,5 @@
 <header id="header-3" class="header navik-header header-shadow">
-    <div class="container">
+    <div class="container-fluid">
 
 
         <!-- NAVIGATION MENU -->
@@ -69,8 +69,23 @@
                     </li>
 
                     <!-- DROPDOWN MENU -->
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('shop') }}">Pesan Sekarang</a>
+                    </li> --}}
+                    <li>
+                        <a href="#" class="ico-facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ico-instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ico-instagram">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                     </li>
 
                     <!-- HEADER BUTTON  -->
@@ -81,7 +96,7 @@
 
             <nav class="navik-menu right menu-caret navik-yellow">
                 <ul class="top-list">
-                    
+
                     <!-- BASKET ICON -->
                     <li class="basket-ico ico-30">
                         <a href="{{ route('cart') }}">
