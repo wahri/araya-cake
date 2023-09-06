@@ -1,4 +1,4 @@
-<header id="header-3" class="header navik-header header-transparent header-shadow">
+<header id="header-3" class="header navik-header header-shadow">
     <div class="container">
 
 
@@ -24,8 +24,8 @@
 
 
             <!-- LOGO IMAGE -->
-            <div class="logo" data-mobile-logo="{{ asset('home-assets/images/logo-araya-horizontal.png') }}"
-                data-sticky-logo="{{ asset('home-assets/images/logo-araya-horizontal.png') }}">
+            <div class="logo" data-mobile-logo="{{ asset('home-assets/images/logo-araya-light.png') }}"
+                data-sticky-logo="{{ asset('home-assets/images/logo-araya-light.png') }}">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('home-assets/images/logo-araya-light.png') }}" alt="header-logo"
                         style="height: 50px" />
@@ -76,9 +76,15 @@
                     <!-- HEADER BUTTON  -->
                     {{-- <li class="nav-btn yellow-color"><a href="tel:123456789">789-654-3210</a></li> --}}
 
+                </ul>
+            </nav>
+
+            <nav class="navik-menu right menu-caret navik-yellow">
+                <ul class="top-list">
+                    
                     <!-- BASKET ICON -->
                     <li class="basket-ico ico-30">
-                        <a href="{{ route('cart') }}" class="ml-5" style="padding-right: 0px">
+                        <a href="{{ route('cart') }}">
                             <span class="ico-holder">
                                 <span class="flaticon-shopping-bag"></span>
                                 <em class="roundpoint" id="cart-count"
@@ -88,16 +94,14 @@
                             </span>
                         </a>
                     </li>
-
-
                     <li>
-                        <a href="{{ route('login') }}" class="">
-                            Login
+                        <a href="{{ route('login') }}" class="btn-member">
+                            Member
                         </a>
                     </li>
-
                 </ul>
-            </nav> <!-- END MAIN MENU -->
+            </nav>
+
 
 
         </div> <!-- END NAVIGATION MENU -->
@@ -105,7 +109,7 @@
 
     </div> <!-- End container -->
 
-    
+
     <div class="position-fixed top-0 end-0 p-3" style="z-index: 999; right: 0">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body bg-primary">

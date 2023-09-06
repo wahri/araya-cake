@@ -45,7 +45,7 @@ class CartController extends Controller
             $cart->save();
         }
 
-        $cartCount = Cart::where(['session_id' => $sessionId])->count();
+        $cartCount = Cart::where(['session_id' => $sessionId])->sum('quantity');
         return response()->json([
             'message' => 'Berhasil menambahkan ke keranjang',
             'cart_count' => $cartCount

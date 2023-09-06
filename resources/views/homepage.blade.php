@@ -126,11 +126,11 @@
                                                 </div> --}}
 
                                                 <a href="{{ route('detail.cake', $product->slug) }}" target="_blank">
-                                                    <h5 class="h5-sm">
+                                                    <h5 class="h5-sm product-title">
                                                         {{ $product->name }}
                                                     </h5>
 
-                                                    <p class="grey-color">
+                                                    <p class="grey-color product-desc">
                                                         {{ $product->description }}
                                                     </p>
                                                 </a>

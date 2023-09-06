@@ -131,7 +131,19 @@
 
 
     <script>
+        // Dapatkan elemen badge keranjang
+        const cartBadge = document.querySelector('#cart-count');
+
+        // Fungsi untuk memulai animasi bounce
+        function startBounceAnimation() {
+            cartBadge.classList.remove('animated'); // Hapus kelas 'animated' untuk mengulang animasi
+            void cartBadge.offsetWidth; // Paksa pembaruan layout
+            cartBadge.classList.add('animated'); // Tambahkan kelas 'animated' kembali
+        }
+
         $(document).ready(function() {
+
+
             $('.add-to-cart-list').click(function() {
                 var productId = $(this).data('product-id');
                 var toastLiveExample = document.getElementById('liveToast')
@@ -151,10 +163,11 @@
                         $('#cart-count').text(response.cart_count);
 
                         if ($('#cart-count-mobile').is(':hidden')) {
-                            $('#cart-count-mobile').css('display', 'block');
+                            $('#cart-count-mobile').css('display', 'block ');
                         }
                         $('#cart-count-mobile').text(response.cart_count);
-                        toast.show()
+                        // toast.show()
+                        startBounceAnimation();
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);
