@@ -24,7 +24,7 @@
 
 
             <!-- LOGO IMAGE -->
-            <div class="logo" data-mobile-logo="{{ asset('home-assets/images/logo-araya-light.png') }}"
+            <div class="logo" data-mobile-logo="{{ asset('home-assets/images/logo-araya-horizontal.png') }}"
                 data-sticky-logo="{{ asset('home-assets/images/logo-araya-light.png') }}">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('home-assets/images/logo-araya-light.png') }}" alt="header-logo"

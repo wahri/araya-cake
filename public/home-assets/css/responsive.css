@@ -180,7 +180,7 @@
 
   #header-1.navik-header, #header-3.navik-header { padding-top: 0; }
 
-  .navik-header .logo { padding: 10px 0; float: none; }
+  .navik-header .logo { padding: 20px 0px 10px 0px; float: none; }
   .navik-header .logo img { width: auto; max-width: inherit; max-height: 70px; } 
 
   .navik-menu { text-align: center; }
@@ -616,7 +616,7 @@
 
   #header-1.navik-header, #header-3.navik-header { padding-top: 0; }
 
-  .navik-header .logo { padding: 10px 0; float: none; }
+  .navik-header .logo { padding: 20px 0px 10px 0px;; float: none; }
   .navik-header .logo img { width: auto; max-width: inherit; max-height: 70px; } 
 
   .navik-menu { text-align: center; }
@@ -1108,7 +1108,7 @@
 
   #header-1.navik-header, #header-3.navik-header { padding-top: 0; }
 
-  .navik-header .logo { padding: 10px 0; float: none; }
+  .navik-header .logo { padding: 20px 0px 10px 0px; float: none; }
   .navik-header .logo img { width: auto; max-width: inherit; max-height: 70px; } 
 
   .navik-menu { text-align: center; }

@@ -130,17 +130,6 @@ html::-webkit-scrollbar-thumb {
     z-index: 1200;
 }
 
-#header-3 .logo{
-    display: flex;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff4f3f;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    padding: 10px 15px;
-    margin-bottom: 5px;
-}
 
 #header-3.navik-header {
     padding-top: 0px;
@@ -155,15 +144,24 @@ html::-webkit-scrollbar-thumb {
         float: right;
         clear: inherit;
     }
+
+    #header-3 .logo {
+        background-color: #ff4f3f;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        padding: 10px 15px;
+        margin-bottom: 5px;
+    }
+    
 }
 
 .line-menu{
-    background-color: #fff;
+    background-color: #3a3a3a;
 }
 
 @media  (max-width: 1199.95px) {
     #header-3 .flaticon-shopping-bag{
-        color: #fff;
+        color: #3a3a3a;
     }
 
     .menu-6-item .add-to-cart {
