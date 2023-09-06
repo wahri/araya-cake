@@ -1859,7 +1859,7 @@
 /*------------------------------------------*/  
 
 .navik-header-container {
-  height: 80px;
+  height: 85px;
 }
 
 .navik-header .logo {
@@ -1902,9 +1902,9 @@
 .navik-menu > ul > li > a {
   position: relative;
   box-sizing: border-box;
-  height: 80px;
+  height: 85px;
   padding: 0 14px;
-  line-height: 80px;
+  line-height: 90px;
   white-space: nowrap;
 }
 
@@ -2120,8 +2120,8 @@
 }
 
 .navik-header.sticky .navik-menu > ul > li > a {
-  height: 80px;
-  line-height: 80px;
+  height: 85px;
+  line-height: 90px;
 }
 
 #header-2 .navik-header.sticky .navik-menu > ul > li > a {

@@ -9,23 +9,7 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="hero-txt text-center white-color">
 
-                        <!-- Breadcrumb -->
-                        <div id="breadcrumb">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="breadcrumb-nav">
-                                        <nav aria-label="breadcrumb">
-                                            <ol class="breadcrumb">
-                                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                <li class="breadcrumb-item active" aria-current="page">Pesan Sekarang</li>
-                                            </ol>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h2 class="h2-xl">Pesan Sekarang</h2>
+                        <h2 class="h2-xl">Semua Cake</h2>
 
                     </div>
                 </div>

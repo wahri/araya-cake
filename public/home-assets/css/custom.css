@@ -162,9 +162,15 @@ html::-webkit-scrollbar-thumb {
 }
 
 @media  (max-width: 1199.95px) {
-    .flaticon-shopping-bag{
+    #header-3 .flaticon-shopping-bag{
         color: #fff;
-    } 
+    }
+
+    .menu-6-item .add-to-cart {
+        bottom: 28px;
+        opacity: 1;
+        -moz-opacity: 1;
+    }
 }
 
 .footer-logo img {

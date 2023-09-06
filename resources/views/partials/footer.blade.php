@@ -57,7 +57,7 @@
                     <p>Buka setiap hari:</p>
 
                     <!-- Text -->
-                    <p class="mt-15">Senin - Minggu:<br><span>8:00AM - 10:00PM</span></p>
+                    <p class="mt-15">Senin - Minggu:<br>8:00AM - 10:00PM</p>
 
                 </div>
             </div>
@@ -113,7 +113,7 @@
                 <!-- FOOTER COPYRIGHT -->
                 <div class="col-md-5 col-lg-6">
                     <div class="footer-copyright">
-                        <p>&copy; 2020 Testo. All Rights Reserved</p>
+                        <p>&copy; {{ date('Y') }} Araya Cake Pekanbaru | Concept by Ubay Stdio</p>
                     </div>
                 </div>
 
@@ -126,13 +126,10 @@
                             </p>
                         </li>
                         <li>
-                            <p><a href="#"><i class="fab fa-twitter"></i> Twitter</a></p>
+                            <p><a href="#"><i class="fab fa-instagram"></i> Instagram</a></p>
                         </li>
                         <li>
-                            <p><a href="#"><i class="fab fa-youtube"></i> YouTube</a></p>
-                        </li>
-                        <li>
-                            <p class="last-li"><a href="#"><i class="fab fa-yelp"></i> Yelp</a></p>
+                            <p class="last-li"><a href="#"><i class="fab fa-tiktok"></i> Tiktok</a></p>
                         </li>
                     </ul>
                 </div>
