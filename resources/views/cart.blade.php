@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- PAGE HERO
-                               ============================================= -->
-    <div id="cart-page" class="page-hero-section division">
+
+    {{-- <div id="cart-page" class="page-hero-section division">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
@@ -32,7 +31,7 @@
                 </div>
             </div> <!-- End row -->
         </div> <!-- End container -->
-    </div> <!-- END PAGE HERO -->
+    </div> --}}
 
 
 

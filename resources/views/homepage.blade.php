@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                       ============================================= -->
+                                                                                                           ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -45,7 +45,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                   ============================================= -->
+                                                                                                       ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -135,13 +135,13 @@
                                                     </p>
                                                 </a>
 
-                                                <div class="menu-6-price bg-coffee">
-                                                    <h5 class="h5-xs yellow-color">Rp. {{ $product->price / 1000 }}k</h5>
+                                                <div class="menu-6-price bg-shadow">
+                                                    <h5 class="h5-xs araya-color">RP. {{ $product->price / 1000 }}k</h5>
                                                 </div>
 
-                                                <div class="add-to-cart bg-yellow ico-10" style="cursor: pointer">
-                                                    <a class="add-to-cart-list" data-product-id="{{ $product->id }}">
-                                                        <span class="flaticon-shopping-bag"></span> Add to Cart
+                                                <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
+                                                    <a class="add-to-cart-list" data-product-id="{{ $product->id }}" style="color:white">
+                                                        <span class="flaticon-shopping-bag"></span> Order   
                                                     </a>
                                                 </div>
 
@@ -168,16 +168,16 @@
     </section>
 
 
-    <section id="promo-11" class="bg-fixed promo-section division">
+    <section id="promo-11" class="bg-image bg-scroll reviews-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
 
-                <div class="col-md-5 col-lg-4">
+                <div class="col-md-5 col-lg-6">
                     <div class="pbox-11-txt mb-40 white-color">
 
                         <!-- Title -->
                         <h3 class="h3-lg">The</h3>
-                        <h2>Premium Cake</h2>
+                        <h2>Custom Cake</h2>
 
                         <!-- Text -->
                         <p class="p-md">
@@ -199,41 +199,10 @@
                         <img class="img-fluid" src="{{ asset('home-assets/images/promo-11-img.png') }}"
                             alt="promo-image" />
 
-                        <!-- Price Badge -->
-                        <div class="red-badge price-badge-lg bg-fixed">
-                            <div class="badge-txt white-color">
-                                {{-- <h5 class="h5-xl">Pesan <br>Sekarang</h5> --}}
-                                <h5 class="h5-sm">Bisa Request<br>Custom</h5>
-                                {{-- <span class="item-code">Code: 0841</span> --}}
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
 
-                <!-- PROMO LINKS -->
-                <div class="col-lg-2">
-
-                    <!-- Link -->
-                    <div class="pbox-11-link text-center white-color">
-                        <a href="#">
-                            <img class="img-fluid" src="{{ asset('home-assets/images/menu/burger-02.png') }}"
-                                alt="promo-image" />
-                            <p>Ultimate Bacon Burger</p>
-                        </a>
-                    </div>
-
-                    <!-- Link -->
-                    <div class="pbox-11-link text-center mb-40 white-color">
-                        <a href="#">
-                            <img class="img-fluid" src="{{ asset('home-assets/images/menu/burger-05.png') }}"
-                                alt="promo-image" />
-                            <p>Grilled Chicken Burger</p>
-                        </a>
-                    </div>
-
-                </div>
 
 
             </div> <!-- End row -->
@@ -244,11 +213,11 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                           ============================================= -->
-    <div id="reviews-1" class="bg-image bg-scroll reviews-section division">
+                                                                               ============================================= -->
+    <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 testimonials white-color">
+                <div class="col-lg-12 testimonials">
 
 
                     <!-- TRANSPARENT QUOTE ICON -->
@@ -259,40 +228,39 @@
                     <div class="flexslider">
                         <ul class="slides text-center">
 
-@foreach ($reviews as $review)
-<li class="review-1">
-    <div class="review-1-txt">
+                            @foreach ($reviews as $review)
+                                <li class="review-1">
+                                    <div class="review-1-txt">
 
-        <!-- Testimonial Author Avatar -->
-        <img src="{{ asset('images/'.$review->image->name) }}"
-            alt="testimonial-avatar">
+                                        <!-- Testimonial Author Avatar -->
+                                        <img src="{{ asset('images/' . $review->image->name) }}" alt="testimonial-avatar">
 
-        <!-- Text -->
-        <p>
-            {{ $review->reviews }}
-        </p>
+                                        <!-- Text -->
+                                        <p>
+                                            {{ $review->reviews }}
+                                        </p>
 
-        <!-- Rating -->
-        <div class="review-rating">
-            <div class="stars-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-        </div>
+                                        <!-- Rating -->
+                                        <div class="review-rating">
+                                            <div class="stars-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
 
-        <!-- Testimonial Author -->
-        <p class="testimonial-autor">by {{ $review->name }}</p>
-        <a href="{{ $review->link_to_review }}" target="_blank" class="testimonial-autor">
-            <i class="fab fa-google"></i> Lihat ulasan
-        </a>
+                                        <!-- Testimonial Author -->
+                                        <p class="testimonial-autor">by {{ $review->name }}</p>
+                                        <a href="{{ $review->link_to_review }}" target="_blank"
+                                            class="testimonial-autor">
+                                            <i class="fab fa-google"></i> Lihat ulasan
+                                        </a>
 
-    </div>
-</li>
-    
-@endforeach
+                                    </div>
+                                </li>
+                            @endforeach
 
                         </ul>
                     </div>
@@ -305,7 +273,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                    ============================================= -->
+                                                                                                        ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -559,7 +527,7 @@
 
 
     <!-- ABOUT-3
-                                                                       ============================================= -->
+                                                                           ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -580,16 +548,18 @@
 
                         <!-- Title -->
                         <div class="text-center mb-3">
-                            <img src="{{ asset('home-assets/images/logo-araya-horizontal.png') }}" class="mb-3"
-                                alt="Logo Araya" style="height:50px">
-                            <h6 class="h6-sm coffee-color mb-5">Dapatkan Cake Terbaik Untuk Moment Spesialmu Hanya di
-                                Araya Cake Pekanbaru</h6>
-                            <hr>
-                            <h3 class="h3-sm yellow-color">Jam Buka Outlet</h3>
+                            {{-- <img src="{{ asset('home-assets/images/logo-araya-horizontal.png') }}" class="mb-3"
+                                alt="Logo Araya" style="height:50px"> --}}
+                            {{-- <h6 class="h6-sm coffee-color mb-5">Dapatkan Cake Terbaik Untuk Moment Spesialmu Hanya di
+                                Araya Cake Pekanbaru</h6> --}}
+                            {{-- <hr> --}}
+                            <h3 class="h3-sm araya-color" style="font-weight: 700">
+                                Buka Setiap Hari
+                            </h3>
 
                             <!-- Text -->
                             <p class="p-md">
-                                *Buka Setiap Hari, Pukul 07.00 – 22.00
+                                *Pukul 07.00 – 22.00
                             </p>
                             <p class="p-md">
                                 Jl. Soekarno - Hatta No.77, Sidomulyo Barat, Kota Pekanbaru, Riau
@@ -613,7 +583,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                           ============================================= -->
+                                                                               ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe

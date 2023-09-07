@@ -28,7 +28,7 @@
                 data-sticky-logo="{{ asset('home-assets/images/logo-araya-light.png') }}">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('home-assets/images/logo-araya-light.png') }}" alt="header-logo"
-                        style="height: 50px" />
+                        style="height: 40px" />
                 </a>
             </div>
 
@@ -42,7 +42,7 @@
 
 
             <!-- MAIN MENU -->
-            <nav class="navik-menu menu-caret navik-yellow">
+            <nav class="navik-menu menu-caret navik-yellow ml-2">
                 <ul class="top-list">
                     <li>
                         <a href="{{ route('home') }}">Home</a>
@@ -110,7 +110,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('login') }}" class="btn-member">
+                        <a href="{{ route('register') }}" class="btn-member">
                             Member
                         </a>
                     </li>

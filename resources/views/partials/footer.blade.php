@@ -1,7 +1,7 @@
 <!-- FOOTER-4
    ============================================= -->
-<footer id="footer-4" class="footer division">
-    <div class="container grey-color">
+<footer id="footer-4" class="footer division" style="background-color: #FFF; color: #212121">
+    <div class="container">
 
 
         <!-- FOOTER CONTENT -->
@@ -26,7 +26,7 @@
                 <div class="footer-contacts mb-40">
 
                     <!-- Title -->
-                    <h5 class="h5-sm">Pesan Sekarang</h5>
+                    <h5 class="h5-sm">Kunjungi Kami</h5>
 
                     <!-- Address -->
                     <p>Jl. Soekarno - Hatta No.77, Sidomulyo Barat,</p>

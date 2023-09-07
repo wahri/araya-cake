@@ -149,7 +149,7 @@ html::-webkit-scrollbar-thumb {
         background-color: #ff4f3f;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
-        padding: 10px 15px;
+        padding: 20px 20px;
         margin-bottom: 5px;
     }
     
@@ -173,4 +173,65 @@ html::-webkit-scrollbar-thumb {
 
 .footer-logo img {
     max-height: 150px;
+}
+
+#register-form .card{
+    background-color: #FFF;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 7px 7px 10px rgb(39 39 39 / 14%);
+}
+
+#register-form .card-body{
+    padding: 50px;
+}
+
+#register-form .form-control {
+    font-family: KoHo;
+    border-radius: 20px;
+    padding: 16px 15px;
+    margin-bottom: 10px;
+    font-size: 100%;
+}
+
+#register-form {
+    background-color: #ff4f3f;
+    font-family: KoHo;
+    font-weight: 500;
+}
+
+#register-form .h4-xl{
+    font-weight: 700;
+    text-transform: none;
+}
+#register-form .p-md{
+    font-size: 1rem;
+}
+#register-form .btn{
+    font-family: KoHo;
+}
+
+#menu-6 .h5-xs{
+    font-size: 1rem;
+    text-transform: none;
+}
+
+.araya-color{
+    color: #ff4f3f;
+}
+.bg-araya{
+    background-color: #ff4f3f;
+}
+
+.bg-shadow{
+    /* background-color: #F3EAD7; */
+    box-shadow: 2px 2px 5px rgb(39 39 39 / 14%);
+}
+
+.light-color{
+    color: #fff;
+}
+
+.add-to-cart{
+    font-weight: 500;
 }

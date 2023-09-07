@@ -9,12 +9,13 @@
                         <div class="card-body" style="color: #FF4F3F">
                             <div class="text-center">
                                 <h4 class="h4-xl">
-                                  Hai! Sobat Araya
+                                    Hai Sobat Araya
                                 </h4>
                                 <p class="p-md">
-                                    Ayo daftar sebagai member untuk mendapatkan promo menarik di Araya
+                                    Ayo! daftar sebagai member untuk mendapatkan promo menarik di Araya
                                 </p>
                             </div>
+                            
                             <form>
                                 <div class="form-group">
                                   {{-- <label for="exampleInputEmail1">Email</label> --}}

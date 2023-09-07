@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -50,5 +51,13 @@ class CartController extends Controller
             'message' => 'Berhasil menambahkan ke keranjang',
             'cart_count' => $cartCount
         ]);
+    }
+
+    function orderProduct() {
+        if (Auth::check()) {
+            dd('user login');
+        }else{
+            redirect()->route('login');
+        }
     }
 }
