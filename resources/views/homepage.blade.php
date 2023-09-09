@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                           ============================================= -->
+                                                                                                                               ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -45,7 +45,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                       ============================================= -->
+                                                                                                                           ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -139,11 +139,19 @@
                                                     <h5 class="h5-xs araya-color">RP. {{ $product->price / 1000 }}k</h5>
                                                 </div>
 
-                                                <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
-                                                    <a class="add-to-cart-list" data-product-id="{{ $product->id }}" style="color:white">
-                                                        <span class="flaticon-shopping-bag"></span> Order   
-                                                    </a>
-                                                </div>
+                                                @if ($cart->where('product_id', $product->id)->first())
+                                                    <input class="qty" name="quantity" type="number" min="0"
+                                                        max="999"
+                                                        value="{{ $cart->where('product_id', $product->id)->first()->quantity }}"
+                                                        data-cart-id="{{ $cart->where('product_id', $product->id)->first()->id }}">
+                                                @else
+                                                    <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
+                                                        <a class="add-to-cart-list" data-product-id="{{ $product->id }}"
+                                                            style="color:white">
+                                                            <span class="flaticon-shopping-bag"></span> Order
+                                                        </a>
+                                                    </div>
+                                                @endif
 
                                             </div>
 
@@ -213,7 +221,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                               ============================================= -->
+                                                                                                   ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -273,7 +281,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                        ============================================= -->
+                                                                                                                            ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -527,7 +535,7 @@
 
 
     <!-- ABOUT-3
-                                                                           ============================================= -->
+                                                                                               ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -565,7 +573,7 @@
                                 Jl. Soekarno - Hatta No.77, Sidomulyo Barat, Kota Pekanbaru, Riau
                             </p>
 
-                            <a href="#lokasi" class="btn btn-lg btn-red tra-white-hover">Lihat Map</a>
+                            <a href="#lokasi" class="btn btn-lg btn-red tra-araya-hover">Lihat Map</a>
 
 
                         </div>
@@ -583,7 +591,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                               ============================================= -->
+                                                                                                   ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe

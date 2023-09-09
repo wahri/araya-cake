@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     {{-- <div id="cart-page" class="page-hero-section division">
         <div class="container">
             <div class="row">
@@ -37,7 +36,7 @@
 
 
     <!-- CART PAGE
-                               ============================================= -->
+                                           ============================================= -->
     <section id="cart-1" class="wide-100 cart-page division">
         <div class="container">
 
@@ -49,11 +48,11 @@
                         <table id="cartListTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Delete</th>
+                                    <th scope="col" style="width: 50%">Product</th>
+                                    <th scope="col" class="text-center" style="width: 15%">Price</th>
+                                    <th scope="col" class="text-center" style="width: 10%">Quantity</th>
+                                    <th scope="col" class="text-center" style="width: 15%">Total</th>
+                                    <th scope="col" class="text-center" style="width: 10%">Delete</th>
                                 </tr>
                             </thead>
 
@@ -78,17 +77,22 @@
 
                                         </td>
 
-                                        <td data-label="Price" class="product-price">
-                                            <h5 class="h6-md">Rp. {{ number_format($cart->product->price, 0, ',', '.') }}</h5>
+                                        <td class="text-center" data-label="Price" class="product-price">
+                                            <h5 class="h6-md">Rp. {{ number_format($cart->product->price, 0, ',', '.') }}
+                                            </h5>
                                         </td>
-                                        <td data-label="Quantity" class="product-qty">
-                                            <input class="qty" type="number" min="1" max="20"
-                                                value="{{ $cart->quantity }}">
+                                        <td class="text-center" data-label="Quantity" class="product-qty">
+                                            <input class="qty" name="quantity" type="number" min="0"
+                                                max="999" value="{{ $cart->quantity }}"
+                                                data-cart-id="{{ $cart->id }}">
                                         </td>
-                                        <td data-label="Total" class="product-price-total">
-                                            <h5 class="h6-md">Rp. {{ number_format(($cart->product->price * $cart->quantity), 0, ',', '.')   }}</h5>
+                                        <td class="text-center" data-label="Total" class="product-price-total">
+                                            <h5 class="h6-md" id="totalProduct-{{ $cart->id }}">Rp.
+                                                {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
+                                            </h5>
                                         </td>
-                                        <td data-label="Delete" class="td-trash"><i class="far fa-trash-alt"></i></td>
+                                        <td class="text-center" data-label="Delete" class="td-trash"><i
+                                                class="far fa-trash-alt"></i></td>
 
                                     </tr>
                                 @endforeach
@@ -110,7 +114,7 @@
 
                         <div class="col-md-8 col-lg-7">
                             <form class="discount-form">
-
+                                @csrf
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Coupon Code" id="discount-code">
                                     <span class="input-group-btn">
@@ -121,15 +125,8 @@
                             </form>
                         </div>
 
-{{-- 
-                        <div class="col-md-4 col-lg-5 text-right">
-                            <a onClick="window.location.reload()" class="btn btn-md btn-salmon tra-salmon-hover">Update
-                                Cart</a>
-                        </div> --}}
-
                     </div>
                 </div>
-
 
                 <!-- CHECKOUT -->
                 <div class="col-lg-5">
@@ -144,7 +141,7 @@
                                 <tr>
                                     <td>Subtotal</td>
                                     <td> </td>
-                                    <td class="text-right">
+                                    <td class="text-right" id="subtotal">
                                         Rp. {{ number_format($totalPrice, 0, ',', '.') }}
                                     </td>
                                 </tr>
@@ -158,7 +155,7 @@
                                 <tr class="last-tr">
                                     <td>Total</td>
                                     <td> </td>
-                                    <td class="text-right">
+                                    <td class="text-right" id="total">
                                         Rp. {{ number_format($totalPrice, 0, ',', '.') }}
                                     </td>
                                 </tr>
@@ -166,11 +163,12 @@
                         </table>
 
                         <!-- Button -->
-                        <a href="#" class="btn btn-md btn-salmon tra-salmon-hover">Pesan Sekarang</a>
+                        <a href="{{ route('processOrder') }}" target="_blank"
+                            class="btn btn-md btn-success tra-hover-success"><i class="fab fa-whatsapp"></i> Pesan
+                            Sekarang</a>
 
                     </div>
                 </div> <!-- END CHECKOUT -->
-
 
             </div>
             <!-- END CART CHECKOUT -->
@@ -183,63 +181,48 @@
 @section('style')
 @endsection
 
-@section('sript')
-    {{-- <script>
-        $(function() {
-            let documentFormatListTable = $('#cartListTable').DataTable({
-                searching: true,
-                autoWidth: false,
-                processing: true,
-                serverSide: true,
-                pageLength: 10,
-                ajax: {
-                    url: "{{ route('getCartList') }}",
-                    type: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    }
-                },
-                columns: [{
-                        data: 'name',
-                        name: 'name',
-                        defaultContent: "-"
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
-                        defaultContent: "-",
-                        render: function(data, type, row) {
-                            return moment(data).format("LLL");
-                        }
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at',
-                        defaultContent: "-",
-                        render: function(data, type, row) {
-                            return moment(data).format("LLL");
-                        }
-                    },
-                    {
-                        render: function(data, type, row) {
-                            var editUrl = '{{ route('dashboard.document-type.edit', ':id') }}';
-                            editUrl = editUrl.replace(':id', row.id);
+@section('script')
+    <script>
+        // $(document).ready(function() {
+        //     $('.qty').on('change', function() {
+        //         var cartId = $(this).data('cart-id');
+        //         var qty = $(this).val();
 
-                            // <a data-id=${row.id} name="edit" href="${editUrl}"  class="btn btn-success">
-                            //         <i class="fas fa-edit"></i>
-                            //     </a>
-                            return `
-                            <div class="form-group">
-                                <button data-id=${row.id} name="delete" class="btn btn-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        `
-                        }
-                    },
+        //         $("#loader").delay(100).fadeIn();
+        //         $("#loader-wrapper").delay(100).fadeIn("fast");
+        //         $.ajax({
+        //             url: "{{ route('updateCart') }}",
+        //             method: "POST",
+        //             data: {
+        //                 _token: '{{ csrf_token() }}',
+        //                 cartId: cartId,
+        //                 qty: qty
+        //             },
+        //             success: function(response) {
+        //                 if ($('#cart-count').is(':hidden')) {
+        //                     $('#cart-count').css('display', 'block');
+        //                 }
+        //                 $('#cart-count').text(response.cart_count);
 
-                ],
-            });
-        })
-    </script> --}}
+        //                 if ($('#cart-count-mobile').is(':hidden')) {
+        //                     $('#cart-count-mobile').css('display', 'block ');
+        //                 }
+        //                 $('#cart-count-mobile').text(response.cart_count);
+
+        //                 $('#totalProduct-' + cartId).text(response.totalProduct);
+
+        //                 $('#subtotal').text(response.totalPrice);
+        //                 $('#total').text(response.totalPrice);
+
+        //                 $("#loader").delay(100).fadeOut();
+        //                 $("#loader-wrapper").delay(100).fadeOut("fast");
+        //                 startBounceAnimation();
+        //             },
+        //             error: function(xhr, status, error) {
+        //                 console.log(xhr.responseText);
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
 @endsection

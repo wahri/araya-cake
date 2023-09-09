@@ -87,39 +87,41 @@ html::-webkit-scrollbar-thumb {
     text-overflow: ellipsis;
 }
 
-#header-3 .navik-menu ul li > a.btn-member {
+#header-3 .navik-menu ul li>a.btn-member {
     line-height: 40px;
     height: auto;
     /* background-color: #ff4f3f; */
-    color: #ff4f3f; 
+    color: #ff4f3f;
     padding: 0px 25px;
-    border: 1px solid #ff4f3f; 
-    border-radius: 25px; 
+    border: 1px solid #ff4f3f;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.5s ease;
 }
-#header-3 .navik-menu ul li > a.btn-member:hover {
+
+#header-3 .navik-menu ul li>a.btn-member:hover {
     background-color: #ff4f3f;
-    color: #fff; 
+    color: #fff;
     cursor: pointer;
 }
 
-#header-3.header-transparent-on .navik-menu > ul > li > a.btn-member{
+#header-3.header-transparent-on .navik-menu>ul>li>a.btn-member {
     line-height: 40px;
     height: auto;
-    color: #fff; 
+    color: #fff;
     padding: 0px 25px;
-    border: 1px solid #fff; 
-    border-radius: 25px; 
+    border: 1px solid #fff;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.5s ease;
 }
-#header-3.header-transparent-on .navik-menu > ul > li > a.btn-member:hover{
-    color: #e21400; 
-    border: 1px solid #e21400; 
+
+#header-3.header-transparent-on .navik-menu>ul>li>a.btn-member:hover {
+    color: #e21400;
+    border: 1px solid #e21400;
 }
 
-#header-3::before{
+#header-3::before {
     content: '';
     position: absolute;
     top: 0;
@@ -135,11 +137,12 @@ html::-webkit-scrollbar-thumb {
     padding-top: 0px;
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
     .navik-menu {
         float: left;
         clear: inherit;
     }
+
     .navik-menu.right {
         float: right;
         clear: inherit;
@@ -152,15 +155,15 @@ html::-webkit-scrollbar-thumb {
         padding: 20px 20px;
         margin-bottom: 5px;
     }
-    
+
 }
 
-.line-menu{
+.line-menu {
     background-color: #3a3a3a;
 }
 
-@media  (max-width: 1199.95px) {
-    #header-3 .flaticon-shopping-bag{
+@media (max-width: 1199.95px) {
+    #header-3 .flaticon-shopping-bag {
         color: #3a3a3a;
     }
 
@@ -175,22 +178,22 @@ html::-webkit-scrollbar-thumb {
     max-height: 150px;
 }
 
-#register-form .card{
+#register-form .card {
     background-color: #FFF;
     border: none;
     border-radius: 25px;
     box-shadow: 7px 7px 10px rgb(39 39 39 / 14%);
 }
 
-#register-form .card-body{
+#register-form .card-body {
     padding: 50px;
 }
 
 #register-form .form-control {
     font-family: KoHo;
+    height: auto;
     border-radius: 20px;
-    padding: 16px 15px;
-    margin-bottom: 10px;
+    padding: 10px 15px;
     font-size: 100%;
 }
 
@@ -200,38 +203,65 @@ html::-webkit-scrollbar-thumb {
     font-weight: 500;
 }
 
-#register-form .h4-xl{
+#register-form .h4-xl {
     font-weight: 700;
     text-transform: none;
 }
-#register-form .p-md{
+
+#register-form .p-md {
     font-size: 1rem;
 }
-#register-form .btn{
+
+#register-form .btn {
     font-family: KoHo;
 }
 
-#menu-6 .h5-xs{
+#menu-6 .h5-xs {
     font-size: 1rem;
     text-transform: none;
 }
 
-.araya-color{
+.araya-color {
     color: #ff4f3f;
 }
-.bg-araya{
+
+.bg-araya {
     background-color: #ff4f3f;
 }
 
-.bg-shadow{
+.bg-shadow {
     /* background-color: #F3EAD7; */
     box-shadow: 2px 2px 5px rgb(39 39 39 / 14%);
 }
 
-.light-color{
+.light-color {
     color: #fff;
 }
 
-.add-to-cart{
+.add-to-cart {
     font-weight: 500;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.tra-hover-success:hover{
+    color: #28a745 !important;
+    background-color: #fff;
+    border-color: #28a745 !important;
+}
+
+.menu-6-item .qty{
+    position: absolute;
+    right: 20px;
+    bottom: 23px;
+    height: auto;
+    font-size: inherit;
+    padding: 5px 5px;
+    border: none;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
 }

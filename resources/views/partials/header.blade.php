@@ -109,11 +109,29 @@
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('register') }}" class="btn-member">
-                            Member
-                        </a>
-                    </li>
+
+                    @guest
+                        <li>
+                            <a href="{{ route('login') }}" class="btn-member">
+                                Member
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="#" class="btn-member">
+                            {{ Auth::user()->name }}
+                            </a>
+                            <ul>
+                                <form id="logoutForm" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
+                                <li><a href="#">Riwayat Belanja</a></li>
+                                <li><a href="#">Pengaturan Akun</a></li>
+                                <li><a href="#" onclick="event.preventDefault();
+                                    document.getElementById('logoutForm').submit();">Logout</a></li>
+                            </ul>
+                        </li>
+                    @endguest
                 </ul>
             </nav>
 
@@ -125,11 +143,4 @@
     </div> <!-- End container -->
 
 
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 999; right: 0">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body bg-primary">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
 </header>

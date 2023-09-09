@@ -31,6 +31,8 @@ Route::get('/detail/cake/{slug}', [FrontpageController::class, 'detailCake'])->n
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/getCartList', [CartController::class, 'getCartList'])->name('getCartList');
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+Route::post('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
+Route::get('/processOrder', [CartController::class, 'processOrder'])->name('processOrder');
 
 // Route::get('/dashboard', function () {
 //     return view('admin/dashboard');

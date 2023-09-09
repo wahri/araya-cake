@@ -35,5 +35,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $roleStaff = Role::create(['name' => 'Staff']);
         $user2->assignRole($roleStaff);
+
+        Role::create(['name' => 'Member']);
     }
 }

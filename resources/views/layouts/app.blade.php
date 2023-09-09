@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=KoHo:wght@500;700&family=Maven+Pro:wght@500;700;900&family=Poppins:wght@500;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;500;700;900&family=Maven+Pro:wght@300;500;700;900&family=Poppins:wght@300;500;700;900&display=swap"
         rel="stylesheet">
 
     <!-- BOOTSTRAP CSS -->
@@ -132,20 +132,19 @@
     <script src="{{ asset('home-assets/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('home-assets/js/jquery.ajaxchimp.min.js') }}"></script>
 
-    <!-- Custom Script -->
-    @yield('script')
-    <script src="{{ asset('home-assets/js/custom.js') }}"></script>
-
-
+    {{-- @yield('script') --}}
     <script>
-        // Dapatkan elemen badge keranjang
         const cartBadge = document.querySelector('#cart-count');
+        const cartBadgeMobile = document.querySelector('#cart-count-mobile');
 
-        // Fungsi untuk memulai animasi bounce
         function startBounceAnimation() {
-            cartBadge.classList.remove('animated'); // Hapus kelas 'animated' untuk mengulang animasi
-            void cartBadge.offsetWidth; // Paksa pembaruan layout
-            cartBadge.classList.add('animated'); // Tambahkan kelas 'animated' kembali
+            cartBadge.classList.remove('animated');
+            void cartBadge.offsetWidth;
+            cartBadge.classList.add('animated');
+
+            cartBadgeMobile.classList.remove('animated');
+            void cartBadgeMobile.offsetWidth;
+            cartBadgeMobile.classList.add('animated');
         }
 
         $(document).ready(function() {
@@ -155,6 +154,8 @@
                 var productId = $(this).data('product-id');
                 var toastLiveExample = document.getElementById('liveToast')
                 var toast = new bootstrap.Toast(toastLiveExample)
+                $("#loader").delay(100).fadeIn();
+                $("#loader-wrapper").delay(100).fadeIn("fast");
 
                 $.ajax({
                     url: "{{ route('addToCart') }}",
@@ -173,7 +174,9 @@
                             $('#cart-count-mobile').css('display', 'block ');
                         }
                         $('#cart-count-mobile').text(response.cart_count);
-                        // toast.show()
+
+                        $("#loader").delay(100).fadeOut();
+                        $("#loader-wrapper").delay(100).fadeOut("fast");
                         startBounceAnimation();
                     },
                     error: function(xhr, status, error) {
@@ -181,8 +184,57 @@
                     }
                 });
             });
+
+            $('.qty').on('change', function() {
+                var cartId = $(this).data('cart-id');
+                var qty = $(this).val();
+
+                $("#loader").delay(100).fadeIn();
+                $("#loader-wrapper").delay(100).fadeIn("fast");
+                $.ajax({
+                    url: "{{ route('updateCart') }}",
+                    method: "POST",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        cartId: cartId,
+                        qty: qty
+                    },
+                    success: function(response) {
+                        if ($('#cart-count').is(':hidden')) {
+                            $('#cart-count').css('display', 'block');
+                        }
+                        $('#cart-count').text(response.cart_count);
+
+                        if ($('#cart-count-mobile').is(':hidden')) {
+                            $('#cart-count-mobile').css('display', 'block ');
+                        }
+                        $('#cart-count-mobile').text(response.cart_count);
+
+                        $('#totalProduct-' + cartId).text(response.totalProduct);
+
+                        $('#subtotal').text(response.totalPrice);
+                        $('#total').text(response.totalPrice);
+
+                        $("#loader").delay(100).fadeOut();
+                        $("#loader-wrapper").delay(100).fadeOut("fast");
+                        startBounceAnimation();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+
+            // $("#logoutButton").click(function(event) {
+            //     event.preventDefault(); // Mencegah tautan mengarahkan ke halaman baru
+            //     console.log('logout')
+            //     $("#logoutForm").submit(); // Kirim formulir
+            // });
         });
     </script>
+    <script src="{{ asset('home-assets/js/custom.js') }}"></script>
+
+
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!-- [if lt IE 9]>

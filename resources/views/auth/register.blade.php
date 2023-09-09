@@ -6,44 +6,97 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6 col-12">
                     <div class="card">
-                        <div class="card-body" style="color: #FF4F3F">
+                        <div class="card-body" style="color: #212121">
                             <div class="text-center">
                                 <h4 class="h4-xl">
-                                  Hai! Sobat Araya
+                                    Hai! Sobat Araya
                                 </h4>
                                 <p class="p-md">
                                     Ayo daftar sebagai member untuk mendapatkan promo menarik di Araya
                                 </p>
                             </div>
-                            <form>
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
                                 <div class="form-group">
-                                  {{-- <label for="exampleInputEmail1">Email</label> --}}
-                                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                  {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                  {{-- <label for="name">Nama Lengkap</label> --}}
-                                  <input type="text" class="form-control" id="name" placeholder="Nama Lengkap">
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="Nama Lengkap" value="{{ old('name') }}">
+                                    @error('name')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                  {{-- <label for="phone">Nomor Whatsapp</label> --}}
-                                  <input type="text" class="form-control" id="phone" placeholder="Nomor Whatsapp">
+                                    <input type="text" class="form-control" name="phone" id="phone"
+                                        placeholder="Nomor Whatsapp" value="{{ old('phone') }}">
+                                    @error('phone')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                  {{-- <label for="password">Password</label> --}}
-                                  <input type="password" class="form-control" id="password" placeholder="Password">
+                                  <label for="birthdate" style="color: #495057">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="birthdate" id="birthdate"
+                                        placeholder="Tanggal Ulang Tahun" value="{{ old('birthdate') }}">
+                                    @error('birthdate')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                  <textarea name="address" id="address" class="form-control" placeholder="Alamat lengkap">{{ old('address') }}</textarea>
+                                  @error('address')
+                                      <small class="text-danger">
+                                          {{ $message }}
+                                      </small>
+                                  @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" id="password"
+                                        placeholder="Password Baru">
+                                    @error('password')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation"
+                                        placeholder="Konfirmasi Password">
+                                    @error('password_confirmation')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-check">
-                                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                  <label class="form-check-label" for="exampleCheck1">
-                                    I accept the 
-                                    <strong>
-                                        terms of services & privacy policy
-                                    </strong>
-                                  </label>
-                                </div>
+                                    <input type="checkbox" class="form-check-input" name="tos" id="tos"
+                                        {{ old('tos') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="tos">
+                                        I accept the
+                                        <strong>
+                                            terms of services & privacy policy
+                                        </strong>
+                                    </label>
+                                  </div>
+                                  @error('tos')
+                                      <small class="text-danger">
+                                          {{ $message }}
+                                      </small>
+                                  @enderror
                                 <button type="submit" class="btn btn-lg btn-red btn-block">Daftar</button>
-                              </form>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -32,8 +34,12 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required', 'string', 'max:20'],
+            'birthdate' => ['required', 'date'],
+            'address' => ['required', 'string', 'max:255'],
+            'tos' => ['required', 'accepted'],
         ]);
 
         $user = User::create([
@@ -42,10 +48,31 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->profile()->create([
+            'phone' => $request->phone,
+            'birthdate' => $request->birthdate,
+            'address' => $request->address,
+        ]);
+
+        $user->assignRole('Member');
+
         event(new Registered($user));
 
-        Auth::login($user);
+        $session_id = session()->getId();
 
-        return redirect(RouteServiceProvider::HOME);
+        // Cari cart dengan session_id yang sesuai
+        $carts = Cart::where('session_id', $session_id)->get();
+
+        if ($carts->count() > 0) {
+            foreach ($carts as $cart) {
+                $cart->update(['user_id' => $user->id]);
+            }
+
+            Auth::login($user);
+            return redirect()->route('cart');
+        } else {
+            Auth::login($user);
+            return redirect()->route('home');
+        }
     }
 }
