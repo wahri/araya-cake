@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@push('style')
+@endpush
+
+@push('sript')
+@endpush
+
 @section('content')
     <!-- PAGE HERO
                ============================================= -->
@@ -105,8 +111,4 @@
     </div>
 @endsection
 
-@section('style')
-@endsection
 
-@section('sript')
-@endsection

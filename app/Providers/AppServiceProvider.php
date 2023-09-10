@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Cart;
+use App\Models\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $user = Auth::user();
             $sessionId = Session::getId();
+            $categoryProduct = CategoryProduct::where('is_primary', 1)->get();
 
             if (Auth::check()) {
                 $cartCount = Cart::where(['user_id' => $user->id])->sum('quantity');
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'user' => $user,
                 'cartCount' => $cartCount,
+                'categoryProduct' => $categoryProduct,
             ]);
         });
     }

@@ -19,9 +19,9 @@ class FrontpageController extends Controller
         $reviews = Review::all();
 
         $user = Auth::user();
-        if($user){
+        if ($user) {
             $cart = Cart::where('user_id', $user->id)->get();
-        }else{
+        } else {
             $cart = Cart::where('session_id', session()->getId())->get();
         }
 
@@ -34,27 +34,36 @@ class FrontpageController extends Controller
     {
         return view('about');
     }
+
     function detailCake(string $slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
         $relatedProducts = Product::where('category_product_id', $product->category_product_id)->get();
-        
+
         $user = Auth::user();
-        if($user){
+        if ($user) {
             $cart = Cart::where('user_id', $user->id)->get();
-        }else{
+        } else {
             $cart = Cart::where('session_id', session()->getId())->get();
         }
-        
+
         return view('detailCake', compact(['product', 'relatedProducts', 'cart']));
     }
+
+    function product(string $slug)
+    {
+        $categoryWithProduct = CategoryProduct::where('slug', $slug)->with(['products', 'products.images'])->first();
+        // dd($categoryWithProduct->products);
+        return view('product', compact(['categoryWithProduct']));
+    }
+
     function shop()
     {
         return view('shop');
     }
+
     function cart()
     {
         return view('cart');
     }
-
 }

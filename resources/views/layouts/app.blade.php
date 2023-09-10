@@ -46,7 +46,7 @@
     <!-- BOOTSTRAP CSS -->
     <link href="{{ asset('home-assets/css/bootstrap.min.cs') }}s" rel="stylesheet">
 
-    @yield('style')
+    @stack('style')
     <!-- FONT ICONS -->
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" crossorigin="anonymous">
     <link href="{{ asset('home-assets/css/flaticon.css') }}" rel="stylesheet">
@@ -107,13 +107,8 @@
 
 
 
-    </div> <!-- END PAGE CONTENT -->
-
-
-
-
-    <!-- EXTERNAL SCRIPTS
-  ============================================= -->
+    </div>
+    
     <script src="{{ asset('home-assets/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('home-assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('home-assets/js/modernizr.custom.js') }}"></script>
@@ -132,7 +127,6 @@
     <script src="{{ asset('home-assets/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('home-assets/js/jquery.ajaxchimp.min.js') }}"></script>
 
-    {{-- @yield('script') --}}
     <script>
         const cartBadge = document.querySelector('#cart-count');
         const cartBadgeMobile = document.querySelector('#cart-count-mobile');
@@ -234,6 +228,7 @@
     </script>
     <script src="{{ asset('home-assets/js/custom.js') }}"></script>
 
+    @stack('script')
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->

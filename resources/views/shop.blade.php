@@ -1,8 +1,16 @@
 @extends('layouts.app')
 
+@push('style')
+    @livewireStyles
+@endpush
+
+@push('sript')
+    @livewireScripts
+@endpush
+
 @section('content')
     <!-- PAGE HERO
-                                                                                       ============================================= -->
+                                                                                                                               ============================================= -->
     <div id="product-page" class="page-hero-section division">
         <div class="container">
             <div class="row">
@@ -22,45 +30,31 @@
 
             <div class="col-lg-3">
                 <div class="card">
-
-                    <div class="card-body">
-
+                    <div class="card-header">
                         <h4 class="header-title">Filters</h4>
 
+                    </div>
+                    <div class="card-body">
 
-                        <div class="border p-3 rounded mt-4">
-                            <h5 class="font-size-16">Kategori cake</h5>
+                        <h5 class="font-size-16">Rasa</h5>
 
-                            <div class="mt-4">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="form-check-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-                                  </div>
-                                <div class="form-check mt-2">
-                                    <input type="checkbox" id="multirange" name="multirange1" class="form-check-input"
-                                        checked>
-                                    <label class="custom-control-label" for="multirange"> All</label>
-                                </div>
-                                <div class="form-check mt-2">
-                                    <input type="checkbox" id="multirange1" name="multirange1" class="form-check-input">
-                                    <label class="custom-control-label" for="multirange1"> $1 -
-                                        $10</label>
-                                </div>
-                                <div class="form-check mt-2">
-                                    <input type="checkbox" id="multirange2" name="multirange1" class="form-check-input">
-                                    <label class="custom-control-label" for="multirange2"> $10 -
-                                        $100</label>
-                                </div>
-                                <div class="form-check mt-2">
-                                    <input type="checkbox" id="multirange3" name="multirange1" class="form-check-input">
-                                    <label class="custom-control-label" for="multirange3"> $100 -
-                                        $500</label>
-                                </div>
-                                <div class="form-check mt-2">
-                                    <input type="checkbox" id="multirange4" name="multirange1" class="form-check-input">
-                                    <label class="custom-control-label" for="multirange4"> $500</label>
-                                </div>
-                            </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Chocolate
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Strawberry
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Keju
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -69,40 +63,7 @@
 
             <div class="col-lg-9">
 
-                <section id="newsletter-1" class="mb-20 newsletter-section division">
-                    <div class="container">
-                        <div class="border p-3 rounded">
-                            <div class="row">
 
-
-                                <!-- NEWSLETTER FORM -->
-                                <div class="col-12">
-                                    <div class="newsletter-txt text-center">
-
-                                        <!-- Form -->
-                                        <form>
-
-                                            <div class="input-group">
-                                                <input type="email" class="form-control" placeholder="Cari Nama cake..."
-                                                    required id="s-email">
-                                                <span class="input-group-btn">
-                                                    <button type="submit" class="btn btn-red tra-red-hover">Cari cake</button>
-                                                </span>
-                                            </div>
-
-                                            <!-- Newsletter Form Notification -->
-                                            <label for="s-email" class="form-notification"></label>
-
-                                        </form>
-
-                                    </div>
-                                </div> <!-- END NEWSLETTER FORM -->
-
-
-                            </div> <!-- End row -->
-                        </div> <!-- End Inner Bg -->
-                    </div> <!-- End container -->
-                </section>
 
                 <section id="menu-6" class="menu-section division">
 
@@ -677,7 +638,7 @@
 
                 </section>
                 <!-- PAGE PAGINATION
-                   ============================================= -->
+                                                           ============================================= -->
                 <div class="bg-color-01 page-pagination division">
                     <div class="container">
                         <div class="row">
@@ -705,10 +666,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('style')
-@endsection
-
-@section('sript')
 @endsection

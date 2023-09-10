@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('category_products', function (Blueprint $table) {
             $table->id();
+            $table->string('slug')->unique();
             $table->string('name');
             $table->string('big_icon')->nullable();
             $table->string('small_icon')->nullable();

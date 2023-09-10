@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@push('style')
+@endpush
+
+@push('sript')
+@endpush
+
 @section('content')
     <!-- HERO-3
                                                                                                                                ============================================= -->
@@ -602,5 +608,4 @@
     </div>
 @endsection
 
-@section('script')
-@endsection
+

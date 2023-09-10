@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@push('style')
+@endpush
+
+@push('script')
+@endpush
+
+
 @section('content')
     {{-- <div id="cart-page" class="page-hero-section division">
         <div class="container">
@@ -36,7 +43,7 @@
 
 
     <!-- CART PAGE
-                                           ============================================= -->
+                                               ============================================= -->
     <section id="cart-1" class="wide-100 cart-page division">
         <div class="container">
 
@@ -176,53 +183,4 @@
 
         </div> <!-- End container -->
     </section> <!-- END CART PAGE -->
-@endsection
-
-@section('style')
-@endsection
-
-@section('script')
-    <script>
-        // $(document).ready(function() {
-        //     $('.qty').on('change', function() {
-        //         var cartId = $(this).data('cart-id');
-        //         var qty = $(this).val();
-
-        //         $("#loader").delay(100).fadeIn();
-        //         $("#loader-wrapper").delay(100).fadeIn("fast");
-        //         $.ajax({
-        //             url: "{{ route('updateCart') }}",
-        //             method: "POST",
-        //             data: {
-        //                 _token: '{{ csrf_token() }}',
-        //                 cartId: cartId,
-        //                 qty: qty
-        //             },
-        //             success: function(response) {
-        //                 if ($('#cart-count').is(':hidden')) {
-        //                     $('#cart-count').css('display', 'block');
-        //                 }
-        //                 $('#cart-count').text(response.cart_count);
-
-        //                 if ($('#cart-count-mobile').is(':hidden')) {
-        //                     $('#cart-count-mobile').css('display', 'block ');
-        //                 }
-        //                 $('#cart-count-mobile').text(response.cart_count);
-
-        //                 $('#totalProduct-' + cartId).text(response.totalProduct);
-
-        //                 $('#subtotal').text(response.totalPrice);
-        //                 $('#total').text(response.totalPrice);
-
-        //                 $("#loader").delay(100).fadeOut();
-        //                 $("#loader-wrapper").delay(100).fadeOut("fast");
-        //                 startBounceAnimation();
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 console.log(xhr.responseText);
-        //             }
-        //         });
-        //     });
-        // });
-    </script>
 @endsection

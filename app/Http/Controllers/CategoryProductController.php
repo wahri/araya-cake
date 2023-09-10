@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 class CategoryProductController extends Controller
 {
     /**
@@ -37,10 +39,12 @@ class CategoryProductController extends Controller
             'is_primary' => 'nullable|boolean',
         ]);
 
+        $slug = Str::of($validatedData['name'])->slug('-');
         $isPrimary = isset($validatedData['is_primary']) ? $validatedData['is_primary'] : false;
 
         // Update data kategori
         CategoryProduct::create([
+            'slug' => $slug,
             'name' => $validatedData['name'],
             'small_icon' => $validatedData['small_icon'],
             'big_icon' => $validatedData['big_icon'],

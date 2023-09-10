@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@push('style')
+@endpush
+
+@push('sript')
+@endpush
+
 @section('content')
     <!-- SINGLE PRODUCT
                                                                ============================================= -->
@@ -249,8 +255,3 @@
     <!-- END MENU-6 -->
 @endsection
 
-@section('style')
-@endsection
-
-@section('sript')
-@endsection

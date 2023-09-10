@@ -59,12 +59,9 @@
                     <!-- DROPDOWN MENU -->
                     <li><a href="#">Produk</a>
                         <ul>
-                            <li><a href="#">Kue Ulang Tahun</a></li>
-                            <li><a href="#">Premium Cake</a></li>
-                            <li><a href="#">Brownies</a></li>
-                            <li><a href="#">Donut</a></li>
-                            <li><a href="#">Cupcake</a></li>
-                            <li><a href="#">Kue Lainnya</a></li>
+                            @foreach ($categoryProduct as $category)
+                                <li><a href="{{ route('product', $category->slug) }}">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
 
@@ -119,7 +116,7 @@
                     @else
                         <li>
                             <a href="#" class="btn-member">
-                            {{ Auth::user()->name }}
+                                {{ Auth::user()->name }}
                             </a>
                             <ul>
                                 <form id="logoutForm" action="{{ route('logout') }}" method="POST">
@@ -127,8 +124,10 @@
                                 </form>
                                 <li><a href="#">Riwayat Belanja</a></li>
                                 <li><a href="#">Pengaturan Akun</a></li>
-                                <li><a href="#" onclick="event.preventDefault();
-                                    document.getElementById('logoutForm').submit();">Logout</a></li>
+                                <li><a href="#"
+                                        onclick="event.preventDefault();
+                                    document.getElementById('logoutForm').submit();">Logout</a>
+                                </li>
                             </ul>
                         </li>
                     @endguest

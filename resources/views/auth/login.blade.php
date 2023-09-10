@@ -27,8 +27,8 @@
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-red btn-block">Login</button>
                             </form>
-                            <p class="p-md">
-                                Belum punya akun? <a href="{{{ route('register') }}}">Daftar</a> sekarang
+                            <p class="p-md text-center mt-3">
+                                Belum punya akun? <a href="{{{ route('register') }}}" class="araya-color">Daftar sekarang</a>
                             </p>
                         </div>
                     </div>

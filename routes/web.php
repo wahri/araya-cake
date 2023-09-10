@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontpageController::class, 'index'])->name('home');
 Route::get('/tentang-araya', [FrontpageController::class, 'about'])->name('about');
-Route::get('/pesan-cake', [FrontpageController::class, 'shop'])->name('shop');
+Route::get('/product/{slug}', [FrontpageController::class, 'product'])->name('product');
+Route::get('/semua-cake', [FrontpageController::class, 'shop'])->name('shop');
 Route::get('/detail/cake/{slug}', [FrontpageController::class, 'detailCake'])->name('detail.cake');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
