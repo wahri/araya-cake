@@ -35,4 +35,5 @@ class ProductList extends Component
             'cart' => $cart
         ]);
     }
+
 }

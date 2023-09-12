@@ -17,8 +17,18 @@
         </div>
     </div>
 
-    <livewire:product-list :categoryProductId="$categoryWithProduct->id" />
-
     
+    <div class="container-fluid">
+        <div class="row wide-60">
+            
+            <livewire:filter-product />
+            
+            <div class="col-lg-9 col-md-12">
+                <livewire:product-list :categoryProductId="$categoryWithProduct->id" />
+            </div>
+    
+    
+        </div>
+    </div>
 
 @endsection
