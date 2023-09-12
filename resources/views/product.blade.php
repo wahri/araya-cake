@@ -1,13 +1,5 @@
 @extends('layouts.app')
 
-@push('style')
-    @livewireStyles
-@endpush
-
-@push('sript')
-    @livewireScripts
-@endpush
-
 @section('content')
     <!-- PAGE HERO
                                                                                                                                                    ============================================= -->
@@ -25,7 +17,7 @@
         </div>
     </div>
 
-    <livewire:product-list :slug="$categoryWithProduct->slug" />
+    <livewire:product-list :categoryProductId="$categoryWithProduct->id" />
 
     
 

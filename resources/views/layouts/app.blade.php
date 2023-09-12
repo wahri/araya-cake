@@ -66,6 +66,8 @@
     <link href="{{ asset('home-assets/css/responsive.css') }}" rel="stylesheet">
 
     <link href="{{ asset('home-assets/css/custom.css') }}" rel="stylesheet">
+
+    @livewireStyles
 </head>
 
 
@@ -230,6 +232,7 @@
 
     @stack('script')
 
+    @livewireScripts
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!-- [if lt IE 9]>

@@ -3,32 +3,21 @@
 
         <div class="col-lg-3 col-md-12 mb-60">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-araya text-light">
                     <h4 class="header-title">Filters</h4>
-
                 </div>
                 <div class="card-body">
 
-                    <h5 class="font-size-16">Rasa</h5>
+                    <h5 class="font-size-16">Kategori Produk</h5>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Chocolate
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Strawberry
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Keju
-                        </label>
-                    </div>
+                    @foreach ($categoryProduct as $category)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                {{ $category->name }}
+                            </label>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -39,8 +28,8 @@
 
                 <div class="row">
 
-                    @foreach ($categoryWithProduct->products as $product)
-                        <div class="col-sm-12 col-md-6 col-lg-4" wire:key="{{ $product->id }}">
+                    @foreach ($products as $product)
+                        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" wire:key="{{ $product->id }}">
                             <div class="menu-6-item bg-white">
 
 
@@ -100,12 +89,19 @@
                                         <h5 class="h5-xs araya-color">RP. {{ $product->price / 1000 }}k</h5>
                                     </div>
 
-                                    <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
-                                        <a class="add-to-cart-list" data-product-id="{{ $product->id }}"
-                                            style="color:white">
-                                            <span class="flaticon-shopping-bag"></span> Order
-                                        </a>
-                                    </div>
+                                    @if ($cart->where('product_id', $product->id)->first())
+                                        <input class="qty" name="quantity" type="number" min="0"
+                                            max="99"
+                                            value="{{ $cart->where('product_id', $product->id)->first()->quantity }}"
+                                            data-cart-id="{{ $cart->where('product_id', $product->id)->first()->id }}">
+                                    @else
+                                        <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
+                                            <a class="add-to-cart-list" data-product-id="{{ $product->id }}"
+                                                style="color:white" wire:click="$dispatch('loadProduct')">
+                                                <span class="flaticon-shopping-bag"></span> Order
+                                            </a>
+                                        </div>
+                                    @endif
 
                                 </div>
 

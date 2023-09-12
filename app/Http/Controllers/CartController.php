@@ -49,8 +49,8 @@ class CartController extends Controller
 
         if (!$cart) {
             $cart = new Cart();
-            $cart->user_id = $user->id;
-            $cart->session_id = $sessionId;
+            $cart->user_id = $user->id ?? NULL;
+            $cart->session_id = $sessionId ?? NULL;
             $cart->product_id = $productId;
             $cart->quantity = 1;
             $cart->save();

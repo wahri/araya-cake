@@ -2,21 +2,37 @@
 
 namespace App\Livewire;
 
+use App\Models\Cart;
 use App\Models\CategoryProduct;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ProductList extends Component
 {
-    public $slug;
-    function mount($slug) {
-        $this->slug = $slug;
+    public $categoryProductId;
+    function mount($categoryProductId) {
+        $this->categoryProductId = $categoryProductId;
     }
 
+    #[On('loadProduct')] 
     public function render()
     {
-        $categoryWithProduct = CategoryProduct::where('slug', $this->slug)->with(['products', 'products.images'])->first();
+        $user = Auth::user();
+        if ($user) {
+            $cart = Cart::where('user_id', $user->id)->get();
+        } else {
+            $cart = Cart::where('session_id', session()->getId())->get();
+        }
+
+        $categoryProduct = CategoryProduct::where('id', $this->categoryProductId)->first();
+        $products = Product::where('category_product_id', $categoryProduct->id)->orderBy('id', 'desc')->get();
+
         return view('livewire.product-list',[
-            'categoryWithProduct' => $categoryWithProduct
+            'categoryProduct' => $categoryProduct,
+            'products' => $products,
+            'cart' => $cart
         ]);
     }
 }
