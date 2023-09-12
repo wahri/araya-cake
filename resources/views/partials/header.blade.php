@@ -52,6 +52,7 @@
                         <ul>
                             <li><a href="{{ route('about') }}">Tentang Kami</a></li>
                             <li><a href="{{ route('about') }}#lokasi">Lokasi</a></li>
+                            <li><a href="{{ route('galleryCake') }}">Galeri Cake</a></li>
                             <li><a href="#">Kontak</a></li>
                         </ul>
                     </li>

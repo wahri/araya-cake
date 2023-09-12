@@ -66,4 +66,8 @@ class FrontpageController extends Controller
     {
         return view('cart');
     }
+
+    function galleryCake() {
+        return view('galleryCake');
+    }
 }
