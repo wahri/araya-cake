@@ -8,7 +8,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                                               ============================================= -->
+                                                                                                                                   ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -51,7 +51,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                                           ============================================= -->
+                                                                                                                               ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -63,7 +63,7 @@
                         <ul class="tabs-1 ico-55 red-tabs clearfix">
 
                             @foreach ($categoryWithProduct as $i => $category)
-                                <li class="tab-link {{ $i == 0 ? 'current' : '' }}" data-tab="tab-{{ $category->id }}">
+                                <li class="tab-link {{ $i == 0 ? 'current' : '' }} ml-3" data-tab="tab-{{ $category->id }}">
                                     <img src="{{ asset('home-assets/icons/' . $category->big_icon) }}"
                                         alt="{{ $category->name }} Icon" class="custom-icon">
                                     <h5 class="h5-sm">{{ $category->name }}</h5>
@@ -83,10 +83,10 @@
                     @foreach ($categoryWithProduct as $i => $category)
                         <div id="tab-{{ $category->id }}" class="tab-content {{ $i == 0 ? 'current' : '' }}">
                             <div class="row">
-<div class="col-12">
-    <livewire:product-list :categoryProductId="$category->id" />
+                                <div class="col-12">
+                                    <livewire:product-list :categoryProductId="$category->id" />
 
-</div>
+                                </div>
 
                             </div>
                         </div>
@@ -149,7 +149,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                                                   ============================================= -->
+                                                                                                       ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -189,8 +189,7 @@
 
                                         <!-- Testimonial Author -->
                                         <p class="testimonial-autor">by {{ $review->name }}</p>
-                                        <a href="{{ $review->link_to_review }}" target="_blank"
-                                            class="testimonial-autor">
+                                        <a href="{{ $review->link_to_review }}" target="_blank" class="testimonial-autor">
                                             <i class="fab fa-google"></i> Lihat ulasan
                                         </a>
 
@@ -209,7 +208,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                                            ============================================= -->
+                                                                                                                                ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -463,7 +462,7 @@
 
 
     <!-- ABOUT-3
-                                                                                               ============================================= -->
+                                                                                                   ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -519,7 +518,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                                                   ============================================= -->
+                                                                                                       ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe
@@ -529,5 +528,3 @@
         </div>
     </div>
 @endsection
-
-

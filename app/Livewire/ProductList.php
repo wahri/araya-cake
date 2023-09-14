@@ -12,11 +12,12 @@ use Livewire\Component;
 class ProductList extends Component
 {
     public $categoryProductId;
-    function mount($categoryProductId) {
+    function mount($categoryProductId)
+    {
         $this->categoryProductId = $categoryProductId;
     }
 
-    #[On('loadProduct')] 
+    #[On('loadProduct')]
     public function render()
     {
         $user = Auth::user();
@@ -26,14 +27,19 @@ class ProductList extends Component
             $cart = Cart::where('session_id', session()->getId())->get();
         }
 
-        $categoryProduct = CategoryProduct::where('id', $this->categoryProductId)->first();
-        $products = Product::where('category_product_id', $categoryProduct->id)->orderBy('id', 'desc')->get();
+        $queryProduct = Product::query();
+        if ($this->categoryProductId != 0) {
+            $categoryProduct = CategoryProduct::where('id', $this->categoryProductId)->first();
+            $queryProduct->where('category_product_id', $categoryProduct->id);
+        }else{
+            $categoryProduct = CategoryProduct::all();
+        }
+        $products = $queryProduct->orderBy('id', 'desc')->get();
 
-        return view('livewire.product-list',[
+        return view('livewire.product-list', [
             'categoryProduct' => $categoryProduct,
             'products' => $products,
             'cart' => $cart
         ]);
     }
-
 }

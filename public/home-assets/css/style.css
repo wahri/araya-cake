@@ -3620,8 +3620,8 @@ span.ico-holder {
   display: inline-block; 
   cursor: pointer;
   background-color: transparent;
-  color: #9f9f9f;
-  padding: 0 30px;
+  /* color: #9f9f9f; */
+  padding: 30px 30px !important;
   border-bottom: none;
   margin: 0;
   -webkit-transition: all 450ms ease-in-out;
@@ -3631,6 +3631,13 @@ span.ico-holder {
   transition: all 450ms ease-in-out;
   position: relative;
   z-index: 997;
+
+  width: 150px; /* Sesuaikan dengan ukuran yang Anda inginkan */
+  height: 150px; /* Sesuaikan dengan ukuran yang Anda inginkan */
+  background-color: #ff4f3f; /* Warna latar belakang bulat */
+  border-radius: 50%; /* Membuat latar belakang bulat */
+  color: #fff;
+  box-shadow: 2px 2px 5px rgb(41 41 41 / 80%);
 }
 
 .tabs-1 li h5 {
@@ -3638,12 +3645,16 @@ span.ico-holder {
   font-weight: 500;
   margin-top: 15px;
   margin-bottom: 0;
+  font-size: 1rem;
 }
 
 .tabs-1 li.current h5 { 
-  color: #1b1b1b;
-  font-weight: 700;
+  color: #fff;
+  font-weight: 900;
 }
+/* .tabs-1 li.current { 
+  box-shadow: 2px 2px 5px rgb(41 41 41 / 80%);
+} */
 
 .tabs-1.red-tabs li.current span { 
   color: #FF4F3F;
@@ -5235,7 +5246,7 @@ select:-webkit-autofill:focus {
 /*------------------------------------------*/
 
 .footer h5 {
-  color: #FF4F3F;
+  color: #ff4f3f;
   line-height: 1;
   margin-bottom: 25px;
 }

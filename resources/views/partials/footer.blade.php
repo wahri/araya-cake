@@ -1,6 +1,6 @@
 <!-- FOOTER-4
    ============================================= -->
-<footer id="footer-4" class="footer division" style="background-color: #FFF; color: #212121">
+<footer id="footer-4" class="footer division">
     <div class="container">
 
 
@@ -35,7 +35,7 @@
                     <!-- Contacts -->
                     <p class="foo-email txt-500 mt-15"><a href="mailto:admin@gmail.com">admin@arayacake.com</a></p>
                     <p>
-                        <span class="red-color">
+                        <span class="">
                             <a href="tel:123456789">
                                 <i class="fab -fa-whatsapp"></i>
                             </a>
