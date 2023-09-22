@@ -168,9 +168,30 @@ html::-webkit-scrollbar-thumb {
     }
 
     .menu-6-item .add-to-cart {
-        bottom: 28px;
+        bottom: 20px;
         opacity: 1;
         -moz-opacity: 1;
+    }
+
+    .group-navbar.menu-open {
+        height: 80vh;
+        overflow: auto;
+        margin-bottom: 1.5rem;
+    }
+
+    .group-navbar::-webkit-scrollbar,
+    .group-navbar::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        position: absolute;
+    }
+
+    .group-navbar::-webkit-scrollbar-thumb,
+    .group-navbar::-webkit-scrollbar-thumb {
+        background-color: #ff4f3f;
+        border-radius: 2px;
+        -webkit-transition: .3s;
+        transition: .3s;
     }
 }
 
@@ -279,6 +300,169 @@ input[type="reset"] {
 }
 
 
-#accordionFilterCategory{
-    font-size: 1rem;
+
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.check-category {
+    display: none;
+}
+
+.label-category {
+    position: relative;
+    color: #424242;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #bdbdbd;
+    padding: 5px 15px;
+    margin-bottom: 0;
+}
+
+
+.check-category:checked+.label-category {
+    background-color: #ff4f3f;
+    color: #fff;
+}
+
+.group-category {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 15px;
+    gap: 10px;
+}
+
+#filterCategory .card-header {
+    background-color: #fff;
+}
+
+#filterCategory .card-header span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+
+.search__container {
+    padding-top: 60px;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.search__title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff4f3f;
+}
+
+.search__input {
+    width: 90%;
+    padding: 12px 24px;
+
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #575756;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 97% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.search__input::placeholder {
+    color: rgba(87, 87, 86, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.search__input:hover,
+.search__input:focus {
+    padding: 12px 0;
+    outline: 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #575756;
+    border-radius: 0;
+    background-position: 100% center;
+}
+
+#filterButton {
+    border-radius: 25px;
+}
+
+.badge-filter{
+    position: relative;
+    color: #ff4f3f;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ff4f3f;
+    padding: 5px 15px;
+    margin-bottom: 0;
+    transition: box-shadow 0.5s ease;
+}
+
+.badge-filter:hover{
+    box-shadow: 7px 7px 10px rgb(39 39 39 / 14%);
+}
+
+.badge-filter:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #ca2819;
+}
+
+
+.custom-input {
+    width: 100%;
+    padding: 12px 24px;
+
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: .8rem;
+    line-height: 18px;
+
+    color: #575756;
+    background-color: transparent;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.custom-input::placeholder {
+    color: rgba(87, 87, 86, 0.8);
+    letter-spacing: 1.5px;
+}
+
+.custom-input:hover,
+.custom-input:focus {
+    padding: 12px 0;
+    outline: 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #575756;
+    border-radius: 0;
+    background-position: 100% center;
+}
+
+.cart-checkout{
+    padding: 30px 10px;
+}
+
+.cart-checkout table {
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 500;
 }

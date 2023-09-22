@@ -89,12 +89,13 @@
                                             terms of services & privacy policy
                                         </strong>
                                     </label>
+                                    <br>
+                                    @error('tos')
+                                        <small class="text-danger mb-3">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
                                   </div>
-                                  @error('tos')
-                                      <small class="text-danger">
-                                          {{ $message }}
-                                      </small>
-                                  @enderror
                                 <button type="submit" class="btn btn-lg btn-red btn-block">Daftar</button>
                             </form>
                         </div>

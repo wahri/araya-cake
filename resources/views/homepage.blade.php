@@ -8,7 +8,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                                                   ============================================= -->
+                                                                                                                                                                                                                   ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -51,7 +51,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                                               ============================================= -->
+                                                                                                                                                                                                               ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -59,8 +59,8 @@
             <!-- TABS NAVIGATION -->
             <div id="tabs-nav">
                 <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <ul class="tabs-1 ico-55 red-tabs clearfix">
+                    <div class="text-center col-lg-12">
+                        <ul class="clearfix tabs-1 ico-55 red-tabs">
 
                             @foreach ($categoryWithProduct as $i => $category)
                                 <li class="tab-link {{ $i == 0 ? 'current' : '' }} ml-3" data-tab="tab-{{ $category->id }}">
@@ -84,8 +84,216 @@
                         <div id="tab-{{ $category->id }}" class="tab-content {{ $i == 0 ? 'current' : '' }}">
                             <div class="row">
                                 <div class="col-12">
-                                    <livewire:product-list :categoryProductId="$category->id" />
+                                    {{-- <livewire:product-list :categoryProductId="$category->id" />
 
+                                    @include('components.product') --}}
+
+                                    <div class="container">
+                                        <section id="menu-6" class="menu-section division">
+
+                                            <div class="row">
+
+                                                @foreach ($category->products as $product)
+                                                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"
+                                                        wire:key="{{ $product->id }}">
+                                                        <div class="bg-white menu-6-item">
+
+
+                                                            <div class="menu-6-img rel">
+                                                                <div class="hover-overlay">
+
+                                                                    <img class="img-fluid"
+                                                                        src="{{ asset('images/' . $product->images->first()->name) }}"
+                                                                        alt="menu-image" />
+
+                                                                    <div class="menu-img-zoom ico-25">
+                                                                        <a href="{{ asset('images/' . $product->images->first()->name) }}"
+                                                                            class="image-link">
+                                                                            <span class="flaticon-zoom"></span>
+                                                                        </a>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="menu-6-txt rel">
+
+                                                                <div class="item-rating">
+                                                                    <div class="stars-rating stars-lg">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="{{ route('detail.cake', $product->slug) }}"
+                                                                    target="_blank">
+                                                                    <h5 class="h5-sm product-title">
+                                                                        {{ $product->name }}
+                                                                    </h5>
+
+                                                                    <p class="grey-color product-desc">
+                                                                        {{ $product->description }}
+                                                                    </p>
+                                                                </a>
+
+                                                                <div class="menu-6-price bg-shadow">
+                                                                    <h5 class="h5-xs araya-color">RP.
+                                                                        {{ $product->price / 1000 }}k</h5>
+                                                                </div>
+
+                                                                <div x-data="{
+                                                                    open: false,
+                                                                    quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
+                                                                    cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
+                                                                    loading: false,
+                                                                    productId: {{ $product->id }},
+                                                                
+                                                                    init() {
+                                                                        if (this.quantity > 0) {
+                                                                            this.open = true
+                                                                        } else {
+                                                                            this.open = false
+                                                                        }
+                                                                    },
+                                                                
+                                                                    async addToCart() {
+                                                                        try {
+                                                                            const response = await axios.post('{{ route('addToCart') }}', {
+                                                                                _token: '{{ csrf_token() }}',
+                                                                                product_id: this.productId
+                                                                            })
+                                                                            console.log(response)
+                                                                            this.quantity = response.data.quantity
+                                                                            this.cartId = response.data.cartId
+                                                                
+                                                                            var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                                                
+                                                                            cartCountElements.each(function() {
+                                                                                var element = $(this);
+                                                                                if (element.is(':hidden')) {
+                                                                                    element.css('display', 'block');
+                                                                                }
+                                                                                element.text(response.data.cart_count);
+                                                                            });
+                                                                
+                                                                            cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                                        } finally {
+                                                                            this.open = true
+                                                                        }
+                                                                    },
+                                                                
+                                                                    async updateCart() {
+                                                                        try {
+                                                                            if (this.quantity > 0) {
+                                                                                this.loading = true
+                                                                                response = await axios.post('{{ route('updateCart') }}', {
+                                                                                    _token: '{{ csrf_token() }}',
+                                                                                    cartId: this.cartId,
+                                                                                    qty: this.quantity
+                                                                                })
+                                                                
+                                                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                                                
+                                                                                cartCountElements.each(function() {
+                                                                                    var element = $(this);
+                                                                                    if (element.is(':hidden')) {
+                                                                                        element.css('display', 'block');
+                                                                                    }
+                                                                                    element.text(response.data.cart_count);
+                                                                                });
+                                                                
+                                                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                                            } else {
+                                                                                this.loading = true
+                                                                                response = await axios.post('{{ route('deleteCart') }}', {
+                                                                                    _token: '{{ csrf_token() }}',
+                                                                                    cartId: this.cartId
+                                                                                })
+                                                                
+                                                                                this.open = false
+                                                                
+                                                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                                                
+                                                                                cartCountElements.each(function() {
+                                                                                    var element = $(this);
+                                                                                    if (element.is(':hidden')) {
+                                                                                        element.css('display', 'block');
+                                                                                    }
+                                                                                    element.text(response.data.cart_count);
+                                                                                });
+                                                                
+                                                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                                            }
+                                                                        } finally {
+                                                                            this.loading = false
+                                                                        }
+                                                                    },
+                                                                }">
+                                                                    <div x-show="open">
+                                                                        <input type="number" class="qty" min="0"
+                                                                            max="99" :disabled="loading"
+                                                                            x-model="quantity"
+                                                                            x-on:change="await updateCart()" />
+                                                                    </div>
+
+                                                                    <div x-show="!open">
+                                                                        <div class="add-to-cart bg-araya ico-10"
+                                                                            style="cursor: pointer">
+                                                                            <a class="add-to-cart-list"
+                                                                                data-product-id="{{ $product->id }}"
+                                                                                style="color:white"
+                                                                                x-on:click="await addToCart()">
+                                                                                <span class="flaticon-shopping-bag"></span>
+                                                                                Order
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+
+                                        </section>
+
+                                        <div class="bg-color-01 page-pagination division">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+                                                        <nav aria-label="Page navigation">
+                                                            <ul class="pagination justify-content-center">
+                                                                <li class="page-item disabled"><a class="page-link"
+                                                                        href="#" tabindex="-1"><i
+                                                                            class="fas fa-angle-left"></i></a></li>
+                                                                <li class="page-item active"><a class="page-link"
+                                                                        href="#">1 <span
+                                                                            class="sr-only">(current)</span></a></li>
+                                                                <li class="page-item"><a class="page-link"
+                                                                        href="#">2</a></li>
+                                                                <li class="page-item"><a class="page-link"
+                                                                        href="#">3</a></li>
+                                                                <li class="page-item"><a class="page-link"
+                                                                        href="#">4</a></li>
+                                                                <li class="page-item"><a class="page-link"
+                                                                        href="#"><i
+                                                                            class="fas fa-angle-right"></i></a></li>
+                                                            </ul>
+                                                        </nav>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -96,20 +304,20 @@
                 </div>
             </section>
 
-            <div class="text-center mt-5">
+            <div class="mt-5 text-center">
 
-                <a href="{{ route('shop') }}" class="btn btn-lg btn-red tra-red-hover">Lihat Cake Lainnya!</a>
+                <a href="{{ route('product') }}" class="btn btn-lg btn-red tra-red-hover">Lihat Cake Lainnya!</a>
             </div>
         </div>
     </section>
 
 
-    <section id="promo-11" class="bg-image bg-scroll reviews-section division">
+    <section id="promo-11" class="bg-scroll bg-image reviews-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
 
                 <div class="col-md-5 col-lg-6">
-                    <div class="pbox-11-txt mb-40 white-color">
+                    <div class="mb-40 pbox-11-txt white-color">
 
                         <!-- Title -->
                         <h3 class="h3-lg">The</h3>
@@ -129,7 +337,7 @@
 
                 <!-- PROMO IMAGE -->
                 <div class="col-md-7 col-lg-6">
-                    <div class="pbox-11-img mb-40">
+                    <div class="mb-40 pbox-11-img">
 
                         <!-- Image -->
                         <img class="img-fluid" src="{{ asset('home-assets/images/promo-11-img.png') }}"
@@ -149,7 +357,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                                                       ============================================= -->
+                                                                                                                                                                                       ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -162,14 +370,15 @@
 
                     <!-- TESTIMONIALS CONTENT -->
                     <div class="flexslider">
-                        <ul class="slides text-center">
+                        <ul class="text-center slides">
 
                             @foreach ($reviews as $review)
                                 <li class="review-1">
                                     <div class="review-1-txt">
 
                                         <!-- Testimonial Author Avatar -->
-                                        <img src="{{ asset('images/' . $review->image->name) }}" alt="testimonial-avatar">
+                                        <img src="{{ asset('images/' . $review->image->name) }}"
+                                            alt="testimonial-avatar">
 
                                         <!-- Text -->
                                         <p>
@@ -189,7 +398,8 @@
 
                                         <!-- Testimonial Author -->
                                         <p class="testimonial-autor">by {{ $review->name }}</p>
-                                        <a href="{{ $review->link_to_review }}" target="_blank" class="testimonial-autor">
+                                        <a href="{{ $review->link_to_review }}" target="_blank"
+                                            class="testimonial-autor">
                                             <i class="fab fa-google"></i> Lihat ulasan
                                         </a>
 
@@ -208,7 +418,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                                                ============================================= -->
+                                                                                                                                                                                                                ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -462,7 +672,7 @@
 
 
     <!-- ABOUT-3
-                                                                                                   ============================================= -->
+                                                                                                                                                                                   ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -470,7 +680,7 @@
 
                 <!-- ABOUT IMAGE -->
                 <div class="col-md-5 col-lg-6">
-                    <div class="about-3-img text-center mb-40">
+                    <div class="mb-40 text-center about-3-img">
                         <img class="img-fluid" src="{{ asset('home-assets/images/about-03-img.png') }}"
                             alt="about-image">
                     </div>
@@ -479,13 +689,13 @@
 
                 <!-- ABOUT TEXT -->
                 <div class="col-md-7 col-lg-6">
-                    <div class="about-3-txt mb-40">
+                    <div class="mb-40 about-3-txt">
 
                         <!-- Title -->
-                        <div class="text-center mb-3">
+                        <div class="mb-3 text-center">
                             {{-- <img src="{{ asset('home-assets/images/logo-araya-horizontal.png') }}" class="mb-3"
                                 alt="Logo Araya" style="height:50px"> --}}
-                            {{-- <h6 class="h6-sm coffee-color mb-5">Dapatkan Cake Terbaik Untuk Moment Spesialmu Hanya di
+                            {{-- <h6 class="mb-5 h6-sm coffee-color">Dapatkan Cake Terbaik Untuk Moment Spesialmu Hanya di
                                 Araya Cake Pekanbaru</h6> --}}
                             {{-- <hr> --}}
                             <h3 class="h3-sm araya-color" style="font-weight: 700">
@@ -518,7 +728,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                                                       ============================================= -->
+                                                                                                                                                                                       ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TestimoniController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontpageController::class, 'index'])->name('home');
 Route::get('/tentang-araya', [FrontpageController::class, 'about'])->name('about');
 Route::get('/galeri-araya', [FrontpageController::class, 'galleryCake'])->name('galleryCake');
-Route::get('/product/{slug}', [FrontpageController::class, 'product'])->name('product');
+Route::get('/kontak-araya', [FrontpageController::class, 'contact'])->name('contact');
+Route::get('/produk-araya', [FrontpageController::class, 'product'])->name('product');
 Route::get('/semua-cake', [FrontpageController::class, 'shop'])->name('shop');
 Route::get('/detail/cake/{slug}', [FrontpageController::class, 'detailCake'])->name('detail.cake');
 
@@ -34,7 +36,8 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/getCartList', [CartController::class, 'getCartList'])->name('getCartList');
 Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
 Route::post('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
-Route::get('/processOrder', [CartController::class, 'processOrder'])->name('processOrder');
+Route::post('/deleteCart', [CartController::class, 'deleteCart'])->name('deleteCart');
+Route::post('/processOrder', [CartController::class, 'processOrder'])->name('processOrder');
 
 // Route::get('/dashboard', function () {
 //     return view('admin/dashboard');
@@ -55,6 +58,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     Route::post('uploadProductImage', [ProductController::class, 'uploadProductImage'])->name('uploadProductImage');
 
     Route::resource('categoryProduct', CategoryProductController::class);
+    Route::resource('subCategory', SubCategoryController::class);
 
     // Route::get('createCategoryProduct', [ProductController::class, 'createCategoryProduct'])->name('createCategoryProduct');
     // Route::post('storeCategoryProduct', [ProductController::class, 'storeCategoryProduct'])->name('storeCategoryProduct');

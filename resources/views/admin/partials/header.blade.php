@@ -27,7 +27,7 @@
                 </a>
             </div>
 
-            <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect"
+            <button type="button" class="px-3 btn btn-sm font-size-24 header-item waves-effect"
                 id="vertical-menu-btn">
                 <i class="mdi mdi-menu"></i>
             </button>
@@ -44,7 +44,7 @@
                     <i class="mdi mdi-bell-outline bx-tada"></i>
                     <span class="badge bg-danger rounded-pill">3</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                <div class="p-0 dropdown-menu dropdown-menu-lg dropdown-menu-end"
                     aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-3">
                         <div class="row align-items-center">
@@ -61,7 +61,7 @@
                             <div class="media">
                                 <div class="avatar-xs me-3">
                                     <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                        <i class="mdi mdi-cart text-white"></i>
+                                        <i class="text-white mdi mdi-cart"></i>
                                     </span>
                                 </div>
                                 <div class="media-body">
@@ -90,7 +90,7 @@
                             <div class="media">
                                 <div class="avatar-xs me-3">
                                     <span class="avatar-title bg-success rounded-circle font-size-16">
-                                        <i class="mdi mdi-check text-white"></i>
+                                        <i class="text-white mdi mdi-check"></i>
                                     </span>
                                 </div>
                                 <div class="media-body">
@@ -118,7 +118,7 @@
                         </a>
                     </div>
                     <div class="p-2 border-top">
-                        <a class="btn btn-sm btn-link font-size-14 w-100 text-center" href="javascript:void(0)">
+                        <a class="text-center btn btn-sm btn-link font-size-14 w-100" href="javascript:void(0)">
                             <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
                         </a>
                     </div>
@@ -137,17 +137,17 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-account-circle-outline font-size-16 align-middle me-1"></i>
+                            class="align-middle mdi mdi-account-circle-outline font-size-16 me-1"></i>
                         Profile</a>
                     <a class="dropdown-item d-block" href="#"><span
                             class="badge badge-success float-end">11</span><i
-                            class="mdi mdi-cog-outline font-size-16 align-middle me-1"></i> Settings</a>
+                            class="align-middle mdi mdi-cog-outline font-size-16 me-1"></i> Settings</a>
 
                     <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button class="dropdown-item text-danger" type="submit"><i
-                                class="mdi mdi-power font-size-16 align-middle me-1 text-danger"></i>
+                                class="align-middle mdi mdi-power font-size-16 me-1 text-danger"></i>
                             Logout</button>
                     </form>
                 </div>

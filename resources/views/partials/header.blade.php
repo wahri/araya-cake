@@ -42,98 +42,103 @@
 
 
             <!-- MAIN MENU -->
-            <nav class="navik-menu menu-caret navik-yellow ml-2">
-                <ul class="top-list">
-                    <li>
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <!-- DROPDOWN MENU -->
-                    <li><a href="#">Profil</a>
-                        <ul>
-                            <li><a href="{{ route('about') }}">Tentang Kami</a></li>
-                            <li><a href="{{ route('about') }}#lokasi">Lokasi</a></li>
-                            <li><a href="{{ route('galleryCake') }}">Galeri Cake</a></li>
-                            <li><a href="#">Kontak</a></li>
-                        </ul>
-                    </li>
+            <div class="group-navbar">
 
-                    <!-- DROPDOWN MENU -->
-                    <li><a href="#">Produk</a>
-                        <ul>
-                            @foreach ($categoryProduct as $category)
-                                <li><a href="{{ route('product', $category->slug) }}">{{ $category->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </li>
-
-                    <!-- DROPDOWN MENU -->
-                    {{-- <li>
-                        <a href="{{ route('shop') }}">Pesan Sekarang</a>
-                    </li> --}}
-                    <li>
-                        <a href="#" class="ico-facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="ico-instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="ico-instagram">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                    </li>
-
-                    <!-- HEADER BUTTON  -->
-                    {{-- <li class="nav-btn yellow-color"><a href="tel:123456789">789-654-3210</a></li> --}}
-
-                </ul>
-            </nav>
-
-            <nav class="navik-menu right menu-caret navik-yellow">
-                <ul class="top-list">
-
-                    <!-- BASKET ICON -->
-                    <li class="basket-ico ico-30">
-                        <a href="{{ route('cart') }}">
-                            <span class="ico-holder">
-                                <span class="flaticon-shopping-bag"></span>
-                                <em class="roundpoint" id="cart-count"
-                                    @if ($cartCount == 0) style="display: none" @endif>
-                                    {{ $cartCount }}
-                                </em>
-                            </span>
-                        </a>
-                    </li>
-
-                    @guest
+                <nav class="ml-2 navik-menu menu-caret navik-yellow">
+                    <ul class="top-list">
                         <li>
-                            <a href="{{ route('login') }}" class="btn-member">
-                                Member
-                            </a>
+                            <a href="{{ route('home') }}">Home</a>
                         </li>
-                    @else
-                        <li>
-                            <a href="#" class="btn-member">
-                                {{ Auth::user()->name }}
-                            </a>
+                        <!-- DROPDOWN MENU -->
+                        <li><a href="#">Profil</a>
                             <ul>
-                                <form id="logoutForm" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>
-                                <li><a href="#">Riwayat Belanja</a></li>
-                                <li><a href="#">Pengaturan Akun</a></li>
-                                <li><a href="#"
-                                        onclick="event.preventDefault();
-                                    document.getElementById('logoutForm').submit();">Logout</a>
-                                </li>
+                                <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                                <li><a href="{{ route('about') }}#lokasi">Lokasi</a></li>
+                                <li><a href="{{ route('galleryCake') }}">Galeri Cake</a></li>
+                                <li><a href="{{ route('contact') }}">Kontak</a></li>
                             </ul>
                         </li>
-                    @endguest
-                </ul>
-            </nav>
+
+                        <!-- DROPDOWN MENU -->
+                        <li><a href="#">Produk</a>
+                            <ul>
+                                @foreach ($categoryProduct as $category)
+                                    <li><a
+                                            href="{{ route('product') . '?category=' . $category->slug }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN MENU -->
+                        {{-- <li>
+                            <a href="{{ route('shop') }}">Pesan Sekarang</a>
+                        </li> --}}
+                        <li>
+                            <a href="#" class="ico-facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ico-instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="ico-instagram">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </li>
+
+                        <!-- HEADER BUTTON  -->
+                        {{-- <li class="nav-btn yellow-color"><a href="tel:123456789">789-654-3210</a></li> --}}
+
+                    </ul>
+                </nav>
+
+                <nav class="navik-menu right menu-caret navik-yellow">
+                    <ul class="top-list">
+
+                        <!-- BASKET ICON -->
+                        <li class="basket-ico ico-30">
+                            <a href="{{ route('cart') }}">
+                                <span class="ico-holder">
+                                    <span class="flaticon-shopping-bag"></span>
+                                    <em class="roundpoint" id="cart-count"
+                                        @if ($cartCount == 0) style="display: none" @endif>
+                                        {{ $cartCount }}
+                                    </em>
+                                </span>
+                            </a>
+                        </li>
+
+                        @guest
+                            <li>
+                                <a href="{{ route('login') }}" class="btn-member">
+                                    Member
+                                </a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="#" class="btn-member">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul>
+                                    <form id="logoutForm" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                    </form>
+                                    <li><a href="#">Riwayat Belanja</a></li>
+                                    <li><a href="#">Pengaturan Akun</a></li>
+                                    <li><a href="#"
+                                            onclick="event.preventDefault();
+                                        document.getElementById('logoutForm').submit();">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endguest
+                    </ul>
+                </nav>
+            </div>
 
 
 

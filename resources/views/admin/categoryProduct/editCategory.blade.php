@@ -59,7 +59,7 @@
                                         <tbody>
                                             @foreach ($categories as $i => $eachCategory)
                                                 <tr>
-                                                    <th scope="row">{{ $i+1 }}</th>
+                                                    <th scope="row">{{ $i + 1 }}</th>
                                                     <td>{{ $eachCategory->name }}</td>
                                                     <td>
                                                         <a href="{{ route('admin.categoryProduct.edit', $eachCategory->id) }}"
@@ -125,9 +125,88 @@
                                             <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
                                                 Update
                                             </button>
-                                            <a href="{{ route('admin.categoryProduct.index') }}" class="btn btn-secondary waves-effect">
+                                            <a href="{{ route('admin.categoryProduct.index') }}"
+                                                class="btn btn-secondary waves-effect">
                                                 Cancel
                                             </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <div class="card">
+                            <h5 class="card-header bg-secondary text-light">Data Sub Category</h5>
+                            <div class="card-body">
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped mb-0">
+
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Sub Category Name</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($subCategories as $i => $eachCategory)
+                                                <tr>
+                                                    <th scope="row">{{ $i + 1 }}</th>
+                                                    <td>{{ $eachCategory->name }}</td>
+                                                    <td>
+                                                        <form
+                                                            action="{{ route('admin.subCategory.destroy', $eachCategory->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card">
+                            <h5 class="card-header bg-secondary text-light">Add Sub Category</h5>
+                            <div class="card-body">
+
+                                <form method="POST" class="custom-validation"
+                                    action="{{ route('admin.subCategory.store') }}">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" required
+                                            placeholder="Category name" value="{{ old('name') }}">
+                                        @error('name')
+                                            <small class="text-danger">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                    </div>
+                                    <input type="hidden" name="category_product_id" class="form-control" required
+                                        value="{{ $category->id }}">
+
+                                    <div class="mb-0">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
+                                                Add
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

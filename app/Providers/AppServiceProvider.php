@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $user = Auth::user();
             $sessionId = Session::getId();
-            $categoryProduct = CategoryProduct::where('is_primary', 1)->get();
+            $categoryProduct = CategoryProduct::where('is_primary', 1)->with('subCategories')->get();
 
             if (Auth::check()) {
                 $cartCount = Cart::where(['user_id' => $user->id])->sum('quantity');

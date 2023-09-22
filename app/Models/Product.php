@@ -12,12 +12,17 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'length', 'width', 'height', 'description', 'meta_title', 'meta_keyword', 'meta_description', 'category_product_id'
+        'name', 'slug', 'length', 'width', 'height', 'description', 'meta_title', 'meta_keyword', 'meta_description', 'category_product_id', 'sub_category_product_id'
     ];
 
     public function category()
     {
         return $this->belongsTo(CategoryProduct::class, 'category_product_id');
+    }
+
+    public function subCategory()
+    {
+        return $this->belongsTo(SubCategoryProduct::class, 'sub_category_product_id');
     }
 
     public function images()

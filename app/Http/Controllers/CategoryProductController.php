@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryProduct;
+use App\Models\SubCategoryProduct;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
@@ -68,8 +69,9 @@ class CategoryProductController extends Controller
     public function edit(string $id)
     {
         $categories = CategoryProduct::all();
+        $subCategories = SubCategoryProduct::where('category_product_id', $id)->get();
         $category = CategoryProduct::find($id);
-        return view('admin.categoryProduct.editCategory', compact(['category','categories']));
+        return view('admin.categoryProduct.editCategory', compact(['category','categories', 'subCategories']));
     }
 
     /**
@@ -96,6 +98,8 @@ class CategoryProductController extends Controller
             'big_icon' => $validatedData['big_icon'],
             'is_primary' => $isPrimary,
         ]);
+
+        
 
         // Redirect ke halaman tampilan kategori dengan pesan sukses
         return redirect()->route('admin.categoryProduct.index')->with('success', 'Kategori berhasil diupdate.');

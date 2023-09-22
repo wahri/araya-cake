@@ -151,6 +151,7 @@ jQuery(document).ready(function() {
 		/* ========== Dropdown Menu Toggle ========== */
 		burgerMenu.on("click", function(){
 			$(this).toggleClass('menu-open');
+			$('.group-navbar').toggleClass('menu-open');
 			navikMenuListWrapper.slideToggle(300);
 		});
 		
@@ -283,6 +284,7 @@ jQuery(document).ready(function() {
 		$('.slidemenu-bg-overlay').on("click", function(){
 			menuSlideNavWrapper.removeClass('overlay-menu-open');
 			burgerMenuOverlay.removeClass('menu-open');
+			$('.group-navbar').removeClass('menu-open');
 		});
 
 	}
@@ -312,12 +314,14 @@ jQuery(document).ready(function() {
 		/* ========== Side menu open on mobile ========== */
 		burgerMenuMove.on("click", function(){
 			$(this).toggleClass('menu-open');
+			$('.group-navbar').toggleClass('menu-open');
 			navikFixedSidebar.toggleClass('fixed-sidebar-open');
 		});
 
 		$('.fixedsidebar-bg-overlay').on("click", function(){
 			navikFixedSidebar.removeClass('fixed-sidebar-open');
 			burgerMenuMove.removeClass('menu-open');
+			$('.group-navbar').removeClass('menu-open');
 		});
 
 		/* ========== Submenu collapse ========== */

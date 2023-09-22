@@ -3,7 +3,7 @@
     <div data-simplebar class="h-100">
 
 
-        <div class="user-sidebar text-center">
+        <div class="text-center user-sidebar">
             <div class="dropdown">
                 <div class="user-img">
                     <img src="https://ui-avatars.com/api/?name={{ str_replace(' ', '+', $user->name) }}&background=fff&color=ff4f3f&&bold=true"
@@ -11,7 +11,7 @@
                     <span class="avatar-online bg-success"></span>
                 </div>
                 <div class="user-info">
-                    <h5 class="mt-3 font-size-16 text-white">{{ $user->name }}</h5>
+                    <h5 class="mt-3 text-white font-size-16">{{ $user->name }}</h5>
                     <span class="font-size-13 text-white-50">{{ $user->getRoleNames()[0] }}</span>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     </ul>
                 </li>
 
-                
+
                 <li>
                     <a href="{{ route('admin.imageManagement') }}" class="waves-effect">
                         <i class="dripicons-home"></i>
