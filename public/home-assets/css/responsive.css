@@ -2320,9 +2320,9 @@
   .navik-menu .mega-menu-container { padding: 20px 0; height: 320px; overflow: scroll;  overflow-x: hidden;  }
   .mega-menu-desc { padding-left: 10%; padding-right: 10%; }
 
-  .callusbtn { top: 35px; left: 6px; }
+  .callusbtn { top: 27px; left: 6px; }
   .callusbtn a { font-size: 20px; }
-  .burger-menu { width: 23px; height: 20px; top: 35px; right: 6px; }
+  .burger-menu { width: 23px; height: 20px; top: 29px; right: 6px; }
 
   /*------------------------------------------*/
   /*   HERO   

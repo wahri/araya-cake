@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <div class="hero-txt text-center white-color">
+                    <div class="text-center hero-txt white-color">
 
                         <!-- Breadcrumb -->
                         <div id="breadcrumb">
@@ -57,7 +57,7 @@
 
 
     <!-- CART PAGE
-                                                                                                                                                                   ============================================= -->
+                                                                                                                                                                           ============================================= -->
     <section id="cart-1" class="wide-100 cart-page division">
         <div class="container">
 
@@ -85,7 +85,7 @@
                                         quantity: {{ $cart->quantity ?? 0 }},
                                         price: {{ $cart->product->price ?? 0 }},
                                         totalPriceProduct: {{ $cart->quantity * $cart->product->price }},
-                                        loading: false,                               
+                                        loading: false,
                                     
                                     
                                         async deleteCart() {
@@ -197,7 +197,7 @@
                                                 Rp. <span x-text="totalPriceProduct"></span>
                                             </p>
                                         </td>
-                                        <td data-label="Delete" class="td-trash text-center">
+                                        <td data-label="Delete" class="text-center td-trash">
                                             <i class="far fa-trash-alt" x-on:click="deleteCart()"></i>
                                         </td>
 
@@ -218,19 +218,54 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 border p-4">
+                <div class="p-4 border col-lg-4 col-md-12">
                     <form method="POST" action="{{ route('processOrder') }}">
                         @csrf
-                        <div class="row mb-3">
-                            <div class="col-12 text-center">
-                                <h5 class="h5-sm mb-20">
+                        <div class="mb-3 row">
+                            <div class="text-center col-12">
+                                <h5 class="mb-20 h5-sm">
                                     Informasi Pemesanan
                                 </h5>
-                                <input type="text" name="name" class="custom-input mb-3" placeholder="Nama Lengkap">
-                                <input type="text" name="phone" class="custom-input mb-3" placeholder="No Whatsapp">
-                                <input type="text" name="email" class="custom-input mb-3" placeholder="Email">
-                                <input type="text" name="address" class="custom-input mb-3" placeholder="Alamat Lengkap">
-                                <input type="text" name="notes" class="custom-input mb-3" placeholder="Catatan">
+                                <div class="mb-3 input-group">
+                                    <input type="text" name="name" class="custom-input" placeholder="Nama Lengkap">
+                                    @error('name')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="phone" class="custom-input" placeholder="No Whatsapp">
+                                    @error('phone')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="email" class="custom-input" placeholder="Email">
+                                    @error('email')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="address" class="custom-input" placeholder="Alamat Lengkap">
+                                    @error('address')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="notes" class="custom-input" placeholder="Catatan">
+                                    @error('notes')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -238,7 +273,7 @@
                                 <div class="cart-checkout bg-lightgrey">
 
                                     <!-- Title -->
-                                    <h5 class="h5-lg text-center">Ringkasan Pemesanan</h5>
+                                    <h5 class="text-center h5-lg">Ringkasan Pemesanan</h5>
 
                                     <!-- Table -->
                                     <table>
@@ -268,7 +303,7 @@
                                     </table>
 
                                     <!-- Button -->
-                                    <button type="submit" class="btn btn-md btn-success tra-hover-success mb-3">
+                                    <button type="submit" class="mb-3 btn btn-md btn-success tra-hover-success">
                                         <i class="fab fa-whatsapp"></i> Pesan Sekarang</button>
                                     <p class="text-center">
                                         Ayo!

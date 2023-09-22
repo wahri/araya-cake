@@ -135,118 +135,121 @@
                                                                     </h5>
                                                                 </a>
 
-                                                                <div class="menu-6-price bg-shadow">
-                                                                    <h5 class="h5-xs araya-color">RP.
-                                                                        {{ $product->price / 1000 }}k</h5>
-                                                                </div>
-
-                                                                <div x-data="{
-                                                                    open: false,
-                                                                    quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
-                                                                    cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
-                                                                    loading: false,
-                                                                    productId: {{ $product->id }},
-                                                                
-                                                                    init() {
-                                                                        if (this.quantity > 0) {
-                                                                            this.open = true
-                                                                        } else {
-                                                                            this.open = false
-                                                                        }
-                                                                    },
-                                                                
-                                                                    async addToCart() {
-                                                                        try {
-                                                                            const response = await axios.post('{{ route('addToCart') }}', {
-                                                                                _token: '{{ csrf_token() }}',
-                                                                                product_id: this.productId
-                                                                            })
-                                                                            console.log(response)
-                                                                            this.quantity = response.data.quantity
-                                                                            this.cartId = response.data.cartId
-                                                                
-                                                                            var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                                                
-                                                                            cartCountElements.each(function() {
-                                                                                var element = $(this);
-                                                                                if (element.is(':hidden')) {
-                                                                                    element.css('display', 'block');
-                                                                                }
-                                                                                element.text(response.data.cart_count);
-                                                                            });
-                                                                
-                                                                            cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                                        } finally {
-                                                                            this.open = true
-                                                                        }
-                                                                    },
-                                                                
-                                                                    async updateCart() {
-                                                                        try {
-                                                                            if (this.quantity > 0) {
-                                                                                this.loading = true
-                                                                                response = await axios.post('{{ route('updateCart') }}', {
-                                                                                    _token: '{{ csrf_token() }}',
-                                                                                    cartId: this.cartId,
-                                                                                    qty: this.quantity
-                                                                                })
-                                                                
-                                                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                                                
-                                                                                cartCountElements.each(function() {
-                                                                                    var element = $(this);
-                                                                                    if (element.is(':hidden')) {
-                                                                                        element.css('display', 'block');
-                                                                                    }
-                                                                                    element.text(response.data.cart_count);
-                                                                                });
-                                                                
-                                                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                                            } else {
-                                                                                this.loading = true
-                                                                                response = await axios.post('{{ route('deleteCart') }}', {
-                                                                                    _token: '{{ csrf_token() }}',
-                                                                                    cartId: this.cartId
-                                                                                })
-                                                                
-                                                                                this.open = false
-                                                                
-                                                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                                                
-                                                                                cartCountElements.each(function() {
-                                                                                    var element = $(this);
-                                                                                    if (element.is(':hidden')) {
-                                                                                        element.css('display', 'block');
-                                                                                    }
-                                                                                    element.text(response.data.cart_count);
-                                                                                });
-                                                                
-                                                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                                            }
-                                                                        } finally {
-                                                                            this.loading = false
-                                                                        }
-                                                                    },
-                                                                }">
-                                                                    <div x-show="open">
-                                                                        <input type="number" class="qty" min="0"
-                                                                            max="99" :disabled="loading"
-                                                                            x-model="quantity"
-                                                                            x-on:change="await updateCart()" />
+                                                                <div class="d-flex">
+                                                                    <div class="menu-6-price bg-shadow">
+                                                                        <h5 class="h5-xs araya-color">RP.
+                                                                            {{ $product->price / 1000 }}k</h5>
                                                                     </div>
-
-                                                                    <div x-show="!open">
-                                                                        <div class="add-to-cart bg-araya ico-10"
-                                                                            style="cursor: pointer">
-                                                                            <a class="add-to-cart-list"
-                                                                                data-product-id="{{ $product->id }}"
-                                                                                style="color:white"
-                                                                                x-on:click="await addToCart()">
-                                                                                <span class="flaticon-shopping-bag"></span>
-                                                                                Order
-                                                                            </a>
+    
+                                                                    <div class="ml-auto" x-data="{
+                                                                        open: false,
+                                                                        quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
+                                                                        cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
+                                                                        loading: false,
+                                                                        productId: {{ $product->id }},
+                                                                    
+                                                                        init() {
+                                                                            if (this.quantity > 0) {
+                                                                                this.open = true
+                                                                            } else {
+                                                                                this.open = false
+                                                                            }
+                                                                        },
+                                                                    
+                                                                        async addToCart() {
+                                                                            try {
+                                                                                const response = await axios.post('{{ route('addToCart') }}', {
+                                                                                    _token: '{{ csrf_token() }}',
+                                                                                    product_id: this.productId
+                                                                                })
+                                                                                console.log(response)
+                                                                                this.quantity = response.data.quantity
+                                                                                this.cartId = response.data.cartId
+                                                                    
+                                                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                                                    
+                                                                                cartCountElements.each(function() {
+                                                                                    var element = $(this);
+                                                                                    if (element.is(':hidden')) {
+                                                                                        element.css('display', 'block');
+                                                                                    }
+                                                                                    element.text(response.data.cart_count);
+                                                                                });
+                                                                    
+                                                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                                            } finally {
+                                                                                this.open = true
+                                                                            }
+                                                                        },
+                                                                    
+                                                                        async updateCart() {
+                                                                            try {
+                                                                                if (this.quantity > 0) {
+                                                                                    this.loading = true
+                                                                                    response = await axios.post('{{ route('updateCart') }}', {
+                                                                                        _token: '{{ csrf_token() }}',
+                                                                                        cartId: this.cartId,
+                                                                                        qty: this.quantity
+                                                                                    })
+                                                                    
+                                                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                                                    
+                                                                                    cartCountElements.each(function() {
+                                                                                        var element = $(this);
+                                                                                        if (element.is(':hidden')) {
+                                                                                            element.css('display', 'block');
+                                                                                        }
+                                                                                        element.text(response.data.cart_count);
+                                                                                    });
+                                                                    
+                                                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                                                } else {
+                                                                                    this.loading = true
+                                                                                    response = await axios.post('{{ route('deleteCart') }}', {
+                                                                                        _token: '{{ csrf_token() }}',
+                                                                                        cartId: this.cartId
+                                                                                    })
+                                                                    
+                                                                                    this.open = false
+                                                                    
+                                                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                                                    
+                                                                                    cartCountElements.each(function() {
+                                                                                        var element = $(this);
+                                                                                        if (element.is(':hidden')) {
+                                                                                            element.css('display', 'block');
+                                                                                        }
+                                                                                        element.text(response.data.cart_count);
+                                                                                    });
+                                                                    
+                                                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                                                }
+                                                                            } finally {
+                                                                                this.loading = false
+                                                                            }
+                                                                        },
+                                                                    }">
+                                                                        <div x-show="open">
+                                                                            <input type="number" class="qty" min="0"
+                                                                                max="99" :disabled="loading"
+                                                                                x-model="quantity"
+                                                                                x-on:change="await updateCart()" />
+                                                                        </div>
+    
+                                                                        <div x-show="!open">
+                                                                            <div class="add-to-cart bg-araya ico-10"
+                                                                                style="cursor: pointer">
+                                                                                <a class="add-to-cart-list"
+                                                                                    data-product-id="{{ $product->id }}"
+                                                                                    style="color:white"
+                                                                                    x-on:click="await addToCart()">
+                                                                                    <span class="flaticon-shopping-bag"></span>
+                                                                                    Order
+                                                                                </a>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+
                                                                 </div>
 
                                                             </div>
