@@ -100,7 +100,7 @@
                     <ul class="top-list">
 
                         <!-- BASKET ICON -->
-                        <li class="basket-ico ico-30">
+                        <li class="basket-ico ico-25">
                             <a href="{{ route('cart') }}">
                                 <span class="ico-holder">
                                     <span class="flaticon-shopping-bag"></span>

@@ -63,9 +63,9 @@
                         <ul class="clearfix tabs-1 ico-55 red-tabs">
 
                             @foreach ($categoryWithProduct as $i => $category)
-                                <li class="tab-link {{ $i == 0 ? 'current' : '' }} ml-3" data-tab="tab-{{ $category->id }}">
+                                <li class="tab-link {{ $i == 0 ? 'current' : '' }}" data-tab="tab-{{ $category->id }}">
                                     <img src="{{ asset('home-assets/icons/' . $category->big_icon) }}"
-                                        alt="{{ $category->name }} Icon" class="custom-icon">
+                                        alt="{{ $category->name }} Icon" class="custom-icon mr-5">
                                     <h5 class="h5-sm">{{ $category->name }}</h5>
                                 </li>
                             @endforeach

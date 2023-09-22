@@ -50,7 +50,7 @@
 
 @section('content')
     <!-- PAGE HERO
-                                                                                                                                                                                                                                                                                           ============================================= -->
+                                                                                                                                                                                                                                                                                               ============================================= -->
     {{-- <div id="product-page" class="page-hero-section division">
         <div class="container">
             <div class="row">
@@ -233,7 +233,6 @@
                                                         _token: '{{ csrf_token() }}',
                                                         product_id: this.productId
                                                     })
-                                                    console.log(response)
                                                     this.quantity = response.data.quantity
                                                     this.cartId = response.data.cartId
                                         

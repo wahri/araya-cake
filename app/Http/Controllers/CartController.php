@@ -130,8 +130,8 @@ class CartController extends Controller
             'message' => 'Berhasil mengupdate keranjang',
             'cart_count' => $cartCount,
             'qty' => $qty,
-            'totalPrice' => $totalPriceFormat,
-            'totalProduct' => $totalProductFormat,
+            'totalPrice' => $totalPrice,
+            'totalProduct' => $totalProduct,
         ]);
     }
 

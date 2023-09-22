@@ -63,7 +63,7 @@
 
 
             <!-- CART TABLE -->
-            <div class="row">
+            <div class="row" x-data="{ totalPrice: {{ $totalPrice }} }">
                 <div class="col-lg-8 col-md-12">
 
                     <div class="cart-table mb-70">
@@ -81,18 +81,11 @@
 
                                 @forelse ($carts as $cart)
                                     <tr x-data="{
-                                        quantity: {{ $cart->quantity ?? 0 }},
                                         cartId: {{ $cart->id ?? 0 }},
-                                        loading: false,
-                                    
-                                        init() {
-                                            if (this.quantity > 0) {
-                                                this.open = true
-                                            } else {
-                                                this.open = false
-                                            }
-                                        },
-                                    
+                                        quantity: {{ $cart->quantity ?? 0 }},
+                                        price: {{ $cart->product->price ?? 0 }},
+                                        totalPriceProduct: {{ $cart->quantity * $cart->product->price }},
+                                        loading: false,                               
                                     
                                     
                                         async deleteCart() {
@@ -129,6 +122,8 @@
                                                         cartId: this.cartId,
                                                         qty: this.quantity
                                                     })
+                                                    this.totalPriceProduct = response.data.totalProduct
+                                                    this.totalPrice = response.data.totalPrice
                                     
                                                     var cartCountElements = $('#cart-count, #cart-count-mobile');
                                     
@@ -188,7 +183,8 @@
                                         </td>
 
                                         <td class="text-center" data-label="Price" class="product-price">
-                                            <p>Rp. {{ number_format($cart->product->price, 0, ',', '.') }}
+                                            <p>
+                                                Rp. <span x-text="price"></span>
                                             </p>
                                         </td>
                                         <td class="text-center" data-label="Quantity" class="product-qty">
@@ -197,8 +193,8 @@
                                                 x-on:change="await updateCart()">
                                         </td>
                                         <td class="text-center" data-label="Total" class="product-price-total">
-                                            <p id="totalProduct-{{ $cart->id }}">Rp.
-                                                {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
+                                            <p id="totalProduct-{{ $cart->id }}">
+                                                Rp. <span x-text="totalPriceProduct"></span>
                                             </p>
                                         </td>
                                         <td data-label="Delete" class="td-trash text-center">
@@ -251,7 +247,7 @@
                                                 <td>Subtotal</td>
                                                 <td> </td>
                                                 <td class="text-right" id="subtotal">
-                                                    Rp. {{ number_format($totalPrice, 0, ',', '.') }}
+                                                    Rp. <span x-text="totalPrice"></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -265,7 +261,7 @@
                                                 <td>Total</td>
                                                 <td> </td>
                                                 <td class="text-right" id="total">
-                                                    Rp. {{ number_format($totalPrice, 0, ',', '.') }}
+                                                    Rp. <span x-text="totalPrice"></span>
                                                 </td>
                                             </tr>
                                         </tbody>

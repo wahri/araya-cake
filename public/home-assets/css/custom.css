@@ -275,7 +275,7 @@ html::-webkit-scrollbar-thumb {
     border-color: #28a745 !important;
 }
 
-.menu-6-item .qty {
+/* .menu-6-item .qty {
     position: absolute;
     right: 20px;
     bottom: 23px;
@@ -285,7 +285,7 @@ html::-webkit-scrollbar-thumb {
     border: none;
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.16);
     border-radius: 4px;
-}
+} */
 
 button,
 input[type="submit"],
