@@ -264,7 +264,7 @@
 
                                         </section>
 
-                                        <div class="bg-color-01 page-pagination division">
+                                        {{-- <div class="bg-color-01 page-pagination division">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -292,7 +292,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
+
                                     </div>
                                 </div>
 
