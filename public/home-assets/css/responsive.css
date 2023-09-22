@@ -2026,7 +2026,8 @@
   .menu-6-price h5, .menu-7-price h5 { font-size: 1.7rem; }
 
   #tabs-nav { margin-bottom: 40px; }
-  .tabs-1 li { display: block; padding: 11px 30px; margin-bottom: 10px; }
+  .tabs-1 li { display: block; background-color: #f5f5f5; padding: 11px 30px; margin-bottom: 10px; }
+  .tabs-1 li.current { background-color: transparent; }
 
   .tabs-1 li span { position: relative; right: 10px; }
   .tabs-1.ico-55 [class*="flaticon-"]:before, 
@@ -2572,7 +2573,8 @@
   .menu-6-price h5, .menu-7-price h5 { font-size: 1.7rem; }
 
   #tabs-nav { margin-bottom: 40px; }
-  .tabs-1 li { display: block; padding: 11px 30px; margin-bottom: 10px; }
+  .tabs-1 li { display: block; background-color: #f5f5f5; padding: 11px 30px; margin-bottom: 10px; }
+  .tabs-1 li.current { background-color: transparent; }
 
   .tabs-1 li span { position: relative; right: 10px; }
   .tabs-1.ico-55 [class*="flaticon-"]:before, 
@@ -3134,7 +3136,8 @@
   .menu-6-price h5, .menu-7-price h5 { font-size: 1.7rem; }
 
   #tabs-nav { margin-bottom: 40px; }
-  .tabs-1 li { display: block; padding: 11px 30px; margin-bottom: 10px; }
+  .tabs-1 li { display: block; background-color: #f5f5f5; padding: 11px 30px; margin-bottom: 10px; }
+  .tabs-1 li.current { background-color: transparent; }
 
   .tabs-1 li span { position: relative; right: 10px; }
   .tabs-1.ico-55 [class*="flaticon-"]:before, 

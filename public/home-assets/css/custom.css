@@ -466,10 +466,3 @@ input[type="reset"] {
     line-height: 1;
     font-weight: 500;
 }
-
-.tabs-1 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}

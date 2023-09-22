@@ -7,7 +7,7 @@
 
 
             <!-- CALL BUTTON -->
-            <div class="basket-ico ico-30 callusbtn">
+            <div class="basket-ico ico-25 callusbtn">
                 {{-- <a href="tel:123456789">
                     <i class="fas fa-phone"></i>
                 </a> --}}
