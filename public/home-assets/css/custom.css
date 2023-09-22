@@ -195,6 +195,10 @@ html::-webkit-scrollbar-thumb {
     }
 }
 
+@media (min-width: 321px) and (max-width: 413.95px){
+    
+}
+
 .footer-logo img {
     max-height: 150px;
 }

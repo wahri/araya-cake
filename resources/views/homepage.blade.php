@@ -65,7 +65,7 @@
                             @foreach ($categoryWithProduct as $i => $category)
                                 <li class="tab-link {{ $i == 0 ? 'current' : '' }}" data-tab="tab-{{ $category->id }}">
                                     <img src="{{ asset('home-assets/icons/' . $category->big_icon) }}"
-                                        alt="{{ $category->name }} Icon" class="custom-icon mr-5">
+                                        alt="{{ $category->name }} Icon" class="mr-5 custom-icon">
                                     <h5 class="h5-sm">{{ $category->name }}</h5>
                                 </li>
                             @endforeach
@@ -133,10 +133,6 @@
                                                                     <h5 class="h5-sm product-title">
                                                                         {{ $product->name }}
                                                                     </h5>
-
-                                                                    <p class="grey-color product-desc">
-                                                                        {{ $product->description }}
-                                                                    </p>
                                                                 </a>
 
                                                                 <div class="menu-6-price bg-shadow">

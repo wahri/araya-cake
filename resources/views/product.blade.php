@@ -74,19 +74,19 @@
                         <p class="search__title">
                             Cari cake kesukaan mu di Araya
                         </p>
-                        <div class="d-flex justify-content-center mb-3">
-                            <button type="button" class="btn btn-araya tra-araya-hover mr-3" id="filterButton"
+                        <div class="mb-3 d-flex justify-content-center">
+                            <button type="button" class="mr-3 btn btn-araya tra-araya-hover" id="filterButton"
                                 x-on:click="openFilter = ! openFilter">
                                 <i class="fas fa-sliders-h"></i>
                             </button>
 
                             <input class="search__input" type="text" name="search" placeholder="Cari nama kue"
-                                value="{{ $_GET['search'] ?? '' }}">
-                            <button type="submit" class="btn btn-araya tra-araya-hover ml-3">
+                                value="{{ $_GET['search'] ?? '' }}" style="border-radius: 25px">
+                            <button type="submit" class="ml-3 btn btn-araya tra-araya-hover">
                                 Cari
                             </button>
                         </div>
-                        <div class="d-flex justify-content-center mb-3" style="gap: 10px">
+                        <div class="mb-3 d-flex justify-content-center" style="gap: 10px">
                             @if (request()->hasAny(['search', 'category', 'jenis']))
                                 <span>
                                     Filter by :
@@ -161,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg col-sm">
+                <div class="col-lg col-sm" id="menu-6">
                     <div class="row">
                         @foreach ($products as $product)
                             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
@@ -169,7 +169,7 @@
 
 
                                     <div class="menu-6-img rel">
-                                        <div class="hover-overlay text-center">
+                                        <div class="text-center hover-overlay">
 
                                             <img class="img-fluid"
                                                 src="{{ asset('images/' . $product->images->first()->name) }}"
