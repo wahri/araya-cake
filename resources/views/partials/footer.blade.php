@@ -13,7 +13,7 @@
                 <div class="footer-info">
 
                     <!-- Footer Logo -->
-                    <div class="footer-logo text-center">
+                    <div class="text-center footer-logo">
                         <img src="{{ asset('home-assets/images/logo-araya-vertical.png') }}" alt="footer-logo" />
                     </div>
 
@@ -23,7 +23,7 @@
 
             <!-- FOOTER CONTACTS -->
             <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="footer-contacts mb-40">
+                <div class="mb-40 footer-contacts">
 
                     <!-- Title -->
                     <h5 class="h5-sm">Kunjungi Kami</h5>
@@ -65,13 +65,13 @@
 
             <!-- FOOTER IMAGES -->
             <div class="col-md-12 col-lg-4 col-xl-3">
-                <div class="footer-img mb-40">
+                <div class="mb-40 footer-img">
 
                     <!-- Title -->
                     <h5 class="h5-sm">Galeri cake</h5>
 
                     <!-- Instagram Images -->
-                    <ul class="text-center clearfix">
+                    <ul class="clearfix text-center">
                         <li>
                             <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-01.jpg') }}"
                                     alt="insta-img"></a>
@@ -120,16 +120,16 @@
 
                 <!-- BOTTOM FOOTER LINKS -->
                 <div class="col-md-7 col-lg-6">
-                    <ul class="bottom-footer-list text-right clearfix">
+                    <ul class="clearfix text-right bottom-footer-list">
                         <li>
-                            <p class="first-list-link"><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                            <p class="first-list-link"><a href="https://www.facebook.com/arayacakepku/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
                             </p>
                         </li>
                         <li>
-                            <p><a href="#"><i class="fab fa-instagram"></i> Instagram</a></p>
+                            <p><a href="https://www.instagram.com/arayacakepku/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></p>
                         </li>
                         <li>
-                            <p class="last-li"><a href="#"><i class="fab fa-tiktok"></i> Tiktok</a></p>
+                            <p class="last-li"><a href="https://www.tiktok.com/@arayacakepekanbaru" target="_blank"><i class="fab fa-tiktok"></i> Tiktok</a></p>
                         </li>
                     </ul>
                 </div>

@@ -75,17 +75,17 @@
                             <a href="{{ route('shop') }}">Pesan Sekarang</a>
                         </li> --}}
                         <li>
-                            <a href="#" class="ico-facebook">
+                            <a href="https://www.facebook.com/arayacakepku/" target="_blank" class="ico-facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="ico-instagram">
+                            <a href="https://www.instagram.com/arayacakepku/" target="_blank" class="ico-instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="ico-instagram">
+                            <a href="https://www.tiktok.com/@arayacakepekanbaru" target="_blank" class="ico-instagram">
                                 <i class="fab fa-tiktok"></i>
                             </a>
                         </li>
@@ -127,8 +127,7 @@
                                     <form id="logoutForm" action="{{ route('logout') }}" method="POST">
                                         @csrf
                                     </form>
-                                    <li><a href="#">Riwayat Belanja</a></li>
-                                    <li><a href="#">Pengaturan Akun</a></li>
+                                    <li><a href="{{ route('member.setting') }}">Pengaturan Akun</a></li>
                                     <li><a href="#"
                                             onclick="event.preventDefault();
                                         document.getElementById('logoutForm').submit();">Logout</a>

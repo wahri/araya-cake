@@ -8,7 +8,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                                                                                                                                   ============================================= -->
+                                                                                                                                                                                                                           ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -51,7 +51,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                                       ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -140,7 +140,7 @@
                                                                         <h5 class="h5-xs araya-color">RP.
                                                                             {{ $product->price / 1000 }}k</h5>
                                                                     </div>
-    
+
                                                                     <div class="ml-auto" x-data="{
                                                                         open: false,
                                                                         quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
@@ -230,12 +230,12 @@
                                                                         },
                                                                     }">
                                                                         <div x-show="open">
-                                                                            <input type="number" class="qty" min="0"
-                                                                                max="99" :disabled="loading"
-                                                                                x-model="quantity"
+                                                                            <input type="number" class="qty"
+                                                                                min="0" max="99"
+                                                                                :disabled="loading" x-model="quantity"
                                                                                 x-on:change="await updateCart()" />
                                                                         </div>
-    
+
                                                                         <div x-show="!open">
                                                                             <div class="add-to-cart bg-araya ico-10"
                                                                                 style="cursor: pointer">
@@ -243,7 +243,8 @@
                                                                                     data-product-id="{{ $product->id }}"
                                                                                     style="color:white"
                                                                                     x-on:click="await addToCart()">
-                                                                                    <span class="flaticon-shopping-bag"></span>
+                                                                                    <span
+                                                                                        class="flaticon-shopping-bag"></span>
                                                                                     Order
                                                                                 </a>
                                                                             </div>
@@ -357,7 +358,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                                                                                                                                       ============================================= -->
+                                                                                                                                                                                               ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -418,7 +419,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                                                                                                                                ============================================= -->
+                                                                                                                                                                                                                        ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -672,7 +673,7 @@
 
 
     <!-- ABOUT-3
-                                                                                                                                                                                   ============================================= -->
+                                                                                                                                                                                           ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -728,7 +729,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                                                                                                                                       ============================================= -->
+                                                                                                                                                                                               ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe

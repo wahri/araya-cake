@@ -3,12 +3,13 @@
 @push('style')
 @endpush
 
-@push('sript')
+@push('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
 
 @section('content')
     <!-- SINGLE PRODUCT
-                                                               ============================================= -->
+                                                                                               ============================================= -->
     <section id="product-1" class="pt-100 pb-60 single-product division">
         <div class="container">
             <div class="row">
@@ -37,8 +38,8 @@
                         <!-- TABS NAVIGATION -->
                         <div class="tabs-nav">
                             <div class="row">
-                                <div class="col-lg-12 text-center">
-                                    <ul class="tabs-2 clearfix">
+                                <div class="text-center col-lg-12">
+                                    <ul class="clearfix tabs-2">
 
                                         @foreach ($product->images as $image)
                                             <li class="tab-link {{ $i == 0 ? 'displayed' : '' }}"
@@ -60,7 +61,121 @@
 
                 <!-- PRODUCT DISCRIPTION -->
                 <div class="col-lg-5">
-                    <div class="product-description">
+                    <div class="product-description" x-data="{
+                        orderButton: false,
+                        quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
+                        cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
+                        loading: false,
+                        productId: {{ $product->id }},
+                    
+                        init() {
+                            if (this.quantity > 0) {
+                                this.orderButton = true
+                            } else {
+                                this.orderButton = false
+                            }
+                        },
+
+                        async deleteCart() {
+                            Swal.fire({
+                                title: 'Hapus item dari keranjang?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#ff4f3f',
+                                cancelButtonColor: '#d3d3d3',
+                                confirmButtonText: 'Ya, Hapus item!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    this.loading = true
+                                    axios.post('{{ route('deleteCart') }}', {
+                                        _token: '{{ csrf_token() }}',
+                                        cartId: this.cartId
+                                    })
+                                    location.reload()
+                                    Swal.fire(
+                                        'Berhasil!',
+                                        'Item dihapus dari keranjang.',
+                                        'success'
+                                    )
+                                }
+                            })
+                        },
+                    
+                        async addToCart() {
+                            try {
+                                const response = await axios.post('{{ route('addToCart') }}', {
+                                    _token: '{{ csrf_token() }}',
+                                    product_id: this.productId
+                                })
+                                console.log(response)
+                                this.quantity = response.data.quantity
+                                this.cartId = response.data.cartId
+                    
+                                var cartCountElements = $('#cart-count, #cart-count-mobile');
+                    
+                                cartCountElements.each(function() {
+                                    var element = $(this);
+                                    if (element.is(':hidden')) {
+                                        element.css('display', 'block');
+                                    }
+                                    element.text(response.data.cart_count);
+                                });
+                    
+                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                            } finally {
+                                this.orderButton = true
+                            }
+                        },
+                    
+                        async updateCart() {
+                            try {
+                                if (this.quantity > 0) {
+                                    this.loading = true
+                                    response = await axios.post('{{ route('updateCart') }}', {
+                                        _token: '{{ csrf_token() }}',
+                                        cartId: this.cartId,
+                                        qty: this.quantity
+                                    })
+                    
+                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
+                    
+                                    cartCountElements.each(function() {
+                                        var element = $(this);
+                                        if (element.is(':hidden')) {
+                                            element.css('display', 'block');
+                                        }
+                                        element.text(response.data.cart_count);
+                                    });
+                    
+                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                } else {
+                                    this.loading = true
+                                    response = await axios.post('{{ route('deleteCart') }}', {
+                                        _token: '{{ csrf_token() }}',
+                                        cartId: this.cartId
+                                    })
+                    
+                                    this.orderButton = false
+                    
+                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
+                    
+                                    cartCountElements.each(function() {
+                                        var element = $(this);
+                                        if (element.is(':hidden')) {
+                                            element.css('display', 'block');
+                                        }
+                                        element.text(response.data.cart_count);
+                                    });
+                    
+                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                    
+                                    console.log(this.orderButton);
+                                }
+                            } finally {
+                                this.loading = false
+                            }
+                        },
+                    }">
 
                         <!-- TITLE -->
                         <div class="project-title">
@@ -104,27 +219,29 @@
                                 <p>Rasa: <span>Chocolate, Cheese, Cream</span></p>
                                 <p>Tags: <span>{{ $product->meta_keyword }}</span></p>
                             </div>
-                            <div class="mb-3 d-flex product-info">
-                                @if ($cart->where('product_id', $product->id)->first())
+
+                            <div x-show="orderButton">
+                                <div class="mb-3 d-flex product-info">
                                     <p>
                                         Jumlah di keranjang:
                                     </p>
-                                    <input class="qty ml-auto" name="quantity" type="number" min="0" max="999"
-                                        value="{{ $cart->where('product_id', $product->id)->first()->quantity }}"
-                                        data-cart-id="{{ $cart->where('product_id', $product->id)->first()->id }}">
-                                    <a class="d-flex align-items-center ml-3">
+                                    <input type="number" class="ml-auto qty" min="0" max="99"
+                                        :disabled="loading" x-model="quantity" x-on:change="await updateCart()" />
+                                    <a class="ml-3 d-flex align-items-center" style="cursor: pointer"  x-on:click="deleteCart()">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
-                                @else
-                                    <a class="btn btn-red tra-red-hover add-to-cart-list"
-                                        data-product-id="{{ $product->id }}">
-                                        <span class="flaticon-shopping-bag"></span> Order
-                                    </a>
-                                @endif
-
-
-
+                                </div>
                             </div>
+
+                            <div class="mb-3" x-show="!orderButton">
+                                <a class="btn btn-red tra-red-hover add-to-cart-list" data-product-id="{{ $product->id }}"
+                                    style="color:white" x-on:click="await addToCart()">
+                                    <span class="flaticon-shopping-bag"></span>
+                                    Order
+                                </a>
+                            </div>
+
+
 
 
                             <!-- List -->
@@ -149,7 +266,7 @@
     </section>
 
     <!-- MENU-6
-                                                               ============================================= -->
+                                                                                               ============================================= -->
     <section id="menu-6" class="bg-lightgrey wide-70 menu-section division">
         <div class="container">
 
@@ -157,7 +274,7 @@
             <!-- SECTION TITLE -->
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <div class="section-title mb-60 text-center">
+                    <div class="text-center section-title mb-60">
 
                         <!-- Title 	-->
                         <h2 class="h2-xl">Lihat cake lainnya</h2>
@@ -169,25 +286,21 @@
 
             <div class="row">
 
-                @foreach ($relatedProducts as $item)
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="menu-6-item bg-white">
+                @foreach ($relatedProducts as $eachProduct)
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" wire:key="{{ $eachProduct->id }}">
+                        <div class="bg-white menu-6-item">
 
 
-                            <!-- IMAGE -->
                             <div class="menu-6-img rel">
                                 <div class="hover-overlay">
 
-                                    <!-- Image -->
-                                    <img class="img-fluid" src="{{ asset('images/' . $item->images->first()->name) }}"
+                                    <img class="img-fluid"
+                                        src="{{ asset('images/' . $eachProduct->images->first()->name) }}"
                                         alt="menu-image" />
 
-                                    <!-- Item Code -->
-                                    {{-- <span class="item-code bg-tra-dark">Code: 0850</span> --}}
-
-                                    <!-- Zoom Icon -->
                                     <div class="menu-img-zoom ico-25">
-                                        <a href="{{ asset('images/' . $item->images->first()->name) }}" class="image-link">
+                                        <a href="{{ asset('images/' . $eachProduct->images->first()->name) }}"
+                                            class="image-link">
                                             <span class="flaticon-zoom"></span>
                                         </a>
                                     </div>
@@ -195,10 +308,8 @@
                                 </div>
                             </div>
 
-                            <!-- TEXT -->
                             <div class="menu-6-txt rel">
 
-                                <!-- Rating -->
                                 <div class="item-rating">
                                     <div class="stars-rating stars-lg">
                                         <i class="fas fa-star"></i>
@@ -209,37 +320,124 @@
                                     </div>
                                 </div>
 
-                                <!-- Like Icon -->
-                                {{-- <div class="like-ico ico-25">
-                                                    <a href="#"><span class="flaticon-heart"></span></a>
-                                                </div> --}}
-
-                                <a href="{{ route('detail.cake', $item->slug) }}" target="_blank">
+                                <a href="{{ route('detail.cake', $eachProduct->slug) }}" target="_blank">
                                     <h5 class="h5-sm product-title">
-                                        {{ $item->name }}
+                                        {{ $eachProduct->name }}
                                     </h5>
-
-                                    <p class="grey-color product-desc">
-                                        {{ $item->description }}
-                                    </p>
                                 </a>
 
-                                <div class="menu-6-price bg-shadow">
-                                    <h5 class="h5-xs araya-color">RP. {{ $item->price / 1000 }}k</h5>
-                                </div>
-
-                                @if ($cart->where('product_id', $item->id)->first())
-                                    <input class="qty" name="quantity" type="number" min="0" max="999"
-                                        value="{{ $cart->where('product_id', $item->id)->first()->quantity }}"
-                                        data-cart-id="{{ $cart->where('product_id', $item->id)->first()->id }}">
-                                @else
-                                    <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
-                                        <a class="add-to-cart-list" data-product-id="{{ $item->id }}"
-                                            style="color:white">
-                                            <span class="flaticon-shopping-bag"></span> Order
-                                        </a>
+                                <div class="d-flex">
+                                    <div class="menu-6-price bg-shadow">
+                                        <h5 class="h5-xs araya-color">RP.
+                                            {{ $eachProduct->price / 1000 }}k</h5>
                                     </div>
-                                @endif
+
+                                    <div class="ml-auto" x-data="{
+                                        open: false,
+                                        quantity: {{ $cart->where('product_id', $eachProduct->id)->first()->quantity ?? 0 }},
+                                        cartId: {{ $cart->where('product_id', $eachProduct->id)->first()->id ?? 0 }},
+                                        loading: false,
+                                        productId: {{ $eachProduct->id }},
+                                    
+                                        init() {
+                                            if (this.quantity > 0) {
+                                                this.open = true
+                                            } else {
+                                                this.open = false
+                                            }
+                                        },
+                                    
+                                        async addToCart() {
+                                            try {
+                                                const response = await axios.post('{{ route('addToCart') }}', {
+                                                    _token: '{{ csrf_token() }}',
+                                                    product_id: this.productId
+                                                })
+                                                console.log(response)
+                                                this.quantity = response.data.quantity
+                                                this.cartId = response.data.cartId
+                                    
+                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                    
+                                                cartCountElements.each(function() {
+                                                    var element = $(this);
+                                                    if (element.is(':hidden')) {
+                                                        element.css('display', 'block');
+                                                    }
+                                                    element.text(response.data.cart_count);
+                                                });
+                                    
+                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                            } finally {
+                                                this.open = true
+                                            }
+                                        },
+                                    
+                                        async updateCart() {
+                                            try {
+                                                if (this.quantity > 0) {
+                                                    this.loading = true
+                                                    response = await axios.post('{{ route('updateCart') }}', {
+                                                        _token: '{{ csrf_token() }}',
+                                                        cartId: this.cartId,
+                                                        qty: this.quantity
+                                                    })
+                                    
+                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                    
+                                                    cartCountElements.each(function() {
+                                                        var element = $(this);
+                                                        if (element.is(':hidden')) {
+                                                            element.css('display', 'block');
+                                                        }
+                                                        element.text(response.data.cart_count);
+                                                    });
+                                    
+                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                } else {
+                                                    this.loading = true
+                                                    response = await axios.post('{{ route('deleteCart') }}', {
+                                                        _token: '{{ csrf_token() }}',
+                                                        cartId: this.cartId
+                                                    })
+                                    
+                                                    this.open = false
+                                    
+                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
+                                    
+                                                    cartCountElements.each(function() {
+                                                        var element = $(this);
+                                                        if (element.is(':hidden')) {
+                                                            element.css('display', 'block');
+                                                        }
+                                                        element.text(response.data.cart_count);
+                                                    });
+                                    
+                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
+                                                }
+                                            } finally {
+                                                this.loading = false
+                                            }
+                                        },
+                                    }">
+                                        <div x-show="open">
+                                            <input type="number" class="qty" min="0" max="99"
+                                                :disabled="loading" x-model="quantity"
+                                                x-on:change="await updateCart()" />
+                                        </div>
+
+                                        <div x-show="!open">
+                                            <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
+                                                <a class="add-to-cart-list" data-product-id="{{ $eachProduct->id }}"
+                                                    style="color:white" x-on:click="await addToCart()">
+                                                    <span class="flaticon-shopping-bag"></span>
+                                                    Order
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -254,4 +452,3 @@
     </section>
     <!-- END MENU-6 -->
 @endsection
-

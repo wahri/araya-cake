@@ -5,19 +5,6 @@
 
 @push('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script type="text/javascript">
-        $(function() {
-            $('#tes').click(function() {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Do you want to continue',
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                })
-            })
-        })
-    </script>
 @endpush
 
 
@@ -234,7 +221,7 @@
                                         </small>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <input type="text" name="phone" class="custom-input" placeholder="No Whatsapp">
                                     @error('phone')
                                         <small class="text-danger">
@@ -242,7 +229,7 @@
                                         </small>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <input type="text" name="email" class="custom-input" placeholder="Email">
                                     @error('email')
                                         <small class="text-danger">
@@ -250,7 +237,7 @@
                                         </small>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <input type="text" name="address" class="custom-input" placeholder="Alamat Lengkap">
                                     @error('address')
                                         <small class="text-danger">
@@ -258,7 +245,7 @@
                                         </small>
                                     @enderror
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <input type="text" name="notes" class="custom-input" placeholder="Catatan">
                                     @error('notes')
                                         <small class="text-danger">

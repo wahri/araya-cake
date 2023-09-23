@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\ImageManagementController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
@@ -39,11 +40,12 @@ Route::post('/updateCart', [CartController::class, 'updateCart'])->name('updateC
 Route::post('/deleteCart', [CartController::class, 'deleteCart'])->name('deleteCart');
 Route::post('/processOrder', [CartController::class, 'processOrder'])->name('processOrder');
 
-// Route::get('/dashboard', function () {
-//     return view('admin/dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('member')->name('member.')->middleware(['auth'])->group(function () {
+    Route::get('/setting', [MemberController::class, 'setting'])->name('setting');
+    Route::put('/updateProfile', [MemberController::class, 'updateProfile'])->name('updateProfile');
+});
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/image-management', [ImageManagementController::class, 'index'])->name('imageManagement');
@@ -51,7 +53,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     Route::delete('/delete-images/{id}', [ImageManagementController::class, 'deleteImages'])->name('deleteImages');
 
     Route::resource('slider', SliderController::class);
-    
+
     Route::resource('review', ReviewController::class);
 
     Route::resource('product', ProductController::class);
