@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontpageController extends Controller
 {
+    function maintenance() {
+        abort(404);
+    }
     function index()
     {
         $categoryWithProduct = CategoryProduct::with(['products', 'products.images'])->get();
