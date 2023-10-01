@@ -140,8 +140,8 @@
     </div>
 @endsection
 
-@section('style')
-@endsection
+@push('style')
+@endpush
 
-@section('script')
-@endsection
+@push('script')
+@endpush

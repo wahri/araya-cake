@@ -98,7 +98,7 @@
     </div>
 @endsection
 
-@section('style')
+@push('style')
     <!-- DataTables -->
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
         type="text/css" />
@@ -108,9 +108,9 @@
     <!-- Responsive datatable examples -->
     <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
         rel="stylesheet" type="text/css" />
-@endsection
+@endpush
 
-@section('script')
+@push('script')
     <!-- twitter-bootstrap-wizard js -->
     <script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
 
@@ -141,4 +141,4 @@
 
     <!-- Datatable init js -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-@endsection
+@endpush

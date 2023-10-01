@@ -94,7 +94,7 @@
     </div>
 @endsection
 
-@section('style')
+@push('style')
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="{{ asset('assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
 
@@ -104,9 +104,9 @@
     <!-- dropzone css -->
     {{-- <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" /> --}}
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-@endsection
+@endpush
 
-@section('script')
+@push('script')
     <!-- twitter-bootstrap-wizard js -->
     <script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
 
@@ -141,4 +141,4 @@
             }
         };
     </script>
-@endsection
+@endpush
