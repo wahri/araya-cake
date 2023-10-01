@@ -12,7 +12,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo-araya-small.png') }}">
 
-    @yield('style')
+    @stack('style')
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -24,6 +24,8 @@
 
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -64,11 +66,8 @@
     <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
 
-
-
-
-
-    @yield('script')
+    @stack('script')
+    
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
 

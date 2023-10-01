@@ -12,7 +12,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'length', 'width', 'height', 'description', 'meta_title', 'meta_keyword', 'meta_description', 'category_product_id', 'sub_category_product_id'
+        'name', 'slug', 'length', 'width', 'height', 'has_message', 'pilihan_type_id', 'pilihan_color_id', 'description', 'meta_title', 'meta_keyword', 'meta_description', 'category_product_id', 'sub_category_product_id'
     ];
 
     public function category()
@@ -28,6 +28,16 @@ class Product extends Model
     public function images()
     {
         return $this->belongsToMany(ImageStorage::class, 'rel_image_products');
+    }
+
+    public function pilihan_type()
+    {
+        return $this->hasOne(PilihanType::class);
+    }
+    
+    public function pilihan_color()
+    {
+        return $this->hasOne(PilihanColor::class);
     }
 
 }

@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('session_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('product_id');
+            $table->string('cake_message')->nullable();
+            $table->string('pilihan_layer')->nullable();
+            $table->string('pilihan_color')->nullable();
             $table->integer('quantity');
             $table->timestamps();
             

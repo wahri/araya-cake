@@ -12,6 +12,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TestimoniController;
+use App\Models\SubCategoryProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +26,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [FrontpageController::class, 'maintenance'])->name('maintenance');
-// Route::get('/', [FrontpageController::class, 'index'])->name('home');
+// Route::get('/', [FrontpageController::class, 'maintenance'])->name('maintenance');
+Route::get('/', [FrontpageController::class, 'index'])->name('home');
 Route::get('/tentang-araya', [FrontpageController::class, 'about'])->name('about');
 Route::get('/galeri-araya', [FrontpageController::class, 'galleryCake'])->name('galleryCake');
 Route::get('/kontak-araya', [FrontpageController::class, 'contact'])->name('contact');
@@ -62,6 +63,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:Admin'])->grou
 
     Route::resource('categoryProduct', CategoryProductController::class);
     Route::resource('subCategory', SubCategoryController::class);
+    Route::get('/get-subcategories/{kategori}', [SubCategoryController::class, 'getSubcategories'])->name('getSubcategory');
+
 
     // Route::get('createCategoryProduct', [ProductController::class, 'createCategoryProduct'])->name('createCategoryProduct');
     // Route::post('storeCategoryProduct', [ProductController::class, 'storeCategoryProduct'])->name('storeCategoryProduct');

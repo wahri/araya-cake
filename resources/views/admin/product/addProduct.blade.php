@@ -79,18 +79,18 @@
 
 
                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                                    <li class="next"><a href="#"> Next <i
-                                                                class="mdi mdi-arrow-right ms-1"></i></a></li>
+                                                    <li class="next"><a href="#" @click="console.log('hello')"> Next
+                                                            <i class="mdi mdi-arrow-right ms-1"></i></a></li>
                                                 </ul>
 
 
                                             </div>
                                             <!-- end tabpane -->
                                             <div class="tab-pane" id="additional-data">
+
                                                 <div class="divider"></div>
                                                 <h4 class="header-title">Cake Information</h4>
                                                 <p class="card-title-desc">Additional data for cake detail</p>
-
                                                 <div class="mb-3">
                                                     <label class="form-label" for="name">Cake Name</label>
                                                     <input value="{{ old('name') }}" id="name" name="name"
@@ -149,7 +149,9 @@
                                                     <label class="form-label" for="price">Price</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">Rp.</span>
-                                                        <input type="number" value="{{ old('price') }}" id="price" name="price" class="form-control" placeholder="Enter cake price">
+                                                        <input type="number" value="{{ old('price') }}" id="price"
+                                                            name="price" class="form-control"
+                                                            placeholder="Enter cake price">
                                                         <span class="input-group-text">.00</span>
                                                     </div>
                                                     @error('price')
@@ -159,13 +161,31 @@
                                                     @enderror
                                                 </div>
                                                 <!-- end row -->
-                                                <div class="row">
-                                                    <div class="col-md-12">
+                                                <div class="row" x-data="{
+                                                    kategori: '',
+                                                    subkategori: '',
+                                                    subkategoriOptions: [],
+                                                    loading: false,
+                                                    updateSubkategori() {
+                                                        // Lakukan permintaan Axios ke server untuk mengambil sub-kategori berdasarkan kategori yang dipilih.
+                                                        this.loading = true
+                                                        axios.get(`/admin/get-subcategories/${this.kategori}`)
+                                                            .then(response => {
+                                                                this.subkategoriOptions = response.data;
+                                                                this.loading = false
+                                                            })
+                                                            .catch(error => {
+                                                                console.error(error);
+                                                                this.loading = false
+                                                            });
+                                                    }
+                                                }">
+                                                    <div class="col-md-6">
                                                         <div class="mb-3">
                                                             <label class="control-label">Category</label>
-                                                            <select class="form-control select2"
-                                                                name="category_product_id">
-                                                                <option>Choose Product Category</option>
+                                                            <select class="form-control" name="category_product_id"
+                                                                x-model="kategori" @change="updateSubkategori()">
+                                                                <option>Pilih Product Category</option>
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}"
                                                                         {{ old('category_product_id') == $category->id ? 'selected' : '' }}>
@@ -179,8 +199,54 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="control-label">Sub Category</label>
+                                                            <select class="form-control" name="sub_category_product_id"
+                                                                x:disabled="loading">
+                                                                <option>Pilih Sub Category</option>
+                                                                <template x-for="option in subkategoriOptions"
+                                                                    :key="option.id">
+                                                                    <option :value="option.id" x-text="option.name">
+                                                                    </option>
+                                                                </template>
+                                                            </select>
+                                                            @error('sub_category_product_id')
+                                                                <small class="text-danger">
+                                                                    {{ $message }}
+                                                                </small>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- end row -->
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Pilihan Varian</label>
+                                                        <select class="form-control" name="pilihan_type"
+                                                            x:disabled="loading">
+                                                            <option>Pilih Varian</option>
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Pilihan Warna</label>
+                                                        <select class="form-control" name="pilihan_color"
+                                                            x:disabled="loading">
+                                                            <option>Pilih Sub Category</option>
+                                                            <option value=""></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="checkHasMessage" name="has_message" value="1">
+                                                            <label class="form-check-label" for="checkHasMessage">
+                                                                Has Custom Message?
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="mb-3">
                                                     <label class="form-label" for="description">Product
@@ -273,7 +339,7 @@
     </div>
 @endsection
 
-@section('style')
+@push('style')
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="{{ asset('assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
 
@@ -282,9 +348,9 @@
 
 
     <link href="{{ asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" />
-@endsection
+@endpush
 
-@section('script')
+@push('script')
     <!-- twitter-bootstrap-wizard js -->
     <script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
 
@@ -299,4 +365,4 @@
 
     <script src="{{ asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
-@endsection
+@endpush

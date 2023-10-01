@@ -85,4 +85,11 @@ class SubCategoryController extends Controller
         // Redirect ke halaman tampilan kategori dengan pesan sukses
         return redirect()->back()->with('success', 'Sub Kategori berhasil dihapus.');
     }
+
+    public function getSubcategories($kategori)
+    {
+        $subcategories = SubCategoryProduct::where('category_product_id', $kategori)->get();
+
+        return response()->json($subcategories);
+    }
 }
