@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\ImageManagementController;
 use App\Http\Controllers\MemberController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\VarianController;
 use App\Models\SubCategoryProduct;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +66,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:Admin'])->grou
     Route::resource('categoryProduct', CategoryProductController::class);
     Route::resource('subCategory', SubCategoryController::class);
     Route::get('/get-subcategories/{kategori}', [SubCategoryController::class, 'getSubcategories'])->name('getSubcategory');
+
+    Route::get('/add-varian', [VarianController::class, 'createVarian'])->name('createVarian');
+    Route::get('/add-color', [ColorController::class, 'createColor'])->name('createColor');
+
 
 
     // Route::get('createCategoryProduct', [ProductController::class, 'createCategoryProduct'])->name('createCategoryProduct');

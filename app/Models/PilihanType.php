@@ -10,7 +10,7 @@ class PilihanType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_pilihan'
+        'nama_pilihan', 'isi_pilihan'
     ];
 
     public function types()

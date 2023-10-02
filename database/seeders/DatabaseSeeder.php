@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\PilihanType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -30,12 +31,28 @@ class DatabaseSeeder extends Seeder
         $user1->assignRole($roleAdmin);
 
         $user2 = User::factory()->create([
-            'name' => 'Staff',
-            'email' => 'staff@araya.com',
+            'name' => 'Wahyu',
+            'email' => 'wahyu@gmail.com',
         ]);
-        $roleStaff = Role::create(['name' => 'Staff']);
-        $user2->assignRole($roleStaff);
+        $roleMember = Role::create(['name' => 'Member']);
+        $user2->assignRole($roleMember);
 
-        Role::create(['name' => 'Member']);
+        $varian = "Double Choco, Banana Nutella, Lapis Surabaya, Tiramisu, Cheese, Peach Earl Grey";
+        $arrVarian = explode(', ', $varian);
+
+        $jsonVarian = json_encode($arrVarian);
+        PilihanType::create([
+            'nama_pilihan' => 'Varian Cake',
+            'isi_pilihan' => $jsonVarian
+        ]);
+
+        $warna = "Merah, Biru Laut, Neon, Hijau Stabilo";
+        $arrWarna = explode(', ', $warna);
+
+        $jsonWarna = json_encode($arrWarna);
+        PilihanType::create([
+            'nama_pilihan' => 'Warna Cupcake',
+            'isi_pilihan' => $jsonWarna
+        ]);
     }
 }

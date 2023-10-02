@@ -8,7 +8,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                                                                                                                                           ============================================= -->
+                                                                                                                                                                                                                                           ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -51,7 +51,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                                                                                                                                       ============================================= -->
+                                                                                                                                                                                                                                       ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -141,7 +141,19 @@
                                                                             {{ $product->price / 1000 }}k</h5>
                                                                     </div>
 
-                                                                    <div class="ml-auto" x-data="{
+                                                                    <div class="ml-auto">
+                                                                        <div class="add-to-cart bg-araya ico-10"
+                                                                            style="cursor: pointer">
+                                                                            <a target="_blank" class="add-to-cart-list"
+                                                                                style="color:white"
+                                                                                href="{{ route('detail.cake', $product->slug) }}">
+                                                                                <span class="flaticon-shopping-bag"></span>
+                                                                                Order
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    {{-- <div class="ml-auto" x-data="{
                                                                         open: false,
                                                                         quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
                                                                         cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
@@ -249,7 +261,7 @@
                                                                                 </a>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
 
                                                                 </div>
 
@@ -358,7 +370,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                               ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -419,7 +431,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                                                                                                                                        ============================================= -->
+                                                                                                                                                                                                                                        ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -673,14 +685,14 @@
 
 
     <!-- ABOUT-3
-                                                                                                                                                                                           ============================================= -->
+                                                                                                                                                                                                           ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
 
 
                 <!-- ABOUT IMAGE -->
-                <div class="col-md-5 col-lg-6">
+                <div class="col-lg-5 col-sm-12">
                     <div class="mb-40 text-center about-3-img">
                         <img class="img-fluid" src="{{ asset('home-assets/images/about-03-img.png') }}"
                             alt="about-image">
@@ -689,8 +701,8 @@
 
 
                 <!-- ABOUT TEXT -->
-                <div class="col-md-7 col-lg-6">
-                    <div class="mb-40 about-3-txt">
+                <div class="col-lg-7 col-sm-12">
+                    <div class="about-3-txt my-auto">
 
                         <!-- Title -->
                         <div class="mb-3 text-center">
@@ -713,7 +725,20 @@
 
                             <a href="#lokasi" class="btn btn-lg btn-red tra-araya-hover">Lihat Map</a>
 
-
+                        </div>
+                        <div class="row online-shop mt-30">
+                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 text-center my-auto">
+                                <span class="font-weight-bold">Tersedia di</span>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 text-center my-auto">
+                                <img src="{{ asset('home-assets/images/gofood.png') }}" alt="Logo Go Food">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 text-center my-auto">
+                                <img src="{{ asset('home-assets/images/shopeefood.png') }}" alt="Logo Shopee Food">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 text-center my-auto">
+                                <img src="{{ asset('home-assets/images/grabfood.png') }}" alt="Logo Grab Food">
+                            </div>
                         </div>
 
 
@@ -729,7 +754,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                               ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe

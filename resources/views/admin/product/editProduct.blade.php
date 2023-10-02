@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Edit Cake</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Cake Management</a></li>
                                 <li class="breadcrumb-item active">Edit Cake</li>
@@ -34,12 +34,12 @@
 
                                 <div id="addproduct-nav-pills-wizard" class="twitter-bs-wizard">
                                     <ul class="twitter-bs-wizard-nav">
-                                        <li class="nav-item add-product-border">
+                                        <li class="nav-item">
                                             <a href="#product-img" class="nav-link" data-toggle="tab">
                                                 <span class="step-number">01. Product Image</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item add-product-border">
+                                        <li class="nav-item">
                                             <a href="#additional-data" class="nav-link" data-toggle="tab">
                                                 <span class="step-number">02. Additional Data</span>
                                             </a>
@@ -94,8 +94,9 @@
 
                                                 <div class="mb-3">
                                                     <label class="form-label" for="name">Cake Name</label>
-                                                    <input value="{{ old('name', $product->name) }}" id="name" name="name"
-                                                        type="text" class="form-control" placeholder="Enter cake name">
+                                                    <input value="{{ old('name', $product->name) }}" id="name"
+                                                        name="name" type="text" class="form-control"
+                                                        placeholder="Enter cake name">
                                                     @error('name')
                                                         <small class="text-danger">
                                                             {{ $message }}
@@ -106,9 +107,9 @@
                                                     <div class="col-lg-4">
                                                         <div class="mb-3">
                                                             <label class="form-label" for="length">Length Cake</label>
-                                                            <input value="{{ old('length', $product->length) }}" id="length" name="length"
-                                                                type="number" class="form-control"
-                                                                placeholder="Enter length cake">
+                                                            <input value="{{ old('length', $product->length) }}"
+                                                                id="length" name="length" type="number"
+                                                                class="form-control" placeholder="Enter length cake">
                                                             @error('length')
                                                                 <small class="text-danger">
                                                                     {{ $message }}
@@ -120,9 +121,9 @@
                                                     <div class="col-lg-4">
                                                         <div class="mb-3">
                                                             <label class="form-label" for="width">Width Cake</label>
-                                                            <input value="{{ old('width', $product->width) }}" id="width"
-                                                                name="width" type="number" class="form-control"
-                                                                placeholder="Enter width cake">
+                                                            <input value="{{ old('width', $product->width) }}"
+                                                                id="width" name="width" type="number"
+                                                                class="form-control" placeholder="Enter width cake">
                                                             @error('width')
                                                                 <small class="text-danger">
                                                                     {{ $message }}
@@ -134,9 +135,9 @@
                                                     <div class="col-lg-4">
                                                         <div class="mb-3">
                                                             <label class="form-label" for="height">Height Cake</label>
-                                                            <input value="{{ old('height', $product->height) }}" id="height"
-                                                                name="height" type="number" class="form-control"
-                                                                placeholder="Enter height cake">
+                                                            <input value="{{ old('height', $product->height) }}"
+                                                                id="height" name="height" type="number"
+                                                                class="form-control" placeholder="Enter height cake">
                                                             @error('height')
                                                                 <small class="text-danger">
                                                                     {{ $message }}
@@ -150,7 +151,9 @@
                                                     <label class="form-label" for="price">Price</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">Rp.</span>
-                                                        <input type="number" value="{{ old('price', $product->price) }}" id="price" name="price" class="form-control" placeholder="Enter cake price">
+                                                        <input type="number" value="{{ old('price', $product->price) }}"
+                                                            id="price" name="price" class="form-control"
+                                                            placeholder="Enter cake price">
                                                         <span class="input-group-text">.00</span>
                                                     </div>
                                                     @error('price')
@@ -159,16 +162,47 @@
                                                         </small>
                                                     @enderror
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
+                                                <!-- end row -->
+                                                <div class="row" x-data="{
+                                                    kategori: {{ $product->category_product_id }},
+                                                    subkategori: '',
+                                                    currentSubCategory: {{ $product->sub_category_product_id }},
+                                                    subkategoriOptions: [],
+                                                    loading: false,
+                                                    init(){
+                                                        axios.get(`/admin/get-subcategories/${this.kategori}`)
+                                                        .then(response => {
+                                                            this.subkategoriOptions = response.data;
+                                                            this.loading = false
+                                                        })
+                                                        .catch(error => {
+                                                            console.error(error);
+                                                            this.loading = false
+                                                        });
+                                                    },
+                                                    updateSubkategori() {
+                                                        // Lakukan permintaan Axios ke server untuk mengambil sub-kategori berdasarkan kategori yang dipilih.
+                                                        this.loading = true
+                                                        axios.get(`/admin/get-subcategories/${this.kategori}`)
+                                                            .then(response => {
+                                                                this.subkategoriOptions = response.data;
+                                                                this.loading = false
+                                                            })
+                                                            .catch(error => {
+                                                                console.error(error);
+                                                                this.loading = false
+                                                            });
+                                                    }
+                                                }">
+                                                    <div class="col-md-6">
                                                         <div class="mb-3">
                                                             <label class="control-label">Category</label>
-                                                            <select class="form-control select2"
-                                                                name="category_product_id">
-                                                                <option>Choose Product Category</option>
+                                                            <select class="form-control" name="category_product_id"
+                                                                x-model="kategori" @change="updateSubkategori()">
+                                                                <option value="">Pilih Product Category</option>
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}"
-                                                                        {{ old('category_product_id', $product->category_product_id) == $category->id ? 'selected' : '' }}>
+                                                                        {{ $product->category_product_id == $category->id ? 'selected' : '' }}>
                                                                         {{ $category->name }}</option>
                                                                 @endforeach
                                                             </select>
@@ -179,8 +213,66 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="control-label">Sub Category</label>
+                                                            <select class="form-control" name="sub_category_product_id"
+                                                                x:disabled="loading">
+                                                                <option value="">Pilih Sub Category</option>
+                                                                <template x-for="option in subkategoriOptions"
+                                                                    :key="option.id">
+                                                                    <option :value="option.id" x-text="option.name" x-bind:selected="option.id === currentSubCategory">
+                                                                    </option>
+                                                                </template>
+                                                            </select>
+                                                            @error('sub_category_product_id')
+                                                                <small class="text-danger">
+                                                                    {{ $message }}
+                                                                </small>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- end row -->
+
+                                                <div class="mb-3 row">
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Pilihan Varian</label>
+                                                        <select class="form-control" name="pilihan_type_id">
+                                                            <option value="">Pilihan varian cake</option>
+                                                            @foreach ($pilihan_type as $type)
+                                                                <option value="{{ $type->id }}" {{ $product->pilihan_type_id == $type->id ? 'selected' : '' }}>
+                                                                    {{ $type->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Pilihan Warna</label>
+                                                        <select class="form-control" name="pilihan_color_id">
+                                                            <option value="">Pilihan untuk warna cake</option>
+                                                            @foreach ($pilihan_color as $color)
+                                                                <option value="{{ $color->id }}" {{ $product->pilihan_color_id == $color->id ? 'selected' : '' }}>
+                                                                    {{ $color->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4 my-auto">
+                                                        <div class="form-group form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="has_message" name="has_message" value="1" {{ $product->has_message ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="has_message">
+                                                                Has Custom Message?
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="has_decoration" name="has_decoration" value="1" {{ $product->has_decoration ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="has_decoration">
+                                                                Has Decoration?
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="mb-3">
                                                     <label class="form-label" for="description">Product
@@ -208,9 +300,9 @@
                                                         <div class="mb-3">
                                                             <label class="form-label" for="meta_title">Meta
                                                                 title</label>
-                                                            <input value="{{ old('meta_title', $product->meta_title) }}" id="meta_title"
-                                                                name="meta_title" type="text" class="form-control"
-                                                                placeholder="Enter meta title">
+                                                            <input value="{{ old('meta_title', $product->meta_title) }}"
+                                                                id="meta_title" name="meta_title" type="text"
+                                                                class="form-control" placeholder="Enter meta title">
                                                             @error('meta_title')
                                                                 <small class="text-danger">
                                                                     {{ $message }}
@@ -222,9 +314,10 @@
                                                         <div class="mb-3">
                                                             <label class="form-label" for="meta_keyword">Meta
                                                                 Keywords</label>
-                                                            <input value="{{ old('meta_keyword', $product->meta_keyword) }}" id="meta_keyword"
-                                                                name="meta_keyword" type="text" class="form-control"
-                                                                placeholder="Enter keywords">
+                                                            <input
+                                                                value="{{ old('meta_keyword', $product->meta_keyword) }}"
+                                                                id="meta_keyword" name="meta_keyword" type="text"
+                                                                class="form-control" placeholder="Enter keywords">
                                                             @error('meta_keyword')
                                                                 <small class="text-danger">
                                                                     {{ $message }}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryProduct;
 use App\Models\ImageStorage;
+use App\Models\PilihanColor;
+use App\Models\PilihanType;
 use App\Models\Product;
 use App\Models\RelImageProduct;
 use Illuminate\Http\Request;
@@ -27,9 +29,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $images = ImageStorage::all();
+        $images = ImageStorage::orderBy('created_at', 'desc')->get();
+        $pilihan_type = PilihanType::orderBy('created_at', 'desc')->get();
+        $pilihan_color = PilihanColor::orderBy('created_at', 'desc')->get();
         $categories = CategoryProduct::all();
-        return view('admin.product.addProduct', compact(['images', 'categories']));
+        return view('admin.product.addProduct', compact(['images', 'categories', 'pilihan_type', 'pilihan_color']));
     }
 
     function uploadProductImage(Request $request)
@@ -66,9 +70,14 @@ class ProductController extends Controller
             'meta_title' => 'nullable|string',
             'meta_keyword' => 'nullable|string',
             'meta_description' => 'nullable|string',
-            'category_product_id' => 'required|exists:category_products,id', // Ganti 'categories' dengan nama tabel kategori yang sesuai
+            'has_message' => 'nullable|boolean',
+            'has_decoration' => 'nullable|boolean',
+            'pilihan_type_id' => 'nullable|exists:pilihan_types,id', 
+            'pilihan_color_id' => 'nullable|exists:pilihan_colors,id',
+            'category_product_id' => 'required|exists:category_products,id',
+            'sub_category_product_id' => 'required|exists:sub_category_products,id',
             'id_images' => 'required|array',
-            'id_images.*' => 'exists:image_storages,id', // Ganti 'image_storages' dengan nama tabel image storage yang sesuai
+            'id_images.*' => 'exists:image_storages,id', 
         ]);
 
         $slug = Str::of($validatedData['name'])->slug('-') . '-' . Str::random(6);
@@ -85,6 +94,11 @@ class ProductController extends Controller
             'meta_keyword' => $validatedData['meta_keyword'],
             'meta_description' => $validatedData['meta_description'],
             'category_product_id' => $validatedData['category_product_id'],
+            'sub_category_product_id' => $validatedData['sub_category_product_id'],
+            'has_message' => $validatedData['has_message'] ?? 0,
+            'has_decoration' => $validatedData['has_decoration'] ?? 0,
+            'pilihan_type_id' => $validatedData['pilihan_type_id'],
+            'pilihan_color_id' => $validatedData['pilihan_color_id'],
         ]);
 
         // Attach images to the product using RelImageProduct
@@ -120,7 +134,9 @@ class ProductController extends Controller
         $images = ImageStorage::all();
         $categories = CategoryProduct::all();
         $product = Product::findOrFail($id);
-        return view('admin.product.editProduct', compact(['product', 'images', 'categories']));
+        $pilihan_type = PilihanType::orderBy('created_at', 'desc')->get();
+        $pilihan_color = PilihanColor::orderBy('created_at', 'desc')->get();
+        return view('admin.product.editProduct', compact(['product', 'images', 'categories', 'pilihan_type', 'pilihan_color']));
     }
 
     /**
@@ -139,9 +155,14 @@ class ProductController extends Controller
             'meta_title' => 'nullable|string',
             'meta_keyword' => 'nullable|string',
             'meta_description' => 'nullable|string',
-            'category_product_id' => 'required|exists:category_products,id', // Ganti 'categories' dengan nama tabel kategori yang sesuai
+            'has_message' => 'nullable|boolean',
+            'has_decoration' => 'nullable|boolean',
+            'pilihan_type_id' => 'nullable|exists:pilihan_types,id', 
+            'pilihan_color_id' => 'nullable|exists:pilihan_colors,id',
+            'category_product_id' => 'required|exists:category_products,id',
+            'sub_category_product_id' => 'required|exists:sub_category_products,id',
             'id_images' => 'required|array',
-            'id_images.*' => 'exists:image_storages,id', // Ganti 'image_storages' dengan nama tabel image storage yang sesuai
+            'id_images.*' => 'exists:image_storages,id', 
         ]);
 
         // Cari produk yang akan diupdate
@@ -159,6 +180,11 @@ class ProductController extends Controller
             'meta_keyword' => $validatedData['meta_keyword'],
             'meta_description' => $validatedData['meta_description'],
             'category_product_id' => $validatedData['category_product_id'],
+            'sub_category_product_id' => $validatedData['sub_category_product_id'],
+            'has_message' => $validatedData['has_message'] ?? 0,
+            'has_decoration' => $validatedData['has_decoration'] ?? 0,
+            'pilihan_type_id' => $validatedData['pilihan_type_id'],
+            'pilihan_color_id' => $validatedData['pilihan_color_id'],
         ]);
 
         // Update relasi image jika ada

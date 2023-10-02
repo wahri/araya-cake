@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pilihan_colors', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pilihan');
+            $table->json('isi_pilihan');
             $table->timestamps();
         });
     }

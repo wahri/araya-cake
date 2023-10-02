@@ -2220,6 +2220,8 @@
 
   #stlChanger { display: none; }
 
+  img.cake{width: 300px;}
+
   .m-row { display: flex; flex-flow: wrap; }
   .m-top, .m-bottom { width: 100%; }
   .m-bottom { order: 1; }
@@ -2244,7 +2246,7 @@
   h4.h4-sm { font-size: 1.6rem; }     
   h4.h4-md { font-size: 1.6rem; }  
   h4.h4-lg { font-size: 1.65rem; }   
-  h4.h4-xl { font-size: 1.65rem; } 
+  h4.h4-xl { font-size: 1.2rem; } 
 
   h3.h3-xs { font-size: 1.7rem; } 
   h3.h3-sm { font-size: 1.75rem; }   
@@ -2256,18 +2258,18 @@
   h2.h2-xs { font-size: 1.9rem; }  
   h2.h2-sm { font-size: 2rem; }  
   h2.h2-md { font-size: 2.1rem; }  
-  h2.h2-lg { font-size: 2.2rem; }  
+  h2.h2-lg { font-size: 1.8rem; }  
   h2.h2-xl { font-size: 2.3rem; }
 
   /* Paragraphs */
   p.p-sm { font-size: 1rem; }     
-  p { font-size: 1.0625rem; }          
+  p { font-size: 1rem; }          
   p.p-md { font-size: 1.1rem; }      
   p.p-lg { font-size: 1.1rem; }  
   p.p-xl { font-size: 1.1rem; }  
 
   /* Button */
-  .btn, .btn.btn-md, .btn.btn-lg { font-size: 16px; }
+  .btn, .btn.btn-md, .btn.btn-lg { font-size: 14px; }
   .btn.btn-sm { font-size: 15px; padding: 12px 24px; }
   .btn.btn-md, .btn.btn-lg { padding: 14px 34px; }
 

@@ -195,9 +195,7 @@ html::-webkit-scrollbar-thumb {
     }
 }
 
-@media (min-width: 321px) and (max-width: 413.95px){
-    
-}
+@media (min-width: 321px) and (max-width: 413.95px) {}
 
 .footer-logo img {
     max-height: 150px;
@@ -469,4 +467,17 @@ input[type="reset"] {
     font-size: 1.25rem;
     line-height: 1;
     font-weight: 500;
+}
+
+.online-shop img{
+    width: 75%;
+    filter: brightness( 100% ) contrast( 100% ) saturate( 0% ) blur( 0px ) hue-rotate( 0deg );
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.online-shop img:hover{
+    width: 75%;
+    filter: brightness( 100% ) contrast( 100% ) saturate( 100% ) blur( 0px ) hue-rotate( 0deg );
+    transition-duration: 0.3s;
 }

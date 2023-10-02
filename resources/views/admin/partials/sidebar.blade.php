@@ -54,6 +54,8 @@
                         <li><a href="{{ route('admin.product.index') }}">Data Cake</a></li>
                         <li><a href="{{ route('admin.product.create') }}">Add Cake</a></li>
                         <li><a href="{{ route('admin.categoryProduct.index') }}">Add Category Cake</a></li>
+                        <li><a href="{{ route('admin.createVarian') }}">Add Varian</a></li>
+                        <li><a href="{{ route('admin.createColor') }}">Add Color</a></li>
                     </ul>
                 </li>
 

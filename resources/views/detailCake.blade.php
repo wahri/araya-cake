@@ -25,10 +25,9 @@
 
                             @foreach ($product->images as $i => $image)
                                 <div id="tab-{{ $image->id }}-img"
-                                    class="tab-content text-center {{ $i == 0 ? 'displayed' : '' }}">
+                                    class="tab-content cake text-center {{ $i == 0 ? 'displayed' : '' }}">
                                     <img class="img-fluid" src="{{ asset('images/' . $image->name) }}"
-                                        alt="{{ $product->name }} Image"
-                                        style="width: 500px; height: 600px; object-fit: cover" />
+                                        alt="{{ $product->name }} Image" />
                                 </div>
                             @endforeach
 

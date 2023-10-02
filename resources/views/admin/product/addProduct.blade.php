@@ -34,12 +34,12 @@
 
                                 <div id="addproduct-nav-pills-wizard" class="twitter-bs-wizard">
                                     <ul class="twitter-bs-wizard-nav">
-                                        <li class="nav-item add-product-border">
+                                        <li class="nav-item">
                                             <a href="#product-img" class="nav-link" data-toggle="tab">
                                                 <span class="step-number">01. Product Image</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item add-product-border">
+                                        <li class="nav-item">
                                             <a href="#additional-data" class="nav-link" data-toggle="tab">
                                                 <span class="step-number">02. Additional Data</span>
                                             </a>
@@ -185,7 +185,7 @@
                                                             <label class="control-label">Category</label>
                                                             <select class="form-control" name="category_product_id"
                                                                 x-model="kategori" @change="updateSubkategori()">
-                                                                <option>Pilih Product Category</option>
+                                                                <option value="">Pilih Product Category</option>
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}"
                                                                         {{ old('category_product_id') == $category->id ? 'selected' : '' }}>
@@ -204,7 +204,7 @@
                                                             <label class="control-label">Sub Category</label>
                                                             <select class="form-control" name="sub_category_product_id"
                                                                 x:disabled="loading">
-                                                                <option>Pilih Sub Category</option>
+                                                                <option value="">Pilih Sub Category</option>
                                                                 <template x-for="option in subkategoriOptions"
                                                                     :key="option.id">
                                                                     <option :value="option.id" x-text="option.name">
@@ -221,28 +221,40 @@
                                                 </div>
                                                 <!-- end row -->
 
-                                                <div class="row mb-3">
+                                                <div class="mb-3 row">
                                                     <div class="col-md-4">
                                                         <label class="control-label">Pilihan Varian</label>
-                                                        <select class="form-control" name="pilihan_type"
-                                                            x:disabled="loading">
-                                                            <option>Pilih Varian</option>
-                                                            <option value=""></option>
+                                                        <select class="form-control" name="pilihan_type_id">
+                                                            <option value="">Pilihan varian cake</option>
+                                                            @foreach ($pilihan_type as $type)
+                                                                <option value="{{ $type->id }}">
+                                                                    {{ $type->nama_pilihan }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="control-label">Pilihan Warna</label>
-                                                        <select class="form-control" name="pilihan_color"
-                                                            x:disabled="loading">
-                                                            <option>Pilih Sub Category</option>
-                                                            <option value=""></option>
+                                                        <select class="form-control" name="pilihan_color_id">
+                                                            <option value="">Pilihan untuk warna cake</option>
+                                                            @foreach ($pilihan_color as $color)
+                                                                <option value="{{ $color->id }}">
+                                                                    {{ $color->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4 d-flex align-items-center justify-content-center">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="checkHasMessage" name="has_message" value="1">
-                                                            <label class="form-check-label" for="checkHasMessage">
+                                                    <div class="col-md-4 my-auto">
+                                                        <div class="form-group form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="has_message" name="has_message" value="1">
+                                                            <label class="form-check-label" for="has_message">
                                                                 Has Custom Message?
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="has_decoration" name="has_decoration" value="1">
+                                                            <label class="form-check-label" for="has_decoration">
+                                                                Has Decoration?
                                                             </label>
                                                         </div>
                                                     </div>
@@ -251,7 +263,11 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="description">Product
                                                         Description</label>
-                                                    <textarea class="form-control" id="description" name="description" rows="5" placeholder="Enter Description">{{ old('description') }}</textarea>
+                                                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Description">{{ old('description') }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="description">Informasi Pemesanan</label>
+                                                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Description">{{ old('description') }}</textarea>
                                                 </div>
                                                 @error('description')
                                                     <small class="text-danger">

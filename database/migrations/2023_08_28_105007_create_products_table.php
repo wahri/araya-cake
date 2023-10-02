@@ -21,11 +21,13 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
             $table->boolean('is_premium')->nullable();
+            $table->boolean('has_message')->nullable();
+            $table->boolean('has_decoration')->nullable();
+            $table->text('information')->nullable();
             $table->text('description')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
-            $table->boolean('has_message')->nullable();
             $table->unsignedBigInteger('category_product_id');
             $table->unsignedBigInteger('sub_category_product_id');
             $table->unsignedBigInteger('pilihan_type_id')->nullable();
