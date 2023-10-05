@@ -9,12 +9,26 @@
 @section('content')
     <!-- PAGE HERO
                        ============================================= -->
-    <div id="about-page" class="page-hero-section division">
+    <div class="page-hero-section division">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="text-center hero-txt white-color">
 
+						<div id="breadcrumb">
+							<div class="row">						
+								<div class="col">
+									<div class="breadcrumb-nav">
+										<nav aria-label="breadcrumb">
+											  <ol class="breadcrumb">
+												<li class="breadcrumb-item"><a href="#">Profil</a></li>
+												<li class="breadcrumb-item active" aria-current="page">Kontak</li>
+											  </ol>
+										</nav>
+									</div>
+								</div>
+							</div> 
+						</div>
                         <!-- Title -->
                         <h2 class="h2-xl">Hubungi Kami</h2>
 
@@ -22,7 +36,8 @@
                 </div>
             </div> <!-- End row -->
         </div> <!-- End container -->
-    </div> <!-- END PAGE HERO -->
+    </div> 
+    <!-- END PAGE HERO -->
 
 
     <!-- ABOUT-4

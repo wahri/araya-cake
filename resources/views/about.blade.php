@@ -9,12 +9,26 @@
 @section('content')
     <!-- PAGE HERO
                ============================================= -->
-    <div id="about-page" class="page-hero-section division">
+    <div class="page-hero-section division">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="hero-txt text-center white-color">
 
+						<div id="breadcrumb">
+							<div class="row">						
+								<div class="col">
+									<div class="breadcrumb-nav">
+										<nav aria-label="breadcrumb">
+											  <ol class="breadcrumb">
+												<li class="breadcrumb-item"><a href="#">Profil</a></li>
+												<li class="breadcrumb-item active" aria-current="page">Tentang Kami</li>
+											  </ol>
+										</nav>
+									</div>
+								</div>
+							</div> 
+						</div>
                         <!-- Title -->
                         <h2 class="h2-xl">Tentang Araya</h2>
 

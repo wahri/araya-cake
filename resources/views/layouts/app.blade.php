@@ -66,8 +66,15 @@
     <link href="{{ asset('home-assets/css/responsive.css') }}" rel="stylesheet">
 
     <link href="{{ asset('home-assets/css/custom.css') }}" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        [x-cloak] {
+            display: none
+        }
+    </style>
+
 
 </head>
 

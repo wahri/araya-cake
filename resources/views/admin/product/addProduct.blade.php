@@ -265,15 +265,15 @@
                                                         Description</label>
                                                     <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Description">{{ old('description') }}</textarea>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="description">Informasi Pemesanan</label>
-                                                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Description">{{ old('description') }}</textarea>
-                                                </div>
                                                 @error('description')
                                                     <small class="text-danger">
                                                         {{ $message }}
                                                     </small>
                                                 @enderror
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="information">Informasi Pemesanan</label>
+                                                    <textarea class="form-control" id="information" name="information" rows="3" placeholder="Enter information">{{ old('information') }}</textarea>
+                                                </div>
                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                     <li class="previous"><a href="#"><i
                                                                 class="mdi mdi-arrow-left me-1"></i> Back</a></li>

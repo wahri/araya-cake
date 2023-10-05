@@ -12,9 +12,4 @@ class PilihanType extends Model
     protected $fillable = [
         'nama_pilihan', 'isi_pilihan'
     ];
-
-    public function types()
-    {
-        return $this->hasMany(Layer::class);
-    }
 }

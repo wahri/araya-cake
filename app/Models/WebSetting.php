@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PilihanColor extends Model
+class WebSetting extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama_pilihan', 'isi_pilihan'
+        'setting_name', 'value'
     ];
 }

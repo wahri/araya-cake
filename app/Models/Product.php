@@ -12,8 +12,10 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'length', 'width', 'height', 'price', 'has_message', 'pilihan_type_id', 'pilihan_color_id', 'description', 'meta_title', 'meta_keyword', 'meta_description', 'category_product_id', 'sub_category_product_id'
+        'name', 'slug', 'length', 'width', 'height', 'price', 'has_message', 'has_decoration', 'pilihan_type_id', 'pilihan_color_id', 'description', 'information', 'meta_title', 'meta_keyword', 'meta_description', 'category_product_id', 'sub_category_product_id'
     ];
+
+    protected $with = ['category', 'subCategory', 'images', 'pilihan_type', 'pilihan_color'];
 
     public function category()
     {
@@ -32,12 +34,12 @@ class Product extends Model
 
     public function pilihan_type()
     {
-        return $this->hasOne(PilihanType::class);
+        return $this->hasOne(PilihanType::class, 'id');
     }
     
     public function pilihan_color()
     {
-        return $this->hasOne(PilihanColor::class);
+        return $this->hasOne(PilihanColor::class, 'id');
     }
 
 }

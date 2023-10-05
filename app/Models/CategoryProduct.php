@@ -10,8 +10,10 @@ class CategoryProduct extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'big_icon', 'small_icon', 'is_primary'
+        'name', 'big_icon', 'small_icon', 'is_primary', 'image_storage_id'
     ];
+
+    protected $with = ['image'];
 
     public function products()
     {
@@ -21,5 +23,10 @@ class CategoryProduct extends Model
     public function subCategories()
     {
         return $this->hasMany(SubCategoryProduct::class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(ImageStorage::class, 'image_storage_id');
     }
 }

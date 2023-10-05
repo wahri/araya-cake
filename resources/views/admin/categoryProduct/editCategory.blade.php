@@ -215,6 +215,36 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('admin.categoryProduct.savePromoImage', $category->id) }}" method="post">
+                                    @csrf
+                                    <h4 class="header-title">Choose Image</h4>
+                                    <p class="card-title-desc">Choose image for category promo</p>
+                                    <ul id="check_image">
+                                        @foreach ($images as $image)
+                                            <li>
+                                                <input type="radio" name="image_storage_id"
+                                                    value="{{ $image->id }}"
+                                                    id="myCheckbox{{ $image->id }}"
+                                                    {{ $image->id, old('image_storage_id', $category->image_storage_id) ? 'checked' : '' }} />
+                                                <label for="myCheckbox{{ $image->id }}">
+                                                    <img src="{{ asset('images/' . $image->name) }}" />
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+    
+                                    <button type="submit" class="btn btn-primary d-flex ml-auto">Simpan</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 

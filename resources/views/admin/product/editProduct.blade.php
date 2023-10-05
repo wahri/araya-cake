@@ -242,7 +242,7 @@
                                                             <option value="">Pilihan varian cake</option>
                                                             @foreach ($pilihan_type as $type)
                                                                 <option value="{{ $type->id }}" {{ $product->pilihan_type_id == $type->id ? 'selected' : '' }}>
-                                                                    {{ $type->name }}</option>
+                                                                    {{ $type->nama_pilihan }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -284,6 +284,10 @@
                                                         {{ $message }}
                                                     </small>
                                                 @enderror
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="information">Informasi Pemesanan</label>
+                                                    <textarea class="form-control" id="information" name="information" rows="3" placeholder="Enter information">{{ old('information') }}</textarea>
+                                                </div>
                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                     <li class="previous"><a href="#"><i
                                                                 class="mdi mdi-arrow-left me-1"></i> Back</a></li>

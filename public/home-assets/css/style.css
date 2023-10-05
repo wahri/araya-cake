@@ -349,7 +349,7 @@ body {
 h1, h2, h3, h4, h5, h6 {  
   font-family: KoHo, sans-serif;
   line-height: 1.3;
-  font-weight: 500;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0; 
 }
@@ -460,7 +460,7 @@ ul.txt-list {
 /*------------------------------------------*/
 
 .btn {
-  background-color: transparent;
+  /* background-color: transparent; */
   font-family: 'Poppins', sans-serif;
   color: #fff;
   font-size: 16px;
@@ -485,7 +485,7 @@ ul.txt-list {
 /*------------------------------------------*/
 
 .btn.btn-sm {
-  font-size: 15px;
+  font-size: 12px;
   padding: 13px 26px;
 }
 
@@ -2737,7 +2737,8 @@ span.ico-holder {
 }
 
 #promo-11 {
-  background-image: url(../images/reviews.jpg);
+  /* background-image: url(../images/reviews.jpg); */
+  background-color: #f2a782;
   padding-top: 100px;
   padding-bottom: 60px;
 }
@@ -5459,6 +5460,7 @@ select:-webkit-autofill:focus {
   background-attachment: scroll!important;
   padding-top: 170px;
   padding-bottom: 120px;
+  background-color: #f2a782;
 }
 
 #about-page {

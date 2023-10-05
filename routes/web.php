@@ -34,8 +34,12 @@ Route::get('/tentang-araya', [FrontpageController::class, 'about'])->name('about
 Route::get('/galeri-araya', [FrontpageController::class, 'galleryCake'])->name('galleryCake');
 Route::get('/kontak-araya', [FrontpageController::class, 'contact'])->name('contact');
 Route::get('/produk-araya', [FrontpageController::class, 'product'])->name('product');
+Route::get('/category/{slug}', [FrontpageController::class, 'categoryProduct'])->name('categoryProduct');
 Route::get('/semua-cake', [FrontpageController::class, 'shop'])->name('shop');
 Route::get('/detail/cake/{slug}', [FrontpageController::class, 'detailCake'])->name('detail.cake');
+Route::get('/show/nota/{nota_no}', [FrontpageController::class, 'showNota'])->name('showNota');
+Route::get('/show/receipt/{nota_no}', [FrontpageController::class, 'showReceipt'])->name('showReceipt');
+Route::get('/konfirmasi-pesanan/{nota_no}', [FrontpageController::class, 'confirmWhatsapp'])->name('confirmWhatsapp');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/getCartList', [CartController::class, 'getCartList'])->name('getCartList');
@@ -64,19 +68,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:Admin'])->grou
     Route::post('uploadProductImage', [ProductController::class, 'uploadProductImage'])->name('uploadProductImage');
 
     Route::resource('categoryProduct', CategoryProductController::class);
+    Route::post('savePromoImage/{id}', [CategoryProductController::class, 'savePromoImage'])->name('categoryProduct.savePromoImage');
     Route::resource('subCategory', SubCategoryController::class);
     Route::get('/get-subcategories/{kategori}', [SubCategoryController::class, 'getSubcategories'])->name('getSubcategory');
 
     Route::get('/add-varian', [VarianController::class, 'createVarian'])->name('createVarian');
     Route::get('/add-color', [ColorController::class, 'createColor'])->name('createColor');
-
-
-
-    // Route::get('createCategoryProduct', [ProductController::class, 'createCategoryProduct'])->name('createCategoryProduct');
-    // Route::post('storeCategoryProduct', [ProductController::class, 'storeCategoryProduct'])->name('storeCategoryProduct');
-    // Route::get('editCategoryProduct', [ProductController::class, 'editCategoryProduct'])->name('editCategoryProduct');
-    // Route::put('updateCategoryProduct', [ProductController::class, 'updateCategoryProduct'])->name('updateCategoryProduct');
-    // Route::delete('deleteCategoryProduct', [ProductController::class, 'deleteCategoryProduct'])->name('deleteCategoryProduct');
 });
 
 Route::middleware('auth')->group(function () {

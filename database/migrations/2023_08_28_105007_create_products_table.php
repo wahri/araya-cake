@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('length', 10, 2);
             $table->decimal('width', 10, 2);
             $table->decimal('height', 10, 2);
+            $table->integer('min_day')->nullable();
             $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
             $table->boolean('is_premium')->nullable();

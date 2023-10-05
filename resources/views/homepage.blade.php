@@ -8,7 +8,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                                                                                                                                                           ============================================= -->
+                                                                                                                                                                                                                                               ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -51,7 +51,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                                                                                                                                                       ============================================= -->
+                                                                                                                                                                                                                                           ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -152,117 +152,6 @@
                                                                             </a>
                                                                         </div>
                                                                     </div>
-
-                                                                    {{-- <div class="ml-auto" x-data="{
-                                                                        open: false,
-                                                                        quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
-                                                                        cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
-                                                                        loading: false,
-                                                                        productId: {{ $product->id }},
-                                                                    
-                                                                        init() {
-                                                                            if (this.quantity > 0) {
-                                                                                this.open = true
-                                                                            } else {
-                                                                                this.open = false
-                                                                            }
-                                                                        },
-                                                                    
-                                                                        async addToCart() {
-                                                                            try {
-                                                                                const response = await axios.post('{{ route('addToCart') }}', {
-                                                                                    _token: '{{ csrf_token() }}',
-                                                                                    product_id: this.productId
-                                                                                })
-                                                                                console.log(response)
-                                                                                this.quantity = response.data.quantity
-                                                                                this.cartId = response.data.cartId
-                                                                    
-                                                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                                                    
-                                                                                cartCountElements.each(function() {
-                                                                                    var element = $(this);
-                                                                                    if (element.is(':hidden')) {
-                                                                                        element.css('display', 'block');
-                                                                                    }
-                                                                                    element.text(response.data.cart_count);
-                                                                                });
-                                                                    
-                                                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                                            } finally {
-                                                                                this.open = true
-                                                                            }
-                                                                        },
-                                                                    
-                                                                        async updateCart() {
-                                                                            try {
-                                                                                if (this.quantity > 0) {
-                                                                                    this.loading = true
-                                                                                    response = await axios.post('{{ route('updateCart') }}', {
-                                                                                        _token: '{{ csrf_token() }}',
-                                                                                        cartId: this.cartId,
-                                                                                        qty: this.quantity
-                                                                                    })
-                                                                    
-                                                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                                                    
-                                                                                    cartCountElements.each(function() {
-                                                                                        var element = $(this);
-                                                                                        if (element.is(':hidden')) {
-                                                                                            element.css('display', 'block');
-                                                                                        }
-                                                                                        element.text(response.data.cart_count);
-                                                                                    });
-                                                                    
-                                                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                                                } else {
-                                                                                    this.loading = true
-                                                                                    response = await axios.post('{{ route('deleteCart') }}', {
-                                                                                        _token: '{{ csrf_token() }}',
-                                                                                        cartId: this.cartId
-                                                                                    })
-                                                                    
-                                                                                    this.open = false
-                                                                    
-                                                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                                                    
-                                                                                    cartCountElements.each(function() {
-                                                                                        var element = $(this);
-                                                                                        if (element.is(':hidden')) {
-                                                                                            element.css('display', 'block');
-                                                                                        }
-                                                                                        element.text(response.data.cart_count);
-                                                                                    });
-                                                                    
-                                                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                                                }
-                                                                            } finally {
-                                                                                this.loading = false
-                                                                            }
-                                                                        },
-                                                                    }">
-                                                                        <div x-show="open">
-                                                                            <input type="number" class="qty"
-                                                                                min="0" max="99"
-                                                                                :disabled="loading" x-model="quantity"
-                                                                                x-on:change="await updateCart()" />
-                                                                        </div>
-
-                                                                        <div x-show="!open">
-                                                                            <div class="add-to-cart bg-araya ico-10"
-                                                                                style="cursor: pointer">
-                                                                                <a class="add-to-cart-list"
-                                                                                    data-product-id="{{ $product->id }}"
-                                                                                    style="color:white"
-                                                                                    x-on:click="await addToCart()">
-                                                                                    <span
-                                                                                        class="flaticon-shopping-bag"></span>
-                                                                                    Order
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> --}}
-
                                                                 </div>
 
                                                             </div>
@@ -333,12 +222,11 @@
                     <div class="mb-40 pbox-11-txt white-color">
 
                         <!-- Title -->
-                        <h3 class="h3-lg">The</h3>
-                        <h2>Custom Cake</h2>
+                        <h2>Desain Cake Mu Disini</h2>
 
                         <!-- Text -->
                         <p class="p-md">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla nobis numquam, ea unde eos quo!
+                            Miliki desain cake impianmu? Percayakan pada kami di Araya, di mana kreasi Anda menjadi kenyataan.
                         </p>
 
                         <!-- Button -->
@@ -370,7 +258,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                                   ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -431,7 +319,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                                                                                                                                                        ============================================= -->
+                                                                                                                                                                                                                                            ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -449,228 +337,100 @@
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Classic California</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.5</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(23)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #2 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-02.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-02.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Margherita Pizza</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.52</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(58)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #3 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-03.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-03.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Grilled Ribs</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.9</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(69)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #4 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-04.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-04.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Field Greens Pizza</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.38</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(41)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #5 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-05.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-05.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Mini Chicken Pizza</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>5</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(86)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #6 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-06.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-06.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Eggs Benedict Burger</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.65</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(30)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #7 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-07.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-07.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Double Bacon Burger</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.85</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(71)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </a>
                     </div>
-
-
-                    <!-- IMAGE #8 -->
                     <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-08.jpg') }}" class="image-link">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
                             <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-08.jpg') }}"
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
                                     alt="gallery-image" />
                                 <div class="item-overlay"></div>
 
-                                <!-- Image Meta -->
-                                <div class="img-meta white-color">
-                                    <h5 class="h5-md">Classic California</h5>
-                                    <div class="txt-block-rating">
-                                        <div class="stars-rating">
-                                            <span>4.64</span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(17)</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="gallery-img">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
+                            <div class="hover-overlay">
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
+                                    alt="gallery-image" />
+                                <div class="item-overlay"></div>
 
                             </div>
                         </a>
                     </div>
+                    <div class="gallery-img">
+                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
+                            <div class="hover-overlay">
+                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
+                                    alt="gallery-image" />
+                                <div class="item-overlay"></div>
+
+                            </div>
+                        </a>
+                    </div>
+
 
 
                 </div>
@@ -685,7 +445,7 @@
 
 
     <!-- ABOUT-3
-                                                                                                                                                                                                           ============================================= -->
+                                                                                                                                                                                                               ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -754,7 +514,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                                   ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe

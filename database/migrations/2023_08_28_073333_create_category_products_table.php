@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('big_icon')->nullable();
             $table->string('small_icon')->nullable();
+            $table->unsignedBigInteger('image_storage_id')->nullable();
             $table->boolean('is_primary');
             $table->timestamps();
+
+            $table->foreign('image_storage_id')->references('id')->on('image_storages')->onDelete('cascade');
         });
     }
 

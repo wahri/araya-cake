@@ -64,7 +64,7 @@
                             <ul>
                                 @foreach ($categoryProduct as $category)
                                     <li><a
-                                            href="{{ route('product') . '?category=' . $category->slug }}">{{ $category->name }}</a>
+                                            href="{{ route('categoryProduct', $category->slug) }}">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -123,7 +123,7 @@
                                 <a href="#" class="btn-member">
                                     {{ Auth::user()->name }}
                                 </a>
-                                <ul>
+                                <ul class="right">
                                     <form id="logoutForm" action="{{ route('logout') }}" method="POST">
                                         @csrf
                                     </form>

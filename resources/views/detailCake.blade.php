@@ -4,19 +4,141 @@
 @endpush
 
 @push('script')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+        function startBounceAnimation() {
+            const cartBadge = document.querySelector('#cart-count');
+            const cartBadgeMobile = document.querySelector('#cart-count-mobile');
+
+            cartBadge.classList.remove('animated');
+            void cartBadge.offsetWidth;
+            cartBadge.classList.add('animated');
+
+            cartBadgeMobile.classList.remove('animated');
+            void cartBadgeMobile.offsetWidth;
+            cartBadgeMobile.classList.add('animated');
+        }
+
+        function addBadge(response) {
+            if ($('#cart-count').is(':hidden')) {
+                $('#cart-count').css('display', 'block');
+            }
+            $('#cart-count').text(response.data.cart_count);
+
+            if ($('#cart-count-mobile').is(':hidden')) {
+                $('#cart-count-mobile').css('display', 'block ');
+            }
+            $('#cart-count-mobile').text(response.data.cart_count);
+
+            $("#loader").delay(100).fadeOut();
+            $("#loader-wrapper").delay(100).fadeOut("fast");
+            startBounceAnimation();
+        }
+
+        function addToCart() {
+            const productId = {{ $product->id }}
+            const rasa = $('#pilihan_rasa').val()
+            const quantity = $('#quantity').val()
+            const message = $('#cake_message').val()
+
+            const cake_message = 'Note: ' + message
+            $("#loader").delay(100).fadeIn();
+            $("#loader-wrapper").delay(100).fadeIn("fast");
+
+            axios({
+                    method: 'post',
+                    url: '{{ route('addToCart') }}',
+                    data: {
+                        product_id: productId,
+                        quantity: quantity,
+                        cake_message: cake_message,
+                        pilihan_type: rasa,
+                    }
+                }).then(function(response) {
+                    addBadge(response)
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+
+        $(function() {
+            $('#tambahKeranjang').click(addToCart)
+            $('#pesanSekarang').click(function() {
+
+                addToCart()
+
+                window.location.replace("{{ route('cart') }}");
+            })
+        });
+    </script>
+
+    <script>
+        (function() {
+            window.inputNumber = function(el) {
+                var min = el.attr("min") || false;
+                var max = el.attr("max") || false;
+                const harga = {{ $product->price }}
+
+
+                var els = {};
+
+                els.dec = el.prev();
+                els.inc = el.next();
+
+                el.each(function() {
+                    init($(this));
+                });
+
+                function init(el) {
+                    els.dec.on("click", function() {
+                        decrement()
+
+                        $('#total_harga').text(formatRupiah(harga * el[0].value))
+                    });
+                    els.inc.on("click", function() {
+                        increment()
+
+                        $('#total_harga').text(formatRupiah(harga * el[0].value))
+                    });
+
+                    function decrement() {
+                        var value = el[0].value;
+                        value--;
+                        if (!min || value >= min) {
+                            el[0].value = value;
+                        }
+                    }
+
+                    function increment() {
+                        var value = el[0].value;
+                        value++;
+                        if (!max || value <= max) {
+                            el[0].value = value++;
+                        }
+                    }
+
+                    function formatRupiah(angka) {
+                        var reverse = angka.toString().split('').reverse().join('');
+                        var ribuan = reverse.match(/\d{1,3}/g);
+                        var formatted = ribuan.join('.').split('').reverse().join('');
+                        return 'Rp ' + formatted + ',-';
+                    }
+                }
+            };
+        })();
+
+        inputNumber($(".input-number"));
+    </script>
 @endpush
 
 @section('content')
-    <!-- SINGLE PRODUCT
-                                                                                               ============================================= -->
     <section id="product-1" class="pt-100 pb-60 single-product division">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
 
-
-                <!-- PRODUCT IMAGE -->
-                <div class="col-lg-7">
+                <div class="col-md-4">
                     <div class="product-preview">
 
 
@@ -40,7 +162,7 @@
                                 <div class="text-center col-lg-12">
                                     <ul class="clearfix tabs-2">
 
-                                        @foreach ($product->images as $image)
+                                        @foreach ($product->images as $i => $image)
                                             <li class="tab-link {{ $i == 0 ? 'displayed' : '' }}"
                                                 data-tab="tab-{{ $image->id }}-img">
                                                 <img src="{{ asset('images/' . $image->name) }}"
@@ -55,217 +177,131 @@
 
 
                     </div>
-                </div> <!-- END PRODUCT IMAGE -->
+                </div>
+
+                <div class="col-md-5 mb-20">
+                    <div class="product-description">
 
 
-                <!-- PRODUCT DISCRIPTION -->
-                <div class="col-lg-5">
-                    <div class="product-description" x-data="{
-                        orderButton: false,
-                        quantity: {{ $cart->where('product_id', $product->id)->first()->quantity ?? 0 }},
-                        cartId: {{ $cart->where('product_id', $product->id)->first()->id ?? 0 }},
-                        loading: false,
-                        productId: {{ $product->id }},
-                    
-                        init() {
-                            if (this.quantity > 0) {
-                                this.orderButton = true
-                            } else {
-                                this.orderButton = false
-                            }
-                        },
-
-                        async deleteCart() {
-                            Swal.fire({
-                                title: 'Hapus item dari keranjang?',
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#ff4f3f',
-                                cancelButtonColor: '#d3d3d3',
-                                confirmButtonText: 'Ya, Hapus item!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    this.loading = true
-                                    axios.post('{{ route('deleteCart') }}', {
-                                        _token: '{{ csrf_token() }}',
-                                        cartId: this.cartId
-                                    })
-                                    location.reload()
-                                    Swal.fire(
-                                        'Berhasil!',
-                                        'Item dihapus dari keranjang.',
-                                        'success'
-                                    )
-                                }
-                            })
-                        },
-                    
-                        async addToCart() {
-                            try {
-                                const response = await axios.post('{{ route('addToCart') }}', {
-                                    _token: '{{ csrf_token() }}',
-                                    product_id: this.productId
-                                })
-                                console.log(response)
-                                this.quantity = response.data.quantity
-                                this.cartId = response.data.cartId
-                    
-                                var cartCountElements = $('#cart-count, #cart-count-mobile');
-                    
-                                cartCountElements.each(function() {
-                                    var element = $(this);
-                                    if (element.is(':hidden')) {
-                                        element.css('display', 'block');
-                                    }
-                                    element.text(response.data.cart_count);
-                                });
-                    
-                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                            } finally {
-                                this.orderButton = true
-                            }
-                        },
-                    
-                        async updateCart() {
-                            try {
-                                if (this.quantity > 0) {
-                                    this.loading = true
-                                    response = await axios.post('{{ route('updateCart') }}', {
-                                        _token: '{{ csrf_token() }}',
-                                        cartId: this.cartId,
-                                        qty: this.quantity
-                                    })
-                    
-                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
-                    
-                                    cartCountElements.each(function() {
-                                        var element = $(this);
-                                        if (element.is(':hidden')) {
-                                            element.css('display', 'block');
-                                        }
-                                        element.text(response.data.cart_count);
-                                    });
-                    
-                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                } else {
-                                    this.loading = true
-                                    response = await axios.post('{{ route('deleteCart') }}', {
-                                        _token: '{{ csrf_token() }}',
-                                        cartId: this.cartId
-                                    })
-                    
-                                    this.orderButton = false
-                    
-                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
-                    
-                                    cartCountElements.each(function() {
-                                        var element = $(this);
-                                        if (element.is(':hidden')) {
-                                            element.css('display', 'block');
-                                        }
-                                        element.text(response.data.cart_count);
-                                    });
-                    
-                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                    
-                                    console.log(this.orderButton);
-                                }
-                            } finally {
-                                this.loading = false
-                            }
-                        },
-                    }">
-
-                        <!-- TITLE -->
                         <div class="project-title">
 
-                            <!-- Title -->
-                            <h2 class="h2-lg">{{ $product->name }}</h2>
 
-                            <!-- Rating -->
+                            <h4 class="h4-lg">{{ $product->name }}</h4>
+
+
                             <div class="stars-rating">
-                                {{-- <span>4.38</span> --}}
+
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                {{-- <span>(3 Customer Reviews)</span> --}}
                             </div>
 
-                            <!-- Price -->
+
                             <div class="project-price">
-                                <h4 class="h4-xl araya-color">
+                                <h4 class="h4-sm araya-color">
                                     {{-- <span class="old-price">$9.95</span>  --}}
-                                    Rp. {{ $product->price / 1000 }}k</h4>
+                                    {{ 'Rp. ' . number_format($product->price, 0, ',', '.') . ',-' }}
+                                </h4>
                             </div>
 
                         </div>
 
-                        <!-- TEXT -->
+
                         <div class="product-txt">
 
-                            <!-- Text -->
+
                             <p class="p-md grey-color">
                                 {{ $product->description }}
                             </p>
 
-                            <!-- Product Data -->
-                            <div class="product-info">
-                                <p>Ukuran Cake:
+                            <div class="product-info mb-3">
+                                <p class="my-auto">Ukuran Cake:
                                     <span>{{ floor($product->length) . 'cm x ' . floor($product->width) . 'cm x ' . floor($product->height) . 'cm' }}</span>
                                 </p>
-                                <p>Rasa: <span>Chocolate, Cheese, Cream</span></p>
-                                <p>Tags: <span>{{ $product->meta_keyword }}</span></p>
+                                @if ($product->meta_keyword)
+                                    <p>Tags: <span>{{ $product->meta_keyword }}</span></p>
+                                @endif
+
+                                @if ($product->pilihan_type_id != null)
+                                    <div class="row d-flex justify-content-between">
+                                        <div class="col-7">
+                                            <p>
+                                                Varian Isi Cake:
+                                            </p>
+                                        </div>
+                                        <div class="col-5 my-auto">
+                                            <select class="form-control" name="pilihan_rasa" id="pilihan_rasa">
+                                                <option value="" selected disabled>Pilihan rasa</option>
+                                                @foreach (json_decode($product->pilihan_type->isi_pilihan) as $isi)
+                                                    <option value="{{ $isi }}">{{ $isi }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                @endif
+
                             </div>
 
-                            <div x-show="orderButton">
-                                <div class="mb-3 d-flex product-info">
-                                    <p>
-                                        Jumlah di keranjang:
-                                    </p>
-                                    <input type="number" class="ml-auto qty" min="0" max="99"
-                                        :disabled="loading" x-model="quantity" x-on:change="await updateCart()" />
-                                    <a class="ml-3 d-flex align-items-center" style="cursor: pointer"  x-on:click="deleteCart()">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="mb-3" x-show="!orderButton">
-                                <a class="btn btn-red tra-red-hover add-to-cart-list" data-product-id="{{ $product->id }}"
-                                    style="color:white" x-on:click="await addToCart()">
-                                    <span class="flaticon-shopping-bag"></span>
-                                    Order
-                                </a>
-                            </div>
 
 
 
 
-                            <!-- List -->
+
                             <ul class="txt-list">
-                                <li class="list-item">
-                                    <p class="p-sm">Pemesanan kue tanpa tag ready bersifat preorder dengan 2 hari
-                                        pemesanan</p>
-                                </li>
-                                <li class="list-item">
-                                    <p class="p-sm">Contoh Pesan Lain</p>
-                                </li>
+                                @foreach (preg_split('/- /', $product->information, -1, PREG_SPLIT_NO_EMPTY) as $info)
+                                    <li class="list-item">
+                                        <p class="p-sm">{{ $info }}</p>
+                                    </li>
+                                @endforeach
                             </ul>
 
-                        </div> <!-- END TEXT-->
+                        </div>
 
                     </div>
-                </div> <!-- END PRODUCT DISCRIPTION -->
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card shadow p-4" style="border-radius: 20px">
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-between">
+                                <div>
+                                    <span class="input-number-decrement">–</span><input name="quantity" class="input-number"
+                                        id="quantity" type="text" value="1" min="1" max="10"
+                                        disabled><span class="input-number-increment">+</span>
+                                </div>
+
+                                <span class="font-weight-bold my-auto" id="total_harga">
+                                    {{ 'Rp. ' . number_format($product->price, 0, ',', '.') . ',-' }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <textarea name="cake_message" id="cake_message" class="form-control" rows="2" placeholder="Masukkan pesan"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" id="tambahKeranjang" class="btn btn-block btn-secondary">
+                                    Tambah Keranjang
+                                </button>
+                                <button type="button" id="pesanSekarang" class="btn btn-block btn-primary">
+                                    Pesan Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
 
-            </div> <!-- End row -->
-        </div> <!-- End container -->
+            </div>
+        </div>
     </section>
 
-    <!-- MENU-6
-                                                                                               ============================================= -->
+
     <section id="menu-6" class="bg-lightgrey wide-70 menu-section division">
         <div class="container">
 
@@ -276,7 +312,7 @@
                     <div class="text-center section-title mb-60">
 
                         <!-- Title 	-->
-                        <h2 class="h2-xl">Lihat cake lainnya</h2>
+                        <h3 class="h3-xl">Lihat cake sejenis</h3>
 
                     </div>
                 </div>
@@ -331,108 +367,13 @@
                                             {{ $eachProduct->price / 1000 }}k</h5>
                                     </div>
 
-                                    <div class="ml-auto" x-data="{
-                                        open: false,
-                                        quantity: {{ $cart->where('product_id', $eachProduct->id)->first()->quantity ?? 0 }},
-                                        cartId: {{ $cart->where('product_id', $eachProduct->id)->first()->id ?? 0 }},
-                                        loading: false,
-                                        productId: {{ $eachProduct->id }},
-                                    
-                                        init() {
-                                            if (this.quantity > 0) {
-                                                this.open = true
-                                            } else {
-                                                this.open = false
-                                            }
-                                        },
-                                    
-                                        async addToCart() {
-                                            try {
-                                                const response = await axios.post('{{ route('addToCart') }}', {
-                                                    _token: '{{ csrf_token() }}',
-                                                    product_id: this.productId
-                                                })
-                                                console.log(response)
-                                                this.quantity = response.data.quantity
-                                                this.cartId = response.data.cartId
-                                    
-                                                var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                    
-                                                cartCountElements.each(function() {
-                                                    var element = $(this);
-                                                    if (element.is(':hidden')) {
-                                                        element.css('display', 'block');
-                                                    }
-                                                    element.text(response.data.cart_count);
-                                                });
-                                    
-                                                cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                            } finally {
-                                                this.open = true
-                                            }
-                                        },
-                                    
-                                        async updateCart() {
-                                            try {
-                                                if (this.quantity > 0) {
-                                                    this.loading = true
-                                                    response = await axios.post('{{ route('updateCart') }}', {
-                                                        _token: '{{ csrf_token() }}',
-                                                        cartId: this.cartId,
-                                                        qty: this.quantity
-                                                    })
-                                    
-                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                    
-                                                    cartCountElements.each(function() {
-                                                        var element = $(this);
-                                                        if (element.is(':hidden')) {
-                                                            element.css('display', 'block');
-                                                        }
-                                                        element.text(response.data.cart_count);
-                                                    });
-                                    
-                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                } else {
-                                                    this.loading = true
-                                                    response = await axios.post('{{ route('deleteCart') }}', {
-                                                        _token: '{{ csrf_token() }}',
-                                                        cartId: this.cartId
-                                                    })
-                                    
-                                                    this.open = false
-                                    
-                                                    var cartCountElements = $('#cart-count, #cart-count-mobile');
-                                    
-                                                    cartCountElements.each(function() {
-                                                        var element = $(this);
-                                                        if (element.is(':hidden')) {
-                                                            element.css('display', 'block');
-                                                        }
-                                                        element.text(response.data.cart_count);
-                                                    });
-                                    
-                                                    cartCountElements.removeClass('animated').css('display', 'block').text(response.data.cart_count).addClass('animated');
-                                                }
-                                            } finally {
-                                                this.loading = false
-                                            }
-                                        },
-                                    }">
-                                        <div x-show="open">
-                                            <input type="number" class="qty" min="0" max="99"
-                                                :disabled="loading" x-model="quantity"
-                                                x-on:change="await updateCart()" />
-                                        </div>
-
-                                        <div x-show="!open">
-                                            <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
-                                                <a class="add-to-cart-list" data-product-id="{{ $eachProduct->id }}"
-                                                    style="color:white" x-on:click="await addToCart()">
-                                                    <span class="flaticon-shopping-bag"></span>
-                                                    Order
-                                                </a>
-                                            </div>
+                                    <div class="ml-auto">
+                                        <div class="add-to-cart bg-araya ico-10" style="cursor: pointer">
+                                            <a class="add-to-cart-list"
+                                                href="{{ route('detail.cake', $eachProduct->slug) }}" target="_blank">
+                                                <span class="flaticon-shopping-bag"></span>
+                                                Order
+                                            </a>
                                         </div>
                                     </div>
 

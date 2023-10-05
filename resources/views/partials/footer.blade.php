@@ -5,11 +5,11 @@
 
 
         <!-- FOOTER CONTENT -->
-        <div class="row">
+        <div class="row justify-content-center">
 
 
             <!-- FOOTER INFO -->
-            <div class="col-xl-3">
+            <div class="col-xl-4">
                 <div class="footer-info">
 
                     <!-- Footer Logo -->
@@ -22,8 +22,8 @@
 
 
             <!-- FOOTER CONTACTS -->
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="mb-40 footer-contacts">
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="mb-40 footer-contacts text-center">
 
                     <!-- Title -->
                     <h5 class="h5-sm">Kunjungi Kami</h5>
@@ -47,8 +47,8 @@
 
 
             <!-- FOOTER INFO -->
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="footer-info mb-30">
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="footer-info mb-30  text-center">
 
                     <!-- Title -->
                     <h5 class="h5-sm">Informasi Toko</h5>
@@ -62,44 +62,6 @@
                 </div>
             </div>
 
-
-            <!-- FOOTER IMAGES -->
-            <div class="col-md-12 col-lg-4 col-xl-3">
-                <div class="mb-40 footer-img">
-
-                    <!-- Title -->
-                    <h5 class="h5-sm">Galeri cake</h5>
-
-                    <!-- Instagram Images -->
-                    <ul class="clearfix text-center">
-                        <li>
-                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-01.jpg') }}"
-                                    alt="insta-img"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-02.jpg') }}"
-                                    alt="insta-img"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-03.jpg') }}"
-                                    alt="insta-img"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-04.jpg') }}"
-                                    alt="insta-img"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-05.jpg') }}"
-                                    alt="insta-img"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img class="insta-img" src="{{ asset('home-assets/images/instagram/img-06.jpg') }}"
-                                    alt="insta-img"></a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div> <!-- END FOOTER IMAGES -->
 
 
         </div> <!-- END FOOTER CONTENT -->

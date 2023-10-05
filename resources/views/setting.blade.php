@@ -50,7 +50,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <input type="email" class="form-control" disabled value="{{ $user->email }}">
+                                    <input type="email" class="form-control" disabled value="{{ $user->email ?? '' }}">
                                     @error('email')
                                         <small class="text-danger">
                                             {{ $message }}
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="name" id="name"
-                                        placeholder="Nama Lengkap" value="{{ $user->name }}">
+                                        placeholder="Nama Lengkap" value="{{ $user->name ?? '' }}">
                                     @error('name')
                                         <small class="text-danger">
                                             {{ $message }}
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="phone" id="phone"
-                                        placeholder="Nomor Whatsapp" value="{{ $user->profile->phone }}">
+                                        placeholder="Nomor Whatsapp" value="{{ $user->profile->phone ?? '' }}">
                                     @error('phone')
                                         <small class="text-danger">
                                             {{ $message }}
@@ -78,7 +78,7 @@
                                 <div class="form-group">
                                     <label for="birthdate" style="color: #495057">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="birthdate" id="birthdate"
-                                        placeholder="Tanggal Ulang Tahun" value="{{ $user->profile->birthdate }}">
+                                        placeholder="Tanggal Ulang Tahun" value="{{ $user->profile->birthdate ?? '' }}">
                                     @error('birthdate')
                                         <small class="text-danger">
                                             {{ $message }}
@@ -86,7 +86,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="address" id="address" class="form-control" placeholder="Alamat lengkap">{{ $user->profile->address }}</textarea>
+                                    <textarea name="address" id="address" class="form-control" placeholder="Alamat lengkap">{{ $user->profile->address ?? '' }}</textarea>
                                     @error('address')
                                         <small class="text-danger">
                                             {{ $message }}

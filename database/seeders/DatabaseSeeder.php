@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\PilihanColor;
 use App\Models\PilihanType;
 use App\Models\User;
+use App\Models\WebSetting;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -50,9 +52,26 @@ class DatabaseSeeder extends Seeder
         $arrWarna = explode(', ', $warna);
 
         $jsonWarna = json_encode($arrWarna);
-        PilihanType::create([
+        PilihanColor::create([
             'nama_pilihan' => 'Warna Cupcake',
             'isi_pilihan' => $jsonWarna
+        ]);
+
+        WebSetting::create([
+            'setting_name' => 'whatsapp',
+            'value' => '6282175726466'
+        ]);
+        WebSetting::create([
+            'setting_name' => 'facebook',
+            'value' => 'https://www.facebook.com/arayacakepku/'
+        ]);
+        WebSetting::create([
+            'setting_name' => 'instagram',
+            'value' => 'https://www.instagram.com/arayacakepku/'
+        ]);
+        WebSetting::create([
+            'setting_name' => 'tiktok',
+            'value' => 'https://www.tiktok.com/@arayacakepekanbaru'
         ]);
     }
 }

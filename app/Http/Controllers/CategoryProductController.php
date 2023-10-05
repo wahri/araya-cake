@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryProduct;
+use App\Models\ImageStorage;
 use App\Models\SubCategoryProduct;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class CategoryProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {        
+    {
         // Validasi input jika diperlukan
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -71,7 +72,8 @@ class CategoryProductController extends Controller
         $categories = CategoryProduct::all();
         $subCategories = SubCategoryProduct::where('category_product_id', $id)->get();
         $category = CategoryProduct::find($id);
-        return view('admin.categoryProduct.editCategory', compact(['category','categories', 'subCategories']));
+        $images = ImageStorage::all();
+        return view('admin.categoryProduct.editCategory', compact(['category', 'categories', 'subCategories', 'images']));
     }
 
     /**
@@ -99,7 +101,7 @@ class CategoryProductController extends Controller
             'is_primary' => $isPrimary,
         ]);
 
-        
+
 
         // Redirect ke halaman tampilan kategori dengan pesan sukses
         return redirect()->route('admin.categoryProduct.index')->with('success', 'Kategori berhasil diupdate.');
@@ -118,5 +120,26 @@ class CategoryProductController extends Controller
 
         // Redirect ke halaman tampilan kategori dengan pesan sukses
         return redirect()->back()->with('success', 'Kategori berhasil dihapus.');
+    }
+
+    public function savePromoImage(Request $request, string $id)
+    {
+
+        // Validasi input jika diperlukan
+        $validatedData = $request->validate([
+            'image_storage_id' => 'required',
+            'image_storage_id.*' => 'exists:image_storages,id', // Ganti 'image_storages' dengan nama tabel image storage yang sesuai
+        ]);
+
+        // Cari kategori berdasarkan ID
+        $category = CategoryProduct::findOrFail($id);
+
+        // Update data kategori
+        $category->update([
+            'image_storage_id' => $validatedData['image_storage_id'],
+        ]);
+
+        // Redirect ke halaman tampilan kategori dengan pesan sukses
+        return redirect()->route('admin.categoryProduct.index')->with('success', 'Category berhasil diupdate.');
     }
 }
