@@ -219,7 +219,7 @@
             <div class="row d-flex align-items-center">
 
                 <div class="col-md-5 col-lg-6">
-                    <div class="mb-40 pbox-11-txt white-color">
+                    <div class="mb-40 pbox-11-txt">
 
                         <!-- Title -->
                         <h2>Desain Cake Mu Disini</h2>

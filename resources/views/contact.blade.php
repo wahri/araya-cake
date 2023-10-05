@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <div class="text-center hero-txt white-color">
+                    <div class="text-center hero-txt">
 
 						<div id="breadcrumb">
 							<div class="row">						
