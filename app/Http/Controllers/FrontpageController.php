@@ -117,6 +117,21 @@ class FrontpageController extends Controller
 
         return redirect()->to('https://api.whatsapp.com/send?text=' . $pesanWA . '&phone=' . $no_wa->value);
     }
+    public function whatsappCustomCake()
+    {
+        $no_wa = WebSetting::where('setting_name', 'whatsapp')->first();
+        $pesanWA = "Halo%20Admin%20Araya.....%0A%0ASaya%20mau%20pesan%20custom%20cake%3A%0A";
+
+        return redirect()->to('https://api.whatsapp.com/send?text=' . $pesanWA . '&phone=' . $no_wa->value);
+    }
+    public function kirimPesan(Request $request)
+    {
+        $no_wa = WebSetting::where('setting_name', 'whatsapp')->first();
+        $pesanWA = urlencode($request->message);
+
+        return redirect()->to('https://api.whatsapp.com/send?text=' . $pesanWA . '&phone=' . $no_wa->value);
+        
+    }
 
     public function categoryProduct(Request $request,string $slug)
     {

@@ -33,14 +33,7 @@
                     <p>Kota Pekanbaru, Riau</p>
 
                     <!-- Contacts -->
-                    <p class="foo-email txt-500 mt-15"><a href="mailto:admin@gmail.com">admin@arayacake.com</a></p>
-                    <p>
-                        <span class="">
-                            <a href="tel:123456789">
-                                <i class="fab -fa-whatsapp"></i>
-                            </a>
-                        </span>
-                    </p>
+                    <p class="foo-email txt-500 mt-15"><a href="mailto:admin@arayacake.com">admin@arayacake.com</a></p>
 
                 </div>
             </div>

@@ -230,7 +230,7 @@
                         </p>
 
                         <!-- Button -->
-                        <a href="#" class="btn btn-lg btn-red tra-white-hover">Pesan Sekarang</a>
+                        <a href="{{ route('whatsappCustomCake') }}" target="_blank" class="btn btn-lg btn-red tra-white-hover">Pesan Sekarang</a>
 
                     </div>
                 </div>

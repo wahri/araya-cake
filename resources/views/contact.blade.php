@@ -55,7 +55,7 @@
                     <p>Kota Pekanbaru, Riau</p>
 
                     <!-- Contacts -->
-                    <p class="foo-email txt-500 mt-15"><a href="mailto:admin@gmail.com">admin@arayacake.com</a></p>
+                    <p class="foo-email txt-500 mt-15"><a href="mailto:admin@arayacake.com">admin@arayacake.com</a></p>
                     <p>
                         <span class="">
                             <a href="tel:123456789">
@@ -66,12 +66,13 @@
                 </div>
 
                 <div class="col-6">
-                    <form action="">
-                        <input type="text" placeholder="Nama" class="mb-3 form-control">
-                        <input type="text" placeholder="Email" class="mb-3 form-control">
-                        <input type="text" placeholder="Whatsapp" class="mb-3 form-control">
-                        <textarea name="" class="mb-3 form-control" placeholder="Pesan"></textarea>
-                        <button class="btn btn-araya tra-araya-hover">Kirim</button>
+                    <form action="{{ route('kirimPesan') }}" method="POST">
+                        @csrf
+                        <input type="text" placeholder="Nama" name="name" class="mb-3 form-control">
+                        <input type="text" placeholder="Email" name="email" class="mb-3 form-control">
+                        <input type="text" placeholder="Whatsapp" name="phone" class="mb-3 form-control">
+                        <textarea name="message" class="mb-3 form-control" placeholder="Pesan"></textarea>
+                        <button type="submit" class="btn btn-araya tra-araya-hover">Kirim</button>
                     </form>
                 </div>
 

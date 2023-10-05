@@ -40,6 +40,8 @@ Route::get('/detail/cake/{slug}', [FrontpageController::class, 'detailCake'])->n
 Route::get('/show/nota/{nota_no}', [FrontpageController::class, 'showNota'])->name('showNota');
 Route::get('/show/receipt/{nota_no}', [FrontpageController::class, 'showReceipt'])->name('showReceipt');
 Route::get('/konfirmasi-pesanan/{nota_no}', [FrontpageController::class, 'confirmWhatsapp'])->name('confirmWhatsapp');
+Route::get('/pesan-custom', [FrontpageController::class, 'whatsappCustomCake'])->name('whatsappCustomCake');
+Route::post('/pesan-whatsapp', [FrontpageController::class, 'kirimPesan'])->name('kirimPesan');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/getCartList', [CartController::class, 'getCartList'])->name('getCartList');
