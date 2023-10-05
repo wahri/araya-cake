@@ -57,7 +57,7 @@
                     <p>Buka setiap hari:</p>
 
                     <!-- Text -->
-                    <p class="mt-15">Senin - Minggu:<br>8:00AM - 10:00PM</p>
+                    <p class="mt-15">Senin - Minggu:<br>07:00 - 22:00</p>
 
                 </div>
             </div>
