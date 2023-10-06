@@ -100,7 +100,7 @@
                 <div class="row d-flex align-items-center">
 
                     @foreach ($categoryProduct as $category)
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         @if ($category->image)
                         <a href="{{ route('categoryProduct', $category->slug) }}">
                             <div class="pbox-3 mb-30">

@@ -4,37 +4,6 @@
 @endpush
 
 @section('content')
-<!-- PAGE HERO
-                       ============================================= -->
-                       <div class="page-hero-section division">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-10 offset-lg-1">
-                                    <div class="text-center hero-txt">
-                
-                                        <div id="breadcrumb">
-                                            <div class="row">						
-                                                <div class="col">
-                                                    <div class="breadcrumb-nav">
-                                                        <nav aria-label="breadcrumb">
-                                                              <ol class="breadcrumb">
-                                                                <li class="breadcrumb-item"><a href="#">Produk</a></li>
-                                                                <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
-                                                              </ol>
-                                                        </nav>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <!-- Title -->
-                                        <h2 class="h2-xl">Cake Araya</h2>
-                
-                                    </div>
-                                </div>
-                            </div> <!-- End row -->
-                        </div> <!-- End container -->
-                    </div> 
-                    <!-- END PAGE HERO -->
 
     <div class="container">
         <div class="row">
@@ -123,7 +92,7 @@
 
                             </div>
                         </div>
-                        @empty
+                    @empty
                         <div class="col-12 text-center">
                             <h5 class="h5-lg">
                                 Cake yang anda cari tidak ada :(

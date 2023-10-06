@@ -163,7 +163,7 @@
 
 .burger-menu {
   position: absolute;
-  top: 32px;
+  top: 20px;
   right: 14px;
   display: -ms-flexbox;
   display: flex;
@@ -1290,7 +1290,7 @@
 }
 
 .navik-menu-fixed {
-  padding-top: 90px;
+  padding-top: 80px;
 }
 
 .navik-menu-fixed ul li {
@@ -1500,9 +1500,6 @@
   display: none;
 }
 
-.navik-menu .  {
-  margin-bottom: 20px;
-}
 
 .navik-menu .mega-menu-heading {
   font-size: 18px;
@@ -1904,7 +1901,7 @@
   box-sizing: border-box;
   height: 85px;
   padding: 0 14px;
-  line-height: 90px;
+  line-height: 80px;
   white-space: nowrap;
 }
 
@@ -2111,7 +2108,7 @@
 }
 
 .navik-header.sticky .navik-header-container {
-  height: 80px;
+  height: 85px;
 }
 
 #header-2 .navik-header.sticky .navik-header-container,
@@ -2121,7 +2118,7 @@
 
 .navik-header.sticky .navik-menu > ul > li > a {
   height: 85px;
-  line-height: 90px;
+  line-height: 80px;
 }
 
 #header-2 .navik-header.sticky .navik-menu > ul > li > a {
@@ -2129,9 +2126,6 @@
   line-height: 70px;
 }
 
-.navik-header.sticky .logo {
-  padding: 5px 40px 5px 0;
-}
 
 .navik-header.sticky .logo img {
   max-height: 70px;
@@ -2209,7 +2203,7 @@
   max-height: inherit;*/
   width: auto;
   max-width: inherit;
-  max-height: 90px;
+  max-height: 80px;
 }
 
 .navik-header.center-menu-2.sticky .logo {

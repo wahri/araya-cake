@@ -21,7 +21,7 @@
 									<div class="breadcrumb-nav">
 										<nav aria-label="breadcrumb">
 											  <ol class="breadcrumb">
-												<li class="breadcrumb-item"><a href="#">Profil</a></li>
+												<li class="breadcrumb-item active">Profil</li>
 												<li class="breadcrumb-item active" aria-current="page">Tentang Kami</li>
 											  </ol>
 										</nav>

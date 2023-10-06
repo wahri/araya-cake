@@ -25,9 +25,9 @@
 
             <!-- LOGO IMAGE -->
             <div class="logo" data-mobile-logo="{{ asset('home-assets/images/logo-araya-horizontal.png') }}"
-                data-sticky-logo="{{ asset('home-assets/images/logo-araya-light.png') }}">
+                data-sticky-logo="{{ asset('home-assets/images/logo-araya-horizontal.png') }}">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('home-assets/images/logo-araya-light.png') }}" alt="header-logo"
+                    <img src="{{ asset('home-assets/images/logo-araya-horizontal.png') }}" alt="header-logo"
                         style="height: 40px" />
                 </a>
             </div>
@@ -44,7 +44,7 @@
             <!-- MAIN MENU -->
             <div class="group-navbar">
 
-                <nav class="ml-2 navik-menu menu-caret navik-yellow">
+                <nav class="ml-3 navik-menu menu-caret navik-yellow">
                     <ul class="top-list">
                         <li>
                             <a href="{{ route('home') }}">Home</a>
@@ -60,7 +60,7 @@
                         </li>
 
                         <!-- DROPDOWN MENU -->
-                        <li><a href="#">Produk</a>
+                        <li><a href="{{ route('product') }}">Produk</a>
                             <ul>
                                 @foreach ($categoryProduct as $category)
                                     <li><a

@@ -90,8 +90,8 @@ html::-webkit-scrollbar-thumb {
 #header-3 .navik-menu ul li>a.btn-member {
     line-height: 40px;
     height: auto;
-    /* background-color: #ff4f3f; */
-    color: #ff4f3f;
+    background-color: #ff4f3f;
+    color: #fff;
     padding: 0px 25px;
     border: 1px solid #ff4f3f;
     border-radius: 25px;
@@ -100,8 +100,8 @@ html::-webkit-scrollbar-thumb {
 }
 
 #header-3 .navik-menu ul li>a.btn-member:hover {
-    background-color: #ff4f3f;
-    color: #fff;
+    background-color: #fff;
+    color: #ff4f3f;
     cursor: pointer;
 }
 
@@ -121,7 +121,7 @@ html::-webkit-scrollbar-thumb {
     border: 1px solid #e21400;
 }
 
-#header-3::before {
+/* #header-3::before {
     content: '';
     position: absolute;
     top: 0;
@@ -130,7 +130,7 @@ html::-webkit-scrollbar-thumb {
     height: 11px;
     background-color: #ff4f3f;
     z-index: 1200;
-}
+} */
 
 
 #header-3.navik-header {
@@ -148,13 +148,13 @@ html::-webkit-scrollbar-thumb {
         clear: inherit;
     }
 
-    #header-3 .logo {
+    /* #header-3 .logo {
         background-color: #ff4f3f;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
         padding: 12px 20px;
         margin-bottom: 5px;
-    }
+    } */
 
 }
 

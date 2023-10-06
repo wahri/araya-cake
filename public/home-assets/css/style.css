@@ -620,9 +620,9 @@ ul.txt-list {
 
 .tra-white-hover:hover, 
 .white-color .tra-white-hover:hover {
-  color: #fff!important;
+  color: #ff4f3f!important;
   background-color: transparent;
-  border-color: #fff!important;
+  border-color: #ff4f3f!important;
 }
 
 .scroll .tra-white-hover:hover {
@@ -2018,7 +2018,7 @@ span.ico-holder {
 .callusbtn {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 20px;
   left: 14px;
 }
 
@@ -5458,9 +5458,9 @@ select:-webkit-autofill:focus {
   background-position: center center;   
   background-size: cover;
   background-attachment: scroll!important;
-  padding-top: 170px;
-  padding-bottom: 120px;
-  background-color: #f5c7ab;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #f8f1d8;
 }
 
 #about-page {
@@ -5566,7 +5566,7 @@ select:-webkit-autofill:focus {
 }
 
 .breadcrumb-item.active {
-  color: #fff;
+  color: #283034;
   font-size: 0.925rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -5576,8 +5576,8 @@ select:-webkit-autofill:focus {
   font-size: 0.925rem;
   display: inline-block;
   padding-right: 10px;
-  color: #fff;
-  content: "/";
+  color: #283034;
+  content: ">";
 }
 
 .breadcrumb-item + .breadcrumb-item {
