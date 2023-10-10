@@ -217,9 +217,11 @@
                             </p>
 
                             <div class="mb-3 product-info">
-                                <p class="my-auto">Ukuran Cake:
-                                    <span>{{ $product->length ? floor($product->length) . 'cm x ' : '' }}{{ $product->width ? floor($product->width) . 'cm x ' : '' }}{{ $product->height ? floor($product->height) . 'cm' : '' }}</span>
-                                </p>
+                                @if ($product->length != null || $product->width != null || $product->height != null)
+                                    <p class="my-auto">Ukuran Cake:
+                                        <span>{{ $product->length ? floor($product->length) . 'cm x ' : '' }}{{ $product->width ? floor($product->width) . 'cm x ' : '' }}{{ $product->height ? floor($product->height) . 'cm' : '' }}</span>
+                                    </p>
+                                @endif
                                 @if ($product->meta_keyword)
                                     <p>Tags: <span>{{ $product->meta_keyword }}</span></p>
                                 @endif
