@@ -62,9 +62,9 @@ class ProductController extends Controller
         // Validasi input jika diperlukan
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'length' => 'required|numeric',
-            'width' => 'required|numeric',
-            'height' => 'required|numeric',
+            'length' => 'nullable|numeric',
+            'width' => 'nullable|numeric',
+            'height' => 'nullable|numeric',
             'price' => 'nullable|numeric',
             'information' => 'nullable|string',
             'description' => 'nullable|string',
@@ -149,9 +149,9 @@ class ProductController extends Controller
         // Validasi input jika diperlukan
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'length' => 'required|numeric',
-            'width' => 'required|numeric',
-            'height' => 'required|numeric',
+            'length' => 'nullable|numeric',
+            'width' => 'nullable|numeric',
+            'height' => 'nullable|numeric',
             'price' => 'nullable|numeric',
             'description' => 'nullable|string',
             'information' => 'nullable|string',

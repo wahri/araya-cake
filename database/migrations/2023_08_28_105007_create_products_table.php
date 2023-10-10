@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('name');
-            $table->decimal('length', 10, 2);
-            $table->decimal('width', 10, 2);
-            $table->decimal('height', 10, 2);
+            $table->decimal('length', 10, 2)->nullable();
+            $table->decimal('width', 10, 2)->nullable();
+            $table->decimal('height', 10, 2)->nullable();
             $table->integer('min_day')->nullable();
             $table->integer('price')->nullable();
             $table->integer('discount')->nullable();

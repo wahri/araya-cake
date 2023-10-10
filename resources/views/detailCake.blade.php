@@ -179,7 +179,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 mb-20">
+                <div class="mb-20 col-md-5">
                     <div class="product-description">
 
 
@@ -216,9 +216,9 @@
                                 {{ $product->description }}
                             </p>
 
-                            <div class="product-info mb-3">
+                            <div class="mb-3 product-info">
                                 <p class="my-auto">Ukuran Cake:
-                                    <span>{{ floor($product->length) . 'cm x ' . floor($product->width) . 'cm x ' . floor($product->height) . 'cm' }}</span>
+                                    <span>{{ $product->length ? floor($product->length) . 'cm x ' : '' }}{{ $product->width ? floor($product->width) . 'cm x ' : '' }}{{ $product->height ? floor($product->height) . 'cm' : '' }}</span>
                                 </p>
                                 @if ($product->meta_keyword)
                                     <p>Tags: <span>{{ $product->meta_keyword }}</span></p>
@@ -231,7 +231,7 @@
                                                 Varian Isi Cake:
                                             </p>
                                         </div>
-                                        <div class="col-5 my-auto">
+                                        <div class="my-auto col-5">
                                             <select class="form-control" name="pilihan_rasa" id="pilihan_rasa">
                                                 <option value="" selected disabled>Pilihan rasa</option>
                                                 @foreach (json_decode($product->pilihan_type->isi_pilihan) as $isi)
@@ -263,8 +263,8 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="card shadow p-4" style="border-radius: 20px">
-                        <div class="row mb-3">
+                    <div class="p-4 shadow card" style="border-radius: 20px">
+                        <div class="mb-3 row">
                             <div class="col-12 d-flex justify-content-between">
                                 <div>
                                     <span class="input-number-decrement">–</span><input name="quantity" class="input-number"
@@ -272,12 +272,12 @@
                                         disabled><span class="input-number-increment">+</span>
                                 </div>
 
-                                <span class="font-weight-bold my-auto" id="total_harga">
+                                <span class="my-auto font-weight-bold" id="total_harga">
                                     {{ 'Rp. ' . number_format($product->price, 0, ',', '.') . ',-' }}
                                 </span>
                             </div>
                         </div>
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <div class="col-12">
                                 <textarea name="cake_message" id="cake_message" class="form-control" rows="2" placeholder="Masukkan pesan"></textarea>
                             </div>
