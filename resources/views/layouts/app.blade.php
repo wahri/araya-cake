@@ -6,15 +6,19 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta content="Website pesan cake untuk acara seperti Birthday Cake, Custom Cake, dan Cake lainnya"
-        name="description" />
+    <meta content="Araya Cake menyediakan cake untuk setiap momen spesialmu, berdiri sejak tahun 2017 memberikan Best Product dengan harga terbaik untuk semua konsumen setia Araya" name="description" />
     <meta content="Araya Cake Pekanbaru" name="author" />
     <meta name="keywords"
         content="Birthday Cake, Event Cake, Cake Pekanbaru, Custom Cake, Spesial Cake, Kue Ulang Tahun, Kue Pekanbaru">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <meta property="og:title" content="Cake Untuk Momen Spesialmu - Araya Cake">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arayacake.com/">
+    <meta property="og:description" content="Araya Cake menyediakan cake untuk setiap momen spesialmu, berdiri sejak tahun 2017 memberikan Best Product dengan harga terbaik untuk semua konsumen setia Araya">
+    <meta property="og:site_name" content="Araya Cake Pekanbaru">
     <!-- SITE TITLE -->
-    <title>Araya Cake Pekanbaru</title>
+    <title>Cake Untuk Momen Spesialmu - Araya Cake</title>
 
     <!-- FAVICON AND TOUCH ICONS -->
     <link rel="shortcut icon" href="{{ asset('home-assets/images/logo-araya-small.png') }}" type="image/x-icon">
@@ -25,17 +29,6 @@
     <link rel="araya-touch-icon" href="{{ asset('home-assets/images/logo-araya-small.png') }}">
     <link rel="icon" href="{{ asset('home-assets/images/logo-araya-small.png') }}" type="image/x-icon">
 
-
-    <!-- GOOGLE FONTS -->
-    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">\
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;900&display=swap"
-        rel="stylesheet"> --}}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
