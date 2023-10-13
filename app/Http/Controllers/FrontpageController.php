@@ -18,7 +18,10 @@ class FrontpageController extends Controller
 
     function index()
     {
-        $categoryWithProduct = CategoryProduct::with(['products', 'products.images'])->get();
+        $categoryWithProduct = CategoryProduct::with(['products', 'products.images'])->get()
+        ->each(function ($category) {
+            $category->products = $category->products->take(8);
+        });
         $sliders = Slider::all();
         $reviews = Review::all();
 
@@ -72,7 +75,7 @@ class FrontpageController extends Controller
 
     function galleryCake()
     {
-        $products = Product::all();
+        $products = Product::where('category_product_id', '1')->get();
         return view('galleryCake', compact(['products']));
     }
 

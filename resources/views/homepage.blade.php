@@ -8,7 +8,7 @@
 
 @section('content')
     <!-- HERO-3
-                                                                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                                                                       ============================================= -->
     <section id="hero-3" class="hero-section division">
         <!-- SLIDER -->
         <div class="slider mt-1001">
@@ -51,7 +51,7 @@
     </section> <!-- END HERO-3 -->
 
     <!-- MENU-8
-                                                                                                                                                                                                                                           ============================================= -->
+                                                                                                                                                                                                                                                   ============================================= -->
     <section id="menu-8" class="wide-70 menu-section division">
         <div class="container">
 
@@ -226,11 +226,13 @@
 
                         <!-- Text -->
                         <p class="p-md">
-                            Miliki desain cake impianmu? Percayakan pada kami di Araya, di mana kreasi Anda menjadi kenyataan.
+                            Miliki desain cake impianmu? Percayakan pada kami di Araya, di mana kreasi Anda menjadi
+                            kenyataan.
                         </p>
 
                         <!-- Button -->
-                        <a href="{{ route('whatsappCustomCake') }}" target="_blank" class="btn btn-lg btn-red tra-white-hover">Pesan Sekarang</a>
+                        <a href="{{ route('whatsappCustomCake') }}" target="_blank"
+                            class="btn btn-lg btn-red tra-white-hover">Pesan Sekarang</a>
 
                     </div>
                 </div>
@@ -241,7 +243,7 @@
                     <div class="mb-40 pbox-11-img">
 
                         <!-- Image -->
-                        <img class="img-fluid" src="{{ asset('home-assets/images/promo-11-img.png') }}"
+                        <img class="img-fluid" src="{{ asset('home-assets/images/custom-cake.png') }}"
                             alt="promo-image" />
 
                     </div>
@@ -258,7 +260,7 @@
 
 
     <!-- TESTIMONIALS-1
-                                                                                                                                                                                                                   ============================================= -->
+                                                                                                                                                                                                                           ============================================= -->
     <div id="reviews-1" class="reviews-section division">
         <div class="container">
             <div class="row">
@@ -319,7 +321,7 @@
 
 
     <!-- GALLERY-3
-                                                                                                                                                                                                                                            ============================================= -->
+                                                                                                                                                                                                                                                    ============================================= -->
     <section id="gallery-3" class="gallery-section division">
 
 
@@ -329,107 +331,19 @@
                 <div class="owl-carousel images-carousel">
 
 
-                    <!-- IMAGE #1 -->
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
+                    @for ($i = 1; $i <= 22; $i++)
+                        <div class="gallery-img">
+                            <a href="{{ asset('home-assets/images/customer') . '/' . $i . '.jpg' }}" class="image-link">
+                                <div class="hover-overlay">
+                                    <img class="img-fluid"
+                                        src="{{ asset('home-assets/images/customer') . '/' . $i . '.jpg' }}"
+                                        alt="gallery-image" />
+                                    <div class="item-overlay"></div>
 
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
-                    <div class="gallery-img">
-                        <a href="{{ asset('home-assets/images/gallery/img-01.jpg') }}" class="image-link">
-                            <div class="hover-overlay">
-                                <img class="img-fluid" src="{{ asset('home-assets/images/gallery/img-01.jpg') }}"
-                                    alt="gallery-image" />
-                                <div class="item-overlay"></div>
-
-                            </div>
-                        </a>
-                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endfor
 
 
 
@@ -445,7 +359,7 @@
 
 
     <!-- ABOUT-3
-                                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                                       ============================================= -->
     <section id="about-3" class="wide-60 about-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -454,7 +368,7 @@
                 <!-- ABOUT IMAGE -->
                 <div class="col-lg-5 col-sm-12">
                     <div class="mb-40 text-center about-3-img">
-                        <img class="img-fluid" src="{{ asset('home-assets/images/about-03-img.png') }}"
+                        <img class="img-fluid" src="{{ asset('home-assets/images/store.png') }}"
                             alt="about-image">
                     </div>
                 </div>
@@ -490,13 +404,13 @@
                             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 text-center my-auto">
                                 <span class="font-weight-bold">Tersedia di</span>
                             </div>
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 text-center my-auto">
+                            <div class="col-lg-3 col-4 text-center my-auto">
                                 <img src="{{ asset('home-assets/images/gofood.png') }}" alt="Logo Go Food">
                             </div>
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 text-center my-auto">
+                            <div class="col-lg-3 col-4 text-center my-auto">
                                 <img src="{{ asset('home-assets/images/shopeefood.png') }}" alt="Logo Shopee Food">
                             </div>
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4 text-center my-auto">
+                            <div class="col-lg-3 col-4 text-center my-auto">
                                 <img src="{{ asset('home-assets/images/grabfood.png') }}" alt="Logo Grab Food">
                             </div>
                         </div>
@@ -514,7 +428,7 @@
 
 
     <!-- GOOGLE MAP
-                                                                                                                                                                                                                   ============================================= -->
+                                                                                                                                                                                                                           ============================================= -->
     <div id="lokasi">
         <div class="google-map">
             <iframe
