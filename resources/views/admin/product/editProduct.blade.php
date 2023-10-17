@@ -72,7 +72,7 @@
                                                                 id="myCheckbox{{ $image->id }}"
                                                                 {{ in_array($image->id, old('id_images', $product->images->pluck('id')->toArray())) ? 'checked' : '' }} />
                                                             <label for="myCheckbox{{ $image->id }}">
-                                                                <img src="{{ asset('images/' . $image->name) }}" />
+                                                                <img class="lazyload" data-src="{{ asset('images/' . $image->name) }}" />
                                                             </label>
                                                         </li>
                                                     @endforeach

@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Cake Management</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Cake Management</li>
                             </ol>
@@ -63,7 +63,7 @@
                                                     {{ $product->name }}
                                                 </td>
                                                 <td class="text-center">
-                                                    <img src="{{ asset('images/' . $product->images->first()->name) }}" style="height: 50px">
+                                                    <img class="lazyload" data-src="{{ asset('images/' . $product->images->first()->name) }}" style="height: 50px">
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="{{ route('admin.product.show', $product->id) }}"

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <div class="hero-txt text-center white-color">
+                    <div class="text-center hero-txt white-color">
 
                         <h2 class="h2-xl">
                             Semua Cake</h2>
@@ -56,8 +56,8 @@
                                 <div class="menu-6-img rel">
                                     <div class="hover-overlay">
 
-                                        <img class="img-fluid"
-                                            src="{{ asset('images/' . $product->images->first()->name) }}"
+                                        <img class="img-fluid lazyload"
+                                            data-src="{{ asset('images/' . $product->images->first()->name) }}"
                                             alt="menu-image" />
 
                                         <div class="menu-img-zoom ico-25">

@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <div class="hero-txt text-center">
+                    <div class="text-center hero-txt">
 
 						<div id="breadcrumb">
 							<div class="row">						
@@ -46,7 +46,7 @@
             <div class="row">
                 <!-- ABOUT TEXT -->
                 <div class="col-md-7 col-lg-6">
-                    <div class="about-4-txt mb-40">
+                    <div class="mb-40 about-4-txt">
 
                         <!-- Title -->
                         <h2 class="h2-sm">Sejarah Araya Cake Pekanbaru</h2>
@@ -65,7 +65,7 @@
                         </p>
 
                         <!-- Image -->
-                        <img class="img-fluid" src="{{ 'home-assets/images/img-10.jpg' }}" alt="about-image">
+                        <img class="img-fluid lazyload" data-src="{{ 'home-assets/images/img-10.jpg' }}" alt="about-image">
 
                     </div>
                 </div> <!-- END ABOUT TEXT -->
@@ -73,10 +73,10 @@
 
                 <!-- ABOUT IMAGE -->
                 <div class="col-md-5 col-lg-6">
-                    <div class="about-4-img mb-40">
+                    <div class="mb-40 about-4-img">
 
                         <!-- Image -->
-                        <img class="img-fluid mb-40" src="{{ 'home-assets/images/img-15.jpg' }}" alt="about-image">
+                        <img class="mb-40 img-fluid" src="{{ 'home-assets/images/img-15.jpg' }}" alt="about-image">
 
                         <h5 class="h5-sm border-bottom">
                             Visi

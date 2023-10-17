@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <img src="{{ asset('home-assets/images/logo-araya-horizontal.png') }}" style="width: 300px" alt="footer-logo" />
+                    <img class="lazyload" data-src="{{ asset('home-assets/images/logo-araya-horizontal.png') }}" style="width: 300px" alt="footer-logo" />
                     <!-- Title -->
                     <h5 class="mt-3 h5-sm">Hubungi Kami</h5>
 

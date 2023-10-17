@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="search__container">
-                    <h1 class="h1-lg araya-color text-center">
+                    <h1 class="text-center h1-lg araya-color">
                         Cari cake kesukaan mu di Araya
                     </h1>
                     <form action="" method="get">
@@ -37,8 +37,8 @@
                                 <div class="menu-6-img rel">
                                     <div class="text-center hover-overlay">
 
-                                        <img class="img-fluid"
-                                            src="{{ asset('images/' . $product->images->first()->name) }}" alt="menu-image"
+                                        <img class="img-fluid lazyload"
+                                            data-src="{{ asset('images/' . $product->images->first()->name) }}" alt="menu-image"
                                             style="width: 300px" />
 
                                         <div class="menu-img-zoom ico-25">
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="col-12 text-center">
+                        <div class="text-center col-12">
                             <h5 class="h5-lg">
                                 Cake yang anda cari tidak ada :(
                             </h5>

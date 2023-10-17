@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Edit Slider</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Slider</a></li>
                                 <li class="breadcrumb-item active">Edit Slider</li>
@@ -34,7 +34,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title mt-0">Upload New Image</h5>
+                        <h5 class="mt-0 modal-title">Upload New Image</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
                         </button>
@@ -109,7 +109,7 @@
                                                                 id="myCheckbox{{ $image->id }}"
                                                                 {{ $image->id == old('image_id', $slider->image_storage_id) ? 'checked' : '' }} />
                                                             <label for="myCheckbox{{ $image->id }}">
-                                                                <img src="{{ asset('images/' . $image->name) }}" />
+                                                                <img class="lazyload" data-src="{{ asset('images/' . $image->name) }}" />
                                                             </label>
                                                         </li>
                                                     @endforeach

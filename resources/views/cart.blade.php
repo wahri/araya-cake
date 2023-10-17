@@ -120,7 +120,7 @@
 
 
     <!-- CART PAGE
-                                                                                                                                                                                                                                               ============================================= -->
+                                                                                                                                                                                                                                                   ============================================= -->
     <section id="cart-1" class="wide-100 cart-page division">
         <div class="container">
 
@@ -147,9 +147,10 @@
                                         <td data-label="Product" class="product-name">
 
                                             <!-- Preview -->
-                                            <div class="cart-product-img"><img
-                                                    src="{{ asset('images/' . $cart->product->images->first()->name) }}"
-                                                    alt="cart-preview"></div>
+                                            <div class="cart-product-img">
+                                                <img class="lazyload" data-src="{{ asset('images/' . $cart->product->images->first()->name) }}"
+                                                    alt="cart-preview">
+                                            </div>
 
                                             <!-- Description -->
                                             <div class="cart-product-desc">
@@ -208,11 +209,11 @@
                                 <h5 class="h5-lg">
                                     Total Harga
                                 </h5>
-                                <h5 class="h5-sm mb-3" id="total">
+                                <h5 class="mb-3 h5-sm" id="total">
                                     {{ $totalPriceFormat }}
                                 </h5>
                                 <textarea placeholder="Tambahkan notes untuk pesanan (optional)" name="notes" id="notes" rows="3"
-                                    class="form-control mb-3" style="font-weight: 300">{{ old('notes') }}</textarea>
+                                    class="mb-3 form-control" style="font-weight: 300">{{ old('notes') }}</textarea>
 
                                 <div class="row mb-30">
                                     <div class="col-12 d-flex justify-content-center">
@@ -258,7 +259,7 @@
                                         </h5>
                                         <div class="mb-3 input-group">
                                             <input type="text" name="name" class="custom-input"
-                                                placeholder="Nama Lengkap" value="{{ old('name',$user->name ?? '') }}">
+                                                placeholder="Nama Lengkap" value="{{ old('name', $user->name ?? '') }}">
                                             @error('name')
                                                 <small class="text-danger">
                                                     {{ $message }}
@@ -267,7 +268,8 @@
                                         </div>
                                         <div class="mb-3 input-group">
                                             <input type="text" name="phone" class="custom-input"
-                                                placeholder="No Whatsapp" value="{{ old('phone',$user->profile->phone ?? '') }}">
+                                                placeholder="No Whatsapp"
+                                                value="{{ old('phone', $user->profile->phone ?? '') }}">
                                             @error('phone')
                                                 <small class="text-danger">
                                                     {{ $message }}
@@ -276,7 +278,7 @@
                                         </div>
                                         <div class="mb-3 input-group">
                                             <input type="text" name="email" class="custom-input"
-                                                placeholder="Email" value="{{ old('email',$user->email ?? '') }}">
+                                                placeholder="Email" value="{{ old('email', $user->email ?? '') }}">
                                             @error('email')
                                                 <small class="text-danger">
                                                     {{ $message }}
@@ -285,7 +287,7 @@
                                         </div>
                                         <div class="mb-3 input-group">
                                             <textarea placeholder="Tambahkan Alamat Lengkap" name="address" id="address" rows="3"
-                                                class="form-control mb-3" style="font-weight: 300">{{ old('address', $user->profile->address ?? '') }}</textarea>
+                                                class="mb-3 form-control" style="font-weight: 300">{{ old('address', $user->profile->address ?? '') }}</textarea>
                                             @error('address')
                                                 <small class="text-danger">
                                                     {{ $message }}
@@ -296,7 +298,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-12 text-center">
+                                    <div class="text-center col-12">
                                         <button type="submit" class="mb-3 btn btn-md btn-success tra-hover-success">
                                             <i class="fab fa-whatsapp"></i> Pesan Sekarang</button>
                                     </div>

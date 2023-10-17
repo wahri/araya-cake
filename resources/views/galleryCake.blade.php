@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    <div class="hero-txt text-center">
+                    <div class="text-center hero-txt">
 
                         <div id="breadcrumb">
                             <div class="row">
@@ -51,7 +51,7 @@
                         <div class="gallery-img">
                             <a href="{{ asset('images/' . $product->images->first()->name) }}" class="image-link">
                                 <div class="hover-overlay">
-                                    <img class="img-fluid" src="{{ asset('images/' . $product->images->first()->name) }}"
+                                    <img class="img-fluid lazyload" data-src="{{ asset('images/' . $product->images->first()->name) }}"
                                         alt="gallery-image" />
                                     <div class="item-overlay"></div>
                                 </div>

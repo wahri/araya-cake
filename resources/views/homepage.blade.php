@@ -18,7 +18,7 @@
                     <li id="slide-{{ $slider->id }}">
                         <a href="#" target="_blank">
                             <!-- Background Image -->
-                            <img src="{{ asset('images/' . $slider->image->name) }}" alt="{{ $slider->alt_image }}">
+                            <img data-src="{{ asset('images/' . $slider->image->name) }}" alt="{{ $slider->alt_image }}" class="lazyload">
 
                             <!-- Image Caption -->
                             <div class="caption d-flex align-items-center left-align">
@@ -64,8 +64,8 @@
 
                             @foreach ($categoryWithProduct as $i => $category)
                                 <li class="tab-link {{ $i == 0 ? 'current' : '' }}" data-tab="tab-{{ $category->id }}">
-                                    <img src="{{ asset('home-assets/icons/' . $category->big_icon) }}"
-                                        alt="{{ $category->name }} Icon" class="mr-5 custom-icon">
+                                    <img data-src="{{ asset('home-assets/icons/' . $category->big_icon) }}"
+                                        alt="{{ $category->name }} Icon" class="mr-5 custom-icon lazyload">
                                     <h5 class="h5-sm">{{ $category->name }}</h5>
                                 </li>
                             @endforeach
@@ -102,9 +102,9 @@
                                                             <div class="menu-6-img rel">
                                                                 <div class="hover-overlay">
 
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('images/' . $product->images->first()->name) }}"
-                                                                        alt="menu-image" />
+                                                                    <img class="img-fluid lazyload"
+                                                                        data-src="{{ asset('images/' . $product->images->first()->name) }}"
+                                                                        alt="menu-image"  />
 
                                                                     <div class="menu-img-zoom ico-25">
                                                                         <a href="{{ asset('images/' . $product->images->first()->name) }}"
@@ -243,7 +243,7 @@
                     <div class="mb-40 pbox-11-img">
 
                         <!-- Image -->
-                        <img class="img-fluid" src="{{ asset('home-assets/images/custom-cake.png') }}"
+                        <img class="img-fluid lazyload" data-src="{{ asset('home-assets/images/custom-cake.png') }}"
                             alt="promo-image" />
 
                     </div>
@@ -280,7 +280,7 @@
                                     <div class="review-1-txt">
 
                                         <!-- Testimonial Author Avatar -->
-                                        <img src="{{ asset('images/' . $review->image->name) }}"
+                                        <img class="lazyload" data-src="{{ asset('images/' . $review->image->name) }}"
                                             alt="testimonial-avatar">
 
                                         <!-- Text -->
@@ -335,8 +335,8 @@
                         <div class="gallery-img">
                             <a href="{{ asset('home-assets/images/customer') . '/' . $i . '.jpg' }}" class="image-link">
                                 <div class="hover-overlay">
-                                    <img class="img-fluid"
-                                        src="{{ asset('home-assets/images/customer') . '/' . $i . '.jpg' }}"
+                                    <img class="img-fluid lazyload"
+                                        data-src="{{ asset('home-assets/images/customer') . '/' . $i . '.jpg' }}"
                                         alt="gallery-image" />
                                     <div class="item-overlay"></div>
 
@@ -368,7 +368,7 @@
                 <!-- ABOUT IMAGE -->
                 <div class="col-lg-5 col-sm-12">
                     <div class="mb-40 text-center about-3-img">
-                        <img class="img-fluid" src="{{ asset('home-assets/images/store.png') }}"
+                        <img class="img-fluid lazyload" data-src="{{ asset('home-assets/images/store.png') }}"
                             alt="about-image">
                     </div>
                 </div>
@@ -376,7 +376,7 @@
 
                 <!-- ABOUT TEXT -->
                 <div class="col-lg-7 col-sm-12">
-                    <div class="about-3-txt my-auto">
+                    <div class="my-auto about-3-txt">
 
                         <!-- Title -->
                         <div class="mb-3 text-center">
@@ -401,18 +401,18 @@
 
                         </div>
                         <div class="row online-shop mt-30">
-                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 text-center my-auto">
+                            <div class="my-auto text-center col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <span class="font-weight-bold">Tersedia di</span>
                             </div>
-                            <div class="mt-3 col-lg-9 col-md-12 d-flex flex-wrap justify-content-center align-items-center" style="gap: 1.5rem">
+                            <div class="flex-wrap mt-3 col-lg-9 col-md-12 d-flex justify-content-center align-items-center" style="gap: 1.5rem">
                                 <div>
-                                    <img src="{{ asset('home-assets/images/gofood.png') }}" style="height: 30px; width: auto" alt="Logo Go Food">
+                                    <img class="lazyload" data-src="{{ asset('home-assets/images/gofood.png') }}" style="height: 30px; width: auto" alt="Logo Go Food">
                                 </div>
                                 <div>
-                                    <img src="{{ asset('home-assets/images/shopeefood.png') }}" style="height: 30px; width: auto" alt="Logo Shopee Food">
+                                    <img class="lazyload" data-src="{{ asset('home-assets/images/shopeefood.png') }}" style="height: 30px; width: auto" alt="Logo Shopee Food">
                                 </div>
                                 <div>
-                                    <img src="{{ asset('home-assets/images/grabfood.png') }}" style="height: 30px; width: auto" alt="Logo Grab Food">
+                                    <img class="lazyload" data-src="{{ asset('home-assets/images/grabfood.png') }}" style="height: 30px; width: auto" alt="Logo Grab Food">
                                 </div>
                             </div>
                         </div>

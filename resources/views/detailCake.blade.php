@@ -148,7 +148,7 @@
                             @foreach ($product->images as $i => $image)
                                 <div id="tab-{{ $image->id }}-img"
                                     class="tab-content cake text-center {{ $i == 0 ? 'displayed' : '' }}">
-                                    <img class="img-fluid" src="{{ asset('images/' . $image->name) }}"
+                                    <img class="img-fluid lazyload" data-src="{{ asset('images/' . $image->name) }}"
                                         alt="{{ $product->name }} Image" />
                                 </div>
                             @endforeach
@@ -165,7 +165,7 @@
                                         @foreach ($product->images as $i => $image)
                                             <li class="tab-link {{ $i == 0 ? 'displayed' : '' }}"
                                                 data-tab="tab-{{ $image->id }}-img">
-                                                <img src="{{ asset('images/' . $image->name) }}"
+                                                <img class="lazyload" data-src="{{ asset('images/' . $image->name) }}"
                                                     alt="{{ $product->name }} Image" style="object-fit: cover" />
                                             </li>
                                         @endforeach
@@ -331,8 +331,8 @@
                             <div class="menu-6-img rel">
                                 <div class="hover-overlay">
 
-                                    <img class="img-fluid"
-                                        src="{{ asset('images/' . $eachProduct->images->first()->name) }}"
+                                    <img class="img-fluid lazyload"
+                                        data-src="{{ asset('images/' . $eachProduct->images->first()->name) }}"
                                         alt="menu-image" />
 
                                     <div class="menu-img-zoom ico-25">

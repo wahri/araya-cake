@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Slider Management</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Homepage</a></li>
                                 <li class="breadcrumb-item active">Slider Management</li>
@@ -64,7 +64,7 @@
                                                     {{ $slider->name }}
                                                 </td>
                                                 <td class="text-center">
-                                                    <img src="{{ asset('images/' . $slider->image->name) }}"
+                                                    <img class="lazyload" data-src="{{ asset('images/' . $slider->image->name) }}"
                                                         alt="{{ $slider->alt_image }}" style="height: 50px">
                                                 </td>
                                                 <td class="text-center">

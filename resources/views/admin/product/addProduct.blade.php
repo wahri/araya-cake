@@ -71,7 +71,7 @@
                                                                 id="myCheckbox{{ $image->id }}"
                                                                 {{ in_array($image->id, old('id_images', [])) ? 'checked' : '' }} />
                                                             <label for="myCheckbox{{ $image->id }}">
-                                                                <img src="{{ asset('images/' . $image->name) }}" />
+                                                                <img class="lazyload" data-src="{{ asset('images/' . $image->name) }}" />
                                                             </label>
                                                         </li>
                                                     @endforeach
@@ -242,7 +242,7 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4 my-auto">
+                                                    <div class="my-auto col-md-4">
                                                         <div class="form-group form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                 id="has_message" name="has_message" value="1">

@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Add Category</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Product</a></li>
                                 <li class="breadcrumb-item active">Add Category</li>
@@ -47,7 +47,7 @@
                             <div class="card-body">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table mb-0 table-striped">
 
                                         <thead>
                                             <tr>
@@ -112,7 +112,7 @@
                                         <input type="text" name="small_icon" class="form-control"
                                             placeholder="Icon for sidebar" value="{{ $category->small_icon }}">
                                     </div>
-                                    <div class="form-check mb-3">
+                                    <div class="mb-3 form-check">
                                         <input class="form-check-input" name="is_primary" type="checkbox" value="1"
                                             id="is_primary" {{ $category->is_primary ? 'checked' : '' }}>
                                         <label class="form-check-label" for="is_primary">
@@ -137,14 +137,14 @@
                     </div>
                 </div>
 
-                <div class="row mt-5">
+                <div class="mt-5 row">
                     <div class="col-6">
                         <div class="card">
                             <h5 class="card-header bg-secondary text-light">Data Sub Category</h5>
                             <div class="card-body">
 
                                 <div class="table-responsive">
-                                    <table class="table table-striped mb-0">
+                                    <table class="table mb-0 table-striped">
 
                                         <thead>
                                             <tr>
@@ -231,13 +231,13 @@
                                                     id="myCheckbox{{ $image->id }}"
                                                     {{ $image->id, old('image_storage_id', $category->image_storage_id) ? 'checked' : '' }} />
                                                 <label for="myCheckbox{{ $image->id }}">
-                                                    <img src="{{ asset('images/' . $image->name) }}" />
+                                                    <img class="lazyload" data-src="{{ asset('images/' . $image->name) }}" />
                                                 </label>
                                             </li>
                                         @endforeach
                                     </ul>
     
-                                    <button type="submit" class="btn btn-primary d-flex ml-auto">Simpan</button>
+                                    <button type="submit" class="ml-auto btn btn-primary d-flex">Simpan</button>
 
                                 </form>
                             </div>

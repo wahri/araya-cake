@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Detail Cake</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Cake Management</a></li>
                                 <li class="breadcrumb-item active">Detail Cake</li>
@@ -42,9 +42,9 @@
                                                             <a class="nav-link {{ $i == 0 ? 'active' : '' }}"
                                                                 id="product-{{ $image->id }}-tab" data-bs-toggle="pill"
                                                                 href="#product-{{ $image->id }}" role="tab">
-                                                                <img src="{{ asset('images/' . $image->name) }}"
+                                                                <img data-src="{{ asset('images/' . $image->name) }}"
                                                                     alt=""
-                                                                    class="img-fluid mx-auto d-block tab-img rounded">
+                                                                    class="mx-auto rounded lazyload img-fluid d-block tab-img">
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -55,8 +55,8 @@
                                                             <div class="tab-pane fade show {{ $i == 0 ? 'active' : '' }}"
                                                                 id="product-{{ $image->id }}" role="tabpanel">
                                                                 <div class="product-img">
-                                                                    <img src="{{ asset('images/' . $image->name) }}"
-                                                                        alt="" class="img-fluid mx-auto d-block"
+                                                                    <img data-src="{{ asset('images/' . $image->name) }}"
+                                                                        alt="" class="mx-auto lazyload img-fluid d-block"
                                                                         data-zoom="{{ $i == 0 ? asset('images/' . $image->name) : '' }}">
                                                                 </div>
                                                             </div>
@@ -102,43 +102,10 @@
 
                                             <div class="mt-4">
                                                 <a href="{{ route('admin.product.edit', $product->id) }}"
-                                                    class="btn btn-warning waves-effect waves-light mt-2">
+                                                    class="mt-2 btn btn-warning waves-effect waves-light">
                                                     <i class="fas fa-edit"></i> Edit Data
                                                 </a>
                                             </div>
-
-
-
-
-
-                                            {{-- <div class="row mt-4">
-                                                <div class="col-md-12">
-                                                    <div class="product-color mt-3">
-                                                        <h5 class="font-size-14">Variant :</h5>
-                                                        <a href="#" class="active">
-                                                            <div class="product-color-item">
-                                                                <img src="{{ asset('assets/images/product/img-7.png') }}"
-                                                                    alt="" class="avatar-md">
-                                                            </div>
-                                                            <p>Blue</p>
-                                                        </a>
-                                                        <a href="#">
-                                                            <div class="product-color-item">
-                                                                <img src="{{ asset('assets/images/product/img-8.png') }}"
-                                                                    alt="" class="avatar-md">
-                                                            </div>
-                                                            <p>Cyan</p>
-                                                        </a>
-                                                        <a href="#">
-                                                            <div class="product-color-item">
-                                                                <img src="{{ asset('assets/images/product/img-9.png') }}"
-                                                                    alt="" class="avatar-md">
-                                                            </div>
-                                                            <p>Green</p>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
 
                                         </div>
                                     </div>

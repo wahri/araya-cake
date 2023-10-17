@@ -68,6 +68,8 @@
 
     @stack('script')
     
+    <script src="{{ asset('assets/js/lazysizes.min.js') }}" async></script>
+
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
 

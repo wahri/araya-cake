@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <div class="page-title">
                             <h4>Image Management</h4>
-                            <ol class="breadcrumb m-0">
+                            <ol class="m-0 breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Image Management</li>
                             </ol>
@@ -33,7 +33,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title mt-0">Upload New Image</h5>
+                        <h5 class="mt-0 modal-title">Upload New Image</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
                         </button>
@@ -69,9 +69,9 @@
                             @foreach ($image_data as $image)
                                 <div class="col-md-6 col-xl-3">
                                     <div class="card">
-                                        <div class="card-body text-center">
-                                            <div class="product-img mb-3">
-                                                <img src="{{ asset('images/' . $image->name) }}"
+                                        <div class="text-center card-body">
+                                            <div class="mb-3 product-img">
+                                                <img class="lazyload" data-src="{{ asset('images/' . $image->name) }}"
                                                     style="object-fit: contain; height: 200px; width: 100%;">
                                             </div>
                                             <form action="{{ route('admin.deleteImages', $image->id) }}" method="POST">
