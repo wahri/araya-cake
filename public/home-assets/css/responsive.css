@@ -732,8 +732,8 @@
   .abox-3-wrapper.ico-70 [class*="flaticon-"]:before, 
   .abox-3-wrapper.ico-70 [class*="flaticon-"]:after { font-size: 60px; line-height: 1!important; } 
 
-  .about-3-img { position: relative; left: -75%; }
-  .about-3-img img { max-width: none;  width: 170%; display: inline-block; }
+  /* .about-3-img { position: relative; left: -75%; }
+  .about-3-img img { max-width: none;  width: 170%; display: inline-block; } */
 
   .about-5-img { width: 40%; left: 60%; }
   .about-6-img { width: 40%; }

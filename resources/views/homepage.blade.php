@@ -404,14 +404,16 @@
                             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 text-center my-auto">
                                 <span class="font-weight-bold">Tersedia di</span>
                             </div>
-                            <div class="col-lg-3 col-4 text-center my-auto">
-                                <img src="{{ asset('home-assets/images/gofood.png') }}" alt="Logo Go Food">
-                            </div>
-                            <div class="col-lg-3 col-4 text-center my-auto">
-                                <img src="{{ asset('home-assets/images/shopeefood.png') }}" alt="Logo Shopee Food">
-                            </div>
-                            <div class="col-lg-3 col-4 text-center my-auto">
-                                <img src="{{ asset('home-assets/images/grabfood.png') }}" alt="Logo Grab Food">
+                            <div class="mt-3 col-lg-9 col-md-12 d-flex flex-wrap justify-content-center align-items-center" style="gap: 1.5rem">
+                                <div>
+                                    <img src="{{ asset('home-assets/images/gofood.png') }}" style="height: 30px; width: auto" alt="Logo Go Food">
+                                </div>
+                                <div>
+                                    <img src="{{ asset('home-assets/images/shopeefood.png') }}" style="height: 30px; width: auto" alt="Logo Shopee Food">
+                                </div>
+                                <div>
+                                    <img src="{{ asset('home-assets/images/grabfood.png') }}" style="height: 30px; width: auto" alt="Logo Grab Food">
+                                </div>
                             </div>
                         </div>
 
